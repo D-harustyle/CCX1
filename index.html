@@ -7,14 +7,16 @@
     <title>하루 AI Design Archive - CCX1</title>
     <style>
         :root {
-            --apple-bg: #fbfbfd;
+            --apple-bg: #f5f5f7;
             --apple-card: #ffffff;
             --apple-text: #1d1d1f;
             --apple-secondary: #86868b;
             --apple-blue: #0066cc;
             --apple-blue-hover: #0071e3;
             --apple-border: #d2d2d7;
-            --apple-font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            --apple-border-light: #e5e5ea;
+            --apple-font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            --card-radius: 28px;
         }
 
         body {
@@ -30,23 +32,23 @@
         }
 
         .container {
-            max-width: 980px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 80px 24px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 72px;
             animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         h1 {
-            font-size: 48px;
-            line-height: 1.08349;
+            font-size: 56px;
+            line-height: 1.07143;
             font-weight: 600;
-            letter-spacing: -.003em;
-            margin-bottom: 12px;
+            letter-spacing: -.005em;
+            margin-bottom: 16px;
             color: var(--apple-text);
         }
 
@@ -57,92 +59,185 @@
             letter-spacing: .009em;
             color: var(--apple-secondary);
             margin-top: 0;
+            max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 24px;
             animation: fadeIn 1.2s ease-out;
         }
 
         .folder-card {
             background: var(--apple-card);
-            border-radius: 18px;
-            padding: 32px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.02);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+            position: relative;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            min-height: 280px;
+        }
+
+        .folder-card.large {
+            grid-column: 1 / -1;
         }
 
         .folder-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transform: scale(1.01);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.06);
+        }
+
+        .badge {
+            font-size: 15px;
+            line-height: 1.33333;
+            font-weight: 600;
+            letter-spacing: -.016em;
+            color: var(--apple-text);
+            margin-bottom: 12px;
+            display: block;
         }
 
         .folder-title {
-            font-size: 21px;
-            line-height: 1.19048;
+            font-size: 32px;
+            line-height: 1.125;
             font-weight: 600;
-            letter-spacing: .011em;
+            letter-spacing: .004em;
             margin-top: 0;
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             color: var(--apple-text);
-            text-transform: capitalize;
+            max-width: 280px;
         }
 
-        ul {
+        .large .folder-title {
+            max-width: none;
+            font-size: 40px;
+            line-height: 1.1;
+            margin-bottom: 32px;
+        }
+
+        .large-divider {
+            width: 100%;
+            height: 1px;
+            background-color: var(--apple-border-light);
+            margin-bottom: 32px;
+        }
+
+        .link-list {
             list-style-type: none;
             padding-left: 0;
             margin: 0;
-            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        li {
-            margin-bottom: 12px;
-            border-bottom: 1px solid var(--apple-border);
-            padding-bottom: 12px;
+        .large .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
         }
 
-        li:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .link-group-title {
+            font-size: 15px;
+            line-height: 1.33333;
+            font-weight: 600;
+            letter-spacing: -.016em;
+            color: var(--apple-text);
+            margin-top: 0;
+            margin-bottom: 20px;
         }
 
-        a {
-            color: var(--apple-blue);
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 1.42859;
+        a.text-link {
+            font-size: 15px;
+            line-height: 1.33333;
             font-weight: 400;
             letter-spacing: -.016em;
+            color: var(--apple-secondary);
+            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            transition: color 0.1s;
-            word-break: break-all;
-        }
-
-        a:hover {
-            text-decoration: underline;
-            color: var(--apple-blue-hover);
-        }
-
-        a::after {
-            content: '›';
-            font-family: var(--apple-font);
-            font-size: 18px;
-            margin-left: 4px;
+            transition: color 0.2s ease;
             position: relative;
-            top: 1px;
-            transition: transform 0.2s ease;
-            display: inline-block;
+            align-self: flex-start;
         }
 
-        a:hover::after {
-            transform: translateX(3px);
+        a.text-link:hover {
+            color: var(--apple-text);
+        }
+
+        a.text-link.main-link {
+            font-size: 17px;
+            color: var(--apple-text);
+        }
+
+        a.text-link.main-link:hover {
+            color: var(--apple-blue);
+        }
+
+        /* Create the subtle hover underline effect from Apple */
+        a.text-link.main-link::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: var(--apple-text);
+            transform: scaleX(0);
+            transform-origin: left background-color;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+        }
+
+        a.text-link.main-link:hover::before {
+            transform: scaleX(1);
+            background-color: var(--apple-blue);
+        }
+
+        /* The plus button style from reference */
+        .action-button {
+            position: absolute;
+            bottom: 32px;
+            right: 32px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #1d1d1f;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        /* Make absolute sure the cross symbol is centered and scaled properly */
+        .action-button::after {
+            content: '+';
+            font-family: -apple-system, BlinkMacSystemFont, inherit;
+            font-size: 24px;
+            font-weight: 400;
+            line-height: 1;
+            /* Subtly nudge text to appear visually centered */
+            position: relative;
+            top: -2px;
+        }
+
+        .action-button::before {
+            display: none;
+        }
+
+        /* Remove link underline for buttons */
+
+        .action-button:hover {
+            background-color: #000000;
+            transform: scale(1.05);
+            color: #ffffff;
         }
 
         @keyframes slideUp {
@@ -166,107 +261,102 @@
                 opacity: 1;
             }
         }
-
-        .badge {
-            display: inline-block;
-            background: #f5f5f7;
-            color: var(--apple-secondary);
-            font-size: 11px;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 4px;
-            margin-bottom: 12px;
-            letter-spacing: .02em;
-            align-self: flex-start;
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1>Personal Setup</h1>
-            <p class="subtitle">CCX1 Design Archive</p>
+            <h1>Design Archive.</h1>
+            <p class="subtitle">Explore the CCX1 project components, mockups, and prototypes.</p>
         </header>
 
         <div class="grid">
 
             <div class="folder-card">
-                <div class="badge">Project Folder</div>
-                <h2 class="folder-title">Cafe Admin</h2>
-                <ul>
-                    <li><a href="cafe_admin/index.html">홈 화면 (Home)</a></li>
-                    <li><a href="cafe_admin/member-management.html">멤버 관리 (Member Management)</a></li>
+                <span class="badge">Cafe Admin</span>
+                <h2 class="folder-title">Manage members efficiently.</h2>
+                <ul class="link-list">
+                    <li><a href="cafe_admin/index.html" target="_blank" class="text-link main-link">홈 화면 (Home)</a></li>
+                    <li><a href="cafe_admin/member-management.html" target="_blank" class="text-link main-link">멤버 관리
+                            (Member Management)</a></li>
                 </ul>
+                <a href="cafe_admin/index.html" target="_blank" class="action-button" title="View Admin"></a>
             </div>
 
             <div class="folder-card">
-                <div class="badge">Project Folder</div>
-                <h2 class="folder-title">Fleamarket Motion</h2>
-                <ul>
-                    <li><a href="fleamarket_motion/prototypeFinal.html">최종 프로토타입 (Final)</a></li>
+                <span class="badge">Fleamarket Motion</span>
+                <h2 class="folder-title">Interactive prototypes.</h2>
+                <ul class="link-list">
+                    <li><a href="fleamarket_motion/prototypeFinal.html" target="_blank" class="text-link main-link">최종
+                            프로토타입 (Final)</a></li>
                 </ul>
+                <a href="fleamarket_motion/prototypeFinal.html" target="_blank" class="action-button"
+                    title="View Motion"></a>
             </div>
 
             <div class="folder-card">
-                <div class="badge">Project Folder</div>
-                <h2 class="folder-title">Cafe Section</h2>
-                <ul>
-                    <li><a href="cafe_section/section-home-analysis.html">클릭수 기반 분석 리포트</a></li>
-                    <li><a href="cafe_section/section-home-mockups.html">홈 목업 와이어프레임</a></li>
+                <span class="badge">Cafe Section</span>
+                <h2 class="folder-title">Data-driven design.</h2>
+                <ul class="link-list">
+                    <li><a href="cafe_section/section-home-analysis.html" target="_blank"
+                            class="text-link main-link">클릭수 기반 분석 리포트</a></li>
+                    <li><a href="cafe_section/section-home-mockups.html" target="_blank" class="text-link main-link">홈
+                            목업 와이어프레임</a></li>
                 </ul>
+                <a href="cafe_section/section-home-mockups.html" target="_blank" class="action-button"
+                    title="View Mockups"></a>
             </div>
 
-            <div class="folder-card" style="grid-column: 1 / -1;">
-                <div class="badge">Design System</div>
-                <h2 class="folder-title">Cafe CDS (디자인 시스템)</h2>
+            <div class="folder-card large">
+                <span class="badge">Design System</span>
+                <h2 class="folder-title">Global components and UI library.</h2>
 
-                <div
-                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div class="large-divider"></div>
+
+                <div class="link-grid">
                     <div>
-                        <h3
-                            style="font-size: 14px; color: var(--apple-secondary); margin-bottom: 0.5rem; text-transform: uppercase;">
-                            Core Pages</h3>
-                        <ul>
-                            <li><a href="cafe_CDS/cdsIndex.html">CDS 인덱스 (메인)</a></li>
-                            <li><a href="cafe_CDS/user-profile.html">유저 프로필</a></li>
-                            <li><a href="cafe_CDS/home.html">홈</a></li>
-                            <li><a href="cafe_CDS/CDSMapping.html">컴포넌트 매핑도</a></li>
+                        <h3 class="link-group-title">Core Pages</h3>
+                        <ul class="link-list">
+                            <li><a href="cafe_CDS/cdsIndex.html" target="_blank" class="text-link">CDS 인덱스 (메인)</a></li>
+                            <li><a href="cafe_CDS/user-profile.html" target="_blank" class="text-link">유저 프로필</a></li>
+                            <li><a href="cafe_CDS/home.html" target="_blank" class="text-link">홈</a></li>
+                            <li><a href="cafe_CDS/CDSMapping.html" target="_blank" class="text-link">컴포넌트 매핑도</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h3
-                            style="font-size: 14px; color: var(--apple-secondary); margin-bottom: 0.5rem; text-transform: uppercase;">
-                            Modules & Feeds</h3>
-                        <ul>
-                            <li><a href="cafe_CDS/feed.html">피드</a></li>
-                            <li><a href="cafe_CDS/feed-module.html">피드 모듈</a></li>
-                            <li><a href="cafe_CDS/list-module.html">리스트 모듈</a></li>
-                            <li><a href="cafe_CDS/grid-2x2-card.html">2x2 그리드 카드</a></li>
-                            <li><a href="cafe_CDS/grid-2x2.html">2x2 그리드</a></li>
-                            <li><a href="cafe_CDS/list.html">리스트</a></li>
-                            <li><a href="cafe_CDS/feed-grid-module.html">피드 2x2 그리드 모듈</a></li>
+                        <h3 class="link-group-title">Modules & Feeds</h3>
+                        <ul class="link-list">
+                            <li><a href="cafe_CDS/feed.html" target="_blank" class="text-link">피드</a></li>
+                            <li><a href="cafe_CDS/feed-module.html" target="_blank" class="text-link">피드 모듈</a></li>
+                            <li><a href="cafe_CDS/list-module.html" target="_blank" class="text-link">리스트 모듈</a></li>
+                            <li><a href="cafe_CDS/grid-2x2-card.html" target="_blank" class="text-link">2x2 그리드 카드</a>
+                            </li>
+                            <li><a href="cafe_CDS/grid-2x2.html" target="_blank" class="text-link">2x2 그리드</a></li>
+                            <li><a href="cafe_CDS/list.html" target="_blank" class="text-link">리스트</a></li>
+                            <li><a href="cafe_CDS/feed-grid-module.html" target="_blank" class="text-link">피드 2x2 그리드
+                                    모듈</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h3
-                            style="font-size: 14px; color: var(--apple-secondary); margin-bottom: 0.5rem; text-transform: uppercase;">
-                            UI Components</h3>
-                        <ul>
-                            <li><a href="cafe_CDS/header.html">헤더</a></li>
-                            <li><a href="cafe_CDS/navigation.html">네비게이션</a></li>
-                            <li><a href="cafe_CDS/badge.html">뱃지</a></li>
-                            <li><a href="cafe_CDS/chip.html">칩</a></li>
-                            <li><a href="cafe_CDS/control.html">컨트롤</a></li>
-                            <li><a href="cafe_CDS/input.html">인풋</a></li>
-                            <li><a href="cafe_CDS/pagination-dot.html">페이지네이션 점</a></li>
-                            <li><a href="cafe_CDS/profile-item.html">프로필 아이템</a></li>
-                            <li><a href="cafe_CDS/thumbnail.html">썸네일</a></li>
+                        <h3 class="link-group-title">UI Components</h3>
+                        <ul class="link-list">
+                            <li><a href="cafe_CDS/header.html" target="_blank" class="text-link">헤더</a></li>
+                            <li><a href="cafe_CDS/navigation.html" target="_blank" class="text-link">네비게이션</a></li>
+                            <li><a href="cafe_CDS/badge.html" target="_blank" class="text-link">뱃지</a></li>
+                            <li><a href="cafe_CDS/chip.html" target="_blank" class="text-link">칩</a></li>
+                            <li><a href="cafe_CDS/control.html" target="_blank" class="text-link">컨트롤</a></li>
+                            <li><a href="cafe_CDS/input.html" target="_blank" class="text-link">인풋</a></li>
+                            <li><a href="cafe_CDS/pagination-dot.html" target="_blank" class="text-link">페이지네이션 점</a>
+                            </li>
+                            <li><a href="cafe_CDS/profile-item.html" target="_blank" class="text-link">프로필 아이템</a></li>
+                            <li><a href="cafe_CDS/thumbnail.html" target="_blank" class="text-link">썸네일</a></li>
                         </ul>
                     </div>
                 </div>
+                <a href="cafe_CDS/cdsIndex.html" target="_blank" class="action-button" title="View Design System"></a>
             </div>
 
         </div>
