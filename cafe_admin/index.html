@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,8 +36,8 @@
     .sidebar {
       display: flex;
       flex-direction: column;
-      width: 240px;
-      min-width: 240px;
+      width: 280px;
+      min-width: 280px;
       align-self: stretch;
       background: rgba(50, 131, 253, 0.05);
       min-height: 100vh;
@@ -49,19 +50,27 @@
       flex-direction: row;
       align-items: center;
       gap: 8px;
-      padding: 46px 20px 16px 30px;
+      padding: 20px 32px;
+    }
+
+    .sidebar__logo a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
     }
 
     .sidebar__logo img {
-      width: 112px;
-      height: 17px;
+      height: 18px;
+      width: auto;
+      display: block;
     }
 
     .sidebar__menu {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      padding: 18px 24px 20px;
+      gap: 3px;
+      padding: 12px 16px 20px 16px;
     }
 
     .menu-item {
@@ -69,7 +78,8 @@
       flex-direction: row;
       align-items: center;
       gap: 10px;
-      padding: 15px 20px;
+      margin: 0 -4px;
+      padding: 13px 16px;
       border-radius: 99999px;
       background: transparent;
       cursor: pointer;
@@ -82,11 +92,24 @@
     }
 
     .menu-item--active {
-      background: rgba(50, 131, 253, 0.09);
+      margin: 0;
+      padding: 13px 12px;
+      border-radius: 12px;
+      background: #edf3fb;
     }
 
     .menu-item--active:hover {
-      background: rgba(50, 131, 253, 0.12);
+      background: #e2ebf6;
+    }
+
+    .sidebar__divider {
+      padding: 12px 8px;
+    }
+
+    .sidebar__divider-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.06);
     }
 
     .menu-item__icon {
@@ -97,7 +120,6 @@
       height: 24px;
       flex-shrink: 0;
       position: relative;
-      top: -2px;
     }
 
     .menu-item__icon img {
@@ -106,8 +128,8 @@
     }
 
     .menu-item__label {
-      font-size: 15px;
-      line-height: 1.333;
+      font-size: 16px;
+      line-height: 1.25;
       letter-spacing: -0.3px;
       color: #000000;
       font-weight: 400;
@@ -115,8 +137,12 @@
     }
 
     .menu-item--active .menu-item__label {
-      color: #3283FD;
+      color: #000000;
       font-weight: 600;
+    }
+
+    .menu-item--grey .menu-item__label {
+      color: #787878;
     }
 
     /* ===== RIGHT CONTENT ===== */
@@ -335,7 +361,7 @@
       gap: 12px;
     }
 
-    .stats-row + .stats-row {
+    .stats-row+.stats-row {
       margin-top: 12px;
     }
 
@@ -937,7 +963,7 @@
         gap: 10px;
       }
 
-      .stats-row + .stats-row {
+      .stats-row+.stats-row {
         margin-top: 10px;
       }
 
@@ -1065,6 +1091,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="home">
     <!-- Mobile Header -->
@@ -1082,8 +1109,9 @@
       <div class="mobile-header__right">
         <button class="mobile-header__search" aria-label="검색">
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="7" cy="7" r="5.5" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"/>
-            <line x1="11.06" y1="11.06" x2="14" y2="14" stroke="rgba(0,0,0,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="7" cy="7" r="5.5" stroke="rgba(0,0,0,0.7)" stroke-width="1.5" />
+            <line x1="11.06" y1="11.06" x2="14" y2="14" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"
+              stroke-linecap="round" />
           </svg>
         </button>
         <div class="mobile-header__profile">
@@ -1101,7 +1129,7 @@
         </div>
         <button class="mobile-nav__close" id="mobileNavClose" aria-label="닫기">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 5L15 15M15 5L5 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M5 5L15 15M15 5L5 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
           </svg>
         </button>
       </div>
@@ -1160,7 +1188,7 @@
             <span class="menu-item__icon">
               <img src="assets/sidebar-home-filled.svg" alt="">
             </span>
-            <span class="menu-item__label">Home</span>
+            <span class="menu-item__label">매니저 홈</span>
           </a>
           <a href="#" class="menu-item">
             <span class="menu-item__icon">
@@ -1190,7 +1218,7 @@
             <span class="menu-item__icon">
               <img src="assets/sidebar-settings-outlined.svg" alt="">
             </span>
-            <span class="menu-item__label">운영권한 &amp; 설정</span>
+            <span class="menu-item__label">운영권한 및 설정</span>
           </a>
           <a href="#" class="menu-item">
             <span class="menu-item__icon">
@@ -1202,9 +1230,12 @@
             <span class="menu-item__icon">
               <img src="assets/sidebar-report-outlined.svg" alt="">
             </span>
-            <span class="menu-item__label">카페 성장 리포트</span>
+            <span class="menu-item__label">성장 리포트</span>
           </a>
-          <a href="#" class="menu-item">
+          <div class="sidebar__divider">
+            <div class="sidebar__divider-line"></div>
+          </div>
+          <a href="#" class="menu-item menu-item--grey">
             <span class="menu-item__icon">
               <img src="assets/sidebar-biz-outlined.svg" alt="">
             </span>
@@ -1227,8 +1258,9 @@
             <div class="search-bar">
               <div class="search-bar__icon">
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="7" cy="7" r="5.5" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"/>
-                  <line x1="11.06" y1="11.06" x2="14" y2="14" stroke="rgba(0,0,0,0.7)" stroke-width="1.5" stroke-linecap="round"/>
+                  <circle cx="7" cy="7" r="5.5" stroke="rgba(0,0,0,0.7)" stroke-width="1.5" />
+                  <line x1="11.06" y1="11.06" x2="14" y2="14" stroke="rgba(0,0,0,0.7)" stroke-width="1.5"
+                    stroke-linecap="round" />
                 </svg>
               </div>
               <span class="search-bar__text">찾고싶은 기능을 검색해보세요.</span>
@@ -1240,11 +1272,12 @@
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="aiGrad" x1="6" y1="0" x2="6" y2="12" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#8953F4"/>
-                      <stop offset="1" stop-color="#3283FD"/>
+                      <stop stop-color="#8953F4" />
+                      <stop offset="1" stop-color="#3283FD" />
                     </linearGradient>
                   </defs>
-                  <path d="M6 0.5L7.5 4.5L11.5 6L7.5 7.5L6 11.5L4.5 7.5L0.5 6L4.5 4.5L6 0.5Z" fill="url(#aiGrad)" opacity="0.4"/>
+                  <path d="M6 0.5L7.5 4.5L11.5 6L7.5 7.5L6 11.5L4.5 7.5L0.5 6L4.5 4.5L6 0.5Z" fill="url(#aiGrad)"
+                    opacity="0.4" />
                 </svg>
               </span>
               <span class="btn-ai__text">Ai Staff 업그레이드</span>
@@ -1326,7 +1359,9 @@
                     <div class="stat-card__badge-row">
                       <span class="stat-card__badge-arrow">
                         <svg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5.62433 0.456076C6.04986 -0.151822 6.95014 -0.151823 7.37567 0.456074L12.8049 8.21219C13.3009 8.92062 12.794 9.89405 11.9293 9.89405H1.07072C0.205962 9.89405 -0.300857 8.92063 0.19505 8.21219L5.62433 0.456076Z" fill="#6060FF"/>
+                          <path
+                            d="M5.62433 0.456076C6.04986 -0.151822 6.95014 -0.151823 7.37567 0.456074L12.8049 8.21219C13.3009 8.92062 12.794 9.89405 11.9293 9.89405H1.07072C0.205962 9.89405 -0.300857 8.92063 0.19505 8.21219L5.62433 0.456076Z"
+                            fill="#6060FF" />
                         </svg>
                       </span>
                       <span class="stat-card__badge">41.30%</span>
@@ -1482,95 +1517,96 @@
       </div>
     </div>
   </div>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const DURATION = 1600;
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const DURATION = 1600;
 
-    function easeOutExpo(t) {
-      return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-    }
-
-    function formatNumber(n) {
-      return n.toLocaleString('ko-KR');
-    }
-
-    function animateValue(el, onComplete) {
-      const target = parseInt(el.textContent.replace(/,/g, ''), 10);
-      if (isNaN(target)) { if (onComplete) onComplete(); return; }
-
-      let start = null;
-      el.textContent = '0';
-
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = Math.min((timestamp - start) / DURATION, 1);
-        const current = Math.round(easeOutExpo(progress) * target);
-        el.textContent = formatNumber(current);
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else if (onComplete) {
-          onComplete();
-        }
+      function easeOutExpo(t) {
+        return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
       }
 
-      requestAnimationFrame(step);
-    }
+      function formatNumber(n) {
+        return n.toLocaleString('ko-KR');
+      }
 
-    function showBadgeRow(valueEl) {
-      const card = valueEl.closest('.stat-card');
-      if (!card) return;
-      const badgeRow = card.querySelector('.stat-card__badge-row');
-      if (badgeRow) badgeRow.classList.add('stat-card__badge-row--visible');
-    }
+      function animateValue(el, onComplete) {
+        const target = parseInt(el.textContent.replace(/,/g, ''), 10);
+        if (isNaN(target)) { if (onComplete) onComplete(); return; }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          showBadgeRow(entry.target);
-          animateValue(entry.target);
-          observer.unobserve(entry.target);
+        let start = null;
+        el.textContent = '0';
+
+        function step(timestamp) {
+          if (!start) start = timestamp;
+          const progress = Math.min((timestamp - start) / DURATION, 1);
+          const current = Math.round(easeOutExpo(progress) * target);
+          el.textContent = formatNumber(current);
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else if (onComplete) {
+            onComplete();
+          }
         }
-      });
-    }, { threshold: 0.3 });
 
-    document.querySelectorAll('.stat-card__value').forEach(el => observer.observe(el));
+        requestAnimationFrame(step);
+      }
 
-    const chartObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('stat-card__chart--animated');
-          chartObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
+      function showBadgeRow(valueEl) {
+        const card = valueEl.closest('.stat-card');
+        if (!card) return;
+        const badgeRow = card.querySelector('.stat-card__badge-row');
+        if (badgeRow) badgeRow.classList.add('stat-card__badge-row--visible');
+      }
 
-    document.querySelectorAll('.stat-card__chart').forEach(el => chartObserver.observe(el));
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            showBadgeRow(entry.target);
+            animateValue(entry.target);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
 
-    const hamburger = document.querySelector('.mobile-header__hamburger');
-    const nav = document.getElementById('mobileNav');
-    const overlay = document.getElementById('mobileNavOverlay');
-    const closeBtn = document.getElementById('mobileNavClose');
+      document.querySelectorAll('.stat-card__value').forEach(el => observer.observe(el));
 
-    function openNav() {
-      overlay.style.display = 'block';
-      requestAnimationFrame(() => {
-        overlay.classList.add('mobile-nav-overlay--visible');
-        nav.classList.add('mobile-nav--open');
-      });
-      document.body.style.overflow = 'hidden';
-    }
+      const chartObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('stat-card__chart--animated');
+            chartObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
 
-    function closeNav() {
-      overlay.classList.remove('mobile-nav-overlay--visible');
-      nav.classList.remove('mobile-nav--open');
-      document.body.style.overflow = '';
-      setTimeout(() => { overlay.style.display = 'none'; }, 300);
-    }
+      document.querySelectorAll('.stat-card__chart').forEach(el => chartObserver.observe(el));
 
-    if (hamburger) hamburger.addEventListener('click', openNav);
-    if (closeBtn) closeBtn.addEventListener('click', closeNav);
-    if (overlay) overlay.addEventListener('click', closeNav);
-  });
-</script>
+      const hamburger = document.querySelector('.mobile-header__hamburger');
+      const nav = document.getElementById('mobileNav');
+      const overlay = document.getElementById('mobileNavOverlay');
+      const closeBtn = document.getElementById('mobileNavClose');
+
+      function openNav() {
+        overlay.style.display = 'block';
+        requestAnimationFrame(() => {
+          overlay.classList.add('mobile-nav-overlay--visible');
+          nav.classList.add('mobile-nav--open');
+        });
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeNav() {
+        overlay.classList.remove('mobile-nav-overlay--visible');
+        nav.classList.remove('mobile-nav--open');
+        document.body.style.overflow = '';
+        setTimeout(() => { overlay.style.display = 'none'; }, 300);
+      }
+
+      if (hamburger) hamburger.addEventListener('click', openNav);
+      if (closeBtn) closeBtn.addEventListener('click', closeNav);
+      if (overlay) overlay.addEventListener('click', closeNav);
+    });
+  </script>
 </body>
+
 </html>
