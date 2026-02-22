@@ -36,8 +36,8 @@
     .sidebar {
       display: flex;
       flex-direction: column;
-      width: 240px;
-      min-width: 240px;
+      width: 300px;
+      min-width: 300px;
       align-self: stretch;
       background: rgba(50, 131, 253, 0.05);
       min-height: 100vh;
@@ -50,12 +50,16 @@
       flex-direction: row;
       align-items: center;
       gap: 8px;
-      padding: 46px 20px 16px 30px;
+      padding: 46px 20px 16px 24px;
+    }
+
+    .sidebar__logo a {
+      display: inline-flex;
     }
 
     .sidebar__logo img {
-      width: 112px;
-      height: 17px;
+      height: 24px;
+      width: auto;
     }
 
     .sidebar__menu {
@@ -70,8 +74,8 @@
       flex-direction: row;
       align-items: center;
       gap: 10px;
-      padding: 15px 20px;
-      border-radius: 99999px;
+      padding: 15px 12px;
+      border-radius: 16px;
       background: transparent;
       cursor: pointer;
       text-decoration: none;
@@ -107,7 +111,7 @@
     }
 
     .menu-item__label {
-      font-size: 15px;
+      font-size: 16px;
       line-height: 1.333;
       letter-spacing: -0.3px;
       color: #000000;
@@ -288,7 +292,7 @@
       justify-content: center;
       align-items: center;
       padding: 18px 2px;
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.3125;
       letter-spacing: -0.3px;
       color: #737373;
@@ -993,9 +997,12 @@
     <div class="body">
       <!-- Sidebar -->
       <aside class="sidebar">
-        <div class="sidebar__logo">
-          <img src="assets/logo.svg" alt="Cafe Manage">
-        </div>
+        <!-- Sidebar Logo -->
+        <h1 class="sidebar__logo">
+          <a href="index.html">
+            <img src="../cafe_CDS/pages/assets/logo.svg" alt="Cafe Manage">
+          </a>
+        </h1>
         <nav class="sidebar__menu">
           <a href="home.html" class="menu-item">
             <span class="menu-item__icon">
