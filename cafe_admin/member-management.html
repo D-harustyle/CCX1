@@ -50,7 +50,7 @@
       flex-direction: row;
       align-items: center;
       gap: 8px;
-      padding: 20px 32px;
+      padding: 44px 20px 24px 24px;
     }
 
     .sidebar__logo a {
@@ -61,16 +61,16 @@
     }
 
     .sidebar__logo img {
-      height: 18px;
-      width: auto;
+      height: 22px;
+      width: 145px;
       display: block;
     }
 
     .sidebar__menu {
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      padding: 12px 16px 20px 16px;
+      gap: 4px;
+      padding: 12px 16px 20px;
     }
 
     .menu-item {
@@ -78,9 +78,9 @@
       flex-direction: row;
       align-items: center;
       gap: 10px;
-      margin: 0 -4px;
-      padding: 13px 16px;
-      border-radius: 99999px;
+      padding: 13px 12px;
+      border-radius: 12px;
+      margin: 0;
       background: transparent;
       cursor: pointer;
       text-decoration: none;
@@ -88,13 +88,10 @@
     }
 
     .menu-item:hover {
-      background: rgba(50, 131, 253, 0.06);
+      background: #edf3fb;
     }
 
     .menu-item--active {
-      margin: 0;
-      padding: 13px 12px;
-      border-radius: 12px;
       background: #edf3fb;
     }
 
@@ -1025,68 +1022,68 @@
           </a>
         </h1>
         <nav class="sidebar__menu">
-          <a href="home.html" class="menu-item">
+          <a href="home.html" class="menu-item menu-item--active">
             <span class="menu-item__icon">
               <img src="assets/icon-home.svg" alt="">
             </span>
             <span class="menu-item__label">매니저 홈</span>
           </a>
-          <a href="#" class="menu-item">
+          <a href="cafe.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-cafe.svg" alt="">
             </span>
             <span class="menu-item__label">카페 운영</span>
           </a>
-          <a href="#" class="menu-item">
+          <a href="post.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-post.svg" alt="">
             </span>
             <span class="menu-item__label">게시글 관리</span>
           </a>
-          <a href="member-management.html" class="menu-item menu-item--active">
+          <a href="member-management.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-member.svg" alt="">
             </span>
             <span class="menu-item__label">멤버 관리</span>
           </a>
-          <a href="#" class="menu-item">
+          <a href="reward.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-reward.svg" alt="">
             </span>
             <span class="menu-item__label">보상 관리</span>
           </a>
-          <a href="#" class="menu-item">
+          <a href="settings.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-settings.svg" alt="">
             </span>
             <span class="menu-item__label">운영권한 및 설정</span>
           </a>
-          <a href="#" class="menu-item">
+          <a href="comm.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-comm.svg" alt="">
             </span>
             <span class="menu-item__label">커뮤니케이션</span>
           </a>
-          <a href="#" class="menu-item">
+          <a href="report.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-report.svg" alt="">
             </span>
             <span class="menu-item__label">성장 리포트</span>
           </a>
-          <div class="sidebar__divider">
-            <div class="sidebar__divider-line"></div>
-          </div>
-          <a href="#" class="menu-item menu-item--grey">
-            <span class="menu-item__icon">
-              <img src="assets/icon-biz.svg" alt="">
-            </span>
-            <span class="menu-item__label">카페 비즈센터</span>
-          </a>
-          <a href="#" class="menu-item">
+          <a href="decor.html" class="menu-item">
             <span class="menu-item__icon">
               <img src="assets/icon-decor.svg" alt="">
             </span>
             <span class="menu-item__label">카페 꾸미기</span>
+          </a>
+          <div class="sidebar__divider">
+            <div class="sidebar__divider-line"></div>
+          </div>
+          <a href="biz.html" class="menu-item menu-item--grey">
+            <span class="menu-item__icon">
+              <img src="assets/icon-biz.svg" alt="">
+            </span>
+            <span class="menu-item__label">카페 비즈센터</span>
           </a>
         </nav>
       </aside>
