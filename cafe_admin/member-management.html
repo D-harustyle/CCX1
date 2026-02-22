@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -477,8 +478,16 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      padding: 14px 0px;
+      padding: 14px 16px;
+      margin: 0 -16px;
       gap: 6px;
+      border-radius: 12px;
+      transition: background-color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .member-row:hover {
+      background-color: #F8F9FA;
     }
 
     .member-row__info {
@@ -976,6 +985,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <div class="body">
@@ -1059,7 +1069,7 @@
             </div>
             <button class="mobile-nav__close" id="mobileNavClose" aria-label="닫기">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 5L15 15M15 5L5 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M5 5L15 15M15 5L5 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </button>
           </div>
@@ -1185,8 +1195,9 @@
             <div class="search-input">
               <span class="search-input__icon">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="6.01" cy="6.01" r="5.01" stroke="#A3A3A3" stroke-width="1.2"/>
-                  <line x1="9.87" y1="9.87" x2="13" y2="13" stroke="#A3A3A3" stroke-width="1.2" stroke-linecap="round"/>
+                  <circle cx="6.01" cy="6.01" r="5.01" stroke="#A3A3A3" stroke-width="1.2" />
+                  <line x1="9.87" y1="9.87" x2="13" y2="13" stroke="#A3A3A3" stroke-width="1.2"
+                    stroke-linecap="round" />
                 </svg>
               </span>
               <span class="search-input__text">찾고 싶은 멤버를 검색해보세요</span>
@@ -1564,4 +1575,5 @@
     if (overlay) overlay.addEventListener('click', closeNav);
   </script>
 </body>
+
 </html>
