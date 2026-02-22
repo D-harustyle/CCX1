@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafe Design System - Thumbnail</title>
+    <link rel="stylesheet" href="../design-tokens/tokens.css" />
+    <link rel="stylesheet" href="../components/thumbnail.css" />
+    <link rel="stylesheet" href="../cdsIndex.css" />
+  </head>
+  <body class="cds-page">
+    <header class="cds-topbar">
+      <span class="cds-topbar__title">CDS</span>
+    </header>
+
+    <div class="cds-layout">
+      <aside class="cds-sidenav">
+        <div class="cds-sidenav__title">Components</div>
+        <nav aria-label="Component navigation">
+          <ul class="cds-sidenav__list">
+            <li><a class="cds-sidenav__link" href="../cdsIndex.html">Button</a></li>
+            <li><a class="cds-sidenav__link" href="badge.html">Badge</a></li>
+            <li><a class="cds-sidenav__link" href="chip.html">Chip</a></li>
+            <li><a class="cds-sidenav__link" href="control.html">Control</a></li>
+            <li><a class="cds-sidenav__link" href="header.html">Header</a></li>
+            <li><a class="cds-sidenav__link" href="input.html">Input</a></li>
+            <li><a class="cds-sidenav__link" href="navigation.html">Navigation</a></li>
+            <li><a class="cds-sidenav__link" href="pagination-dot.html">Pagination Dot</a></li>
+            <li><a class="cds-sidenav__link" href="thumbnail.html">Thumbnail</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2.html">2x2 Grid</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2-card.html">2x2 Grid Card</a></li>
+            <li><a class="cds-sidenav__link" href="profile-item.html">Profile Item</a></li>
+            <li><a class="cds-sidenav__link" href="feed.html">Feed</a></li>
+            <li><a class="cds-sidenav__link" href="feed-module.html">Feed Module</a></li>
+            <li><a class="cds-sidenav__link" href="feed-grid-module.html">Feed Grid Module</a></li>
+            <li><a class="cds-sidenav__link" href="list.html">List Item</a></li>
+            <li><a class="cds-sidenav__link" href="list-module.html">List Module</a></li>
+            <li><a class="cds-sidenav__link" href="user-profile.html">User Profile</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="cds-main">
+        <section class="cds-section">
+          <h1 class="cds-section__title">Thumbnail</h1>
+          <p class="cds-section__subtitle">Figma ratio variants</p>
+
+          <div class="cds-demo">
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Image</div>
+              <div class="cds-demo__items">
+                <figure class="cds-thumbnail cds-thumbnail--ratio-1-1">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--ratio-3-2">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--ratio-3-3-15">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--ratio-16-9">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                </figure>
+              </div>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Video</div>
+              <div class="cds-demo__items">
+                <figure class="cds-thumbnail cds-thumbnail--ratio-1-1">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__icon">
+                    <img src="../icons/play-sm-16x16-fill.svg" alt="" />
+                  </span>
+                  <span class="cds-thumbnail__badge">
+                    <span class="cds-thumbnail__badge-text">04:12</span>
+                  </span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--ratio-16-9">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__play">
+                    <img class="cds-thumbnail__play-icon" src="../icons/play-sm-24x24-fill.svg" alt="" />
+                  </span>
+                  <span class="cds-thumbnail__badge">
+                    <span class="cds-thumbnail__badge-text">04:12</span>
+                  </span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--ratio-3-5">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__play">
+                    <img class="cds-thumbnail__play-icon" src="../icons/play-sm-24x24-fill.svg" alt="" />
+                  </span>
+                  <span class="cds-thumbnail__badge">
+                    <span class="cds-thumbnail__badge-text">00:57</span>
+                  </span>
+                </figure>
+              </div>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Circle</div>
+              <div class="cds-demo__items">
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-20">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-24">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-28">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-34">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-36">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-38">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-42">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-50">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-54">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-56">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-60">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-66">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-80">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+                <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-104">
+                  <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                  <span class="cds-thumbnail__dim" aria-hidden="true"></span>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

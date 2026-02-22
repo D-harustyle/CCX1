@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafe Design System - 2x2 Grid Card</title>
+    <link rel="stylesheet" href="../design-tokens/tokens.css" />
+    <link rel="stylesheet" href="../components/thumbnail.css" />
+    <link rel="stylesheet" href="../components/grid-2x2.css" />
+    <link rel="stylesheet" href="../components/grid-2x2-card.css" />
+    <link rel="stylesheet" href="../cdsIndex.css" />
+  </head>
+  <body class="cds-page">
+    <header class="cds-topbar">
+      <span class="cds-topbar__title">CDS</span>
+    </header>
+
+    <div class="cds-layout">
+      <aside class="cds-sidenav">
+        <div class="cds-sidenav__title">Components</div>
+        <nav aria-label="Component navigation">
+          <ul class="cds-sidenav__list">
+            <li><a class="cds-sidenav__link" href="../cdsIndex.html">Button</a></li>
+            <li><a class="cds-sidenav__link" href="badge.html">Badge</a></li>
+            <li><a class="cds-sidenav__link" href="chip.html">Chip</a></li>
+            <li><a class="cds-sidenav__link" href="control.html">Control</a></li>
+            <li><a class="cds-sidenav__link" href="header.html">Header</a></li>
+            <li><a class="cds-sidenav__link" href="input.html">Input</a></li>
+            <li><a class="cds-sidenav__link" href="navigation.html">Navigation</a></li>
+            <li><a class="cds-sidenav__link" href="pagination-dot.html">Pagination Dot</a></li>
+            <li><a class="cds-sidenav__link" href="thumbnail.html">Thumbnail</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2.html">2x2 Grid</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2-card.html">2x2 Grid Card</a></li>
+            <li><a class="cds-sidenav__link" href="profile-item.html">Profile Item</a></li>
+            <li><a class="cds-sidenav__link" href="feed.html">Feed</a></li>
+            <li><a class="cds-sidenav__link" href="feed-module.html">Feed Module</a></li>
+            <li><a class="cds-sidenav__link" href="feed-grid-module.html">Feed Grid Module</a></li>
+            <li><a class="cds-sidenav__link" href="list.html">List Item</a></li>
+            <li><a class="cds-sidenav__link" href="list-module.html">List Module</a></li>
+            <li><a class="cds-sidenav__link" href="user-profile.html">User Profile</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="cds-main">
+        <section class="cds-section">
+          <h1 class="cds-section__title">2x2 Grid Card</h1>
+          <p class="cds-section__subtitle">Figma 2x2 grid card</p>
+
+          <div class="cds-demo">
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Card (No Price)</div>
+              <div class="cds-demo__items">
+                <article class="cds-grid2x2__card">
+                  <figure class="cds-thumbnail cds-thumbnail--ratio-1-1 cds-grid2x2__thumb">
+                    <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                    <span class="cds-thumbnail__badge">
+                      <span class="cds-thumbnail__badge-text">2+</span>
+                    </span>
+                  </figure>
+                  <div class="cds-grid2x2__text">
+                    <div class="cds-grid2x2__title-row">
+                      <span class="cds-grid2x2__title">새해 명절선물 준비 &amp; 에타,쏘낭시에,소금빵</span>
+                    </div>
+                    <div class="cds-grid2x2__meta">
+                      <div class="cds-grid2x2__profile">
+                        <span class="cds-grid2x2__name">백조</span>
+                        <img class="cds-grid2x2__level" src="../imageBadges/decorative-small-sprout.svg" alt="" />
+                      </div>
+                      <div class="cds-grid2x2__assist">
+                        <span class="cds-grid2x2__time">15:30</span>
+                        <span class="cds-grid2x2__reply">
+                          <svg class="cds-grid2x2__reply-icon" viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M9.57652 2.26672H6.5197C3.91364 2.26672 1.8 4.38036 1.8 6.99021C1.8 9.60006 3.91364 11.7137 6.52349 11.7137H7.56894C7.6144 11.7137 7.64849 11.7516 7.6447 11.797L7.44015 13.4978C7.39849 13.8576 7.80379 14.0963 8.09925 13.8841L12.0992 10.9788C13.5349 9.91445 14.3 8.67203 14.3 6.99021C14.3 4.38036 12.1864 2.26672 9.57652 2.26672Z" />
+                          </svg>
+                          <span class="cds-grid2x2__reply-count">2</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Card (Price)</div>
+              <div class="cds-demo__items">
+                <article class="cds-grid2x2__card">
+                  <figure class="cds-thumbnail cds-thumbnail--ratio-1-1 cds-grid2x2__thumb">
+                    <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                    <span class="cds-thumbnail__badge">
+                      <span class="cds-thumbnail__badge-text">1+</span>
+                    </span>
+                  </figure>
+                  <div class="cds-grid2x2__text">
+                    <div class="cds-grid2x2__title-row">
+                      <span class="cds-grid2x2__title cds-grid2x2__title-trade">
+                        <span class="cds-grid2x2__trade-label">판매</span>
+                        우정 실팝골드 깊은 마들렌틀 16구 우녹스용 2개
+                      </span>
+                    </div>
+                    <div class="cds-grid2x2__price">
+                      <span class="cds-grid2x2__price-amount">15,000</span>
+                      <span class="cds-grid2x2__price-unit">원</span>
+                    </div>
+                    <div class="cds-grid2x2__meta">
+                      <div class="cds-grid2x2__profile">
+                        <span class="cds-grid2x2__name">치즈먹는쩨리</span>
+                        <img class="cds-grid2x2__level" src="../imageBadges/decorative-small-sprout.svg" alt="" />
+                      </div>
+                      <div class="cds-grid2x2__assist">
+                        <span class="cds-grid2x2__time">15:30</span>
+                        <span class="cds-grid2x2__reply">
+                          <svg class="cds-grid2x2__reply-icon" viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M9.57652 2.26672H6.5197C3.91364 2.26672 1.8 4.38036 1.8 6.99021C1.8 9.60006 3.91364 11.7137 6.52349 11.7137H7.56894C7.6144 11.7137 7.64849 11.7516 7.6447 11.797L7.44015 13.4978C7.39849 13.8576 7.80379 14.0963 8.09925 13.8841L12.0992 10.9788C13.5349 9.91445 14.3 8.67203 14.3 6.99021C14.3 4.38036 12.1864 2.26672 9.57652 2.26672Z" />
+                          </svg>
+                          <span class="cds-grid2x2__reply-count">2</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

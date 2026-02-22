@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafe Design System - Input</title>
+    <link rel="stylesheet" href="../design-tokens/tokens.css" />
+    <link rel="stylesheet" href="../components/input.css" />
+    <link rel="stylesheet" href="../cdsIndex.css" />
+  </head>
+  <body class="cds-page">
+    <header class="cds-topbar">
+      <span class="cds-topbar__title">CDS</span>
+    </header>
+
+    <div class="cds-layout">
+      <aside class="cds-sidenav">
+        <div class="cds-sidenav__title">Components</div>
+        <nav aria-label="Component navigation">
+          <ul class="cds-sidenav__list">
+            <li><a class="cds-sidenav__link" href="../cdsIndex.html">Button</a></li>
+            <li><a class="cds-sidenav__link" href="badge.html">Badge</a></li>
+            <li><a class="cds-sidenav__link" href="chip.html">Chip</a></li>
+            <li><a class="cds-sidenav__link" href="control.html">Control</a></li>
+            <li><a class="cds-sidenav__link" href="header.html">Header</a></li>
+            <li><a class="cds-sidenav__link" href="input.html">Input</a></li>
+            <li><a class="cds-sidenav__link" href="navigation.html">Navigation</a></li>
+            <li><a class="cds-sidenav__link" href="pagination-dot.html">Pagination Dot</a></li>
+            <li><a class="cds-sidenav__link" href="thumbnail.html">Thumbnail</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2.html">2x2 Grid</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2-card.html">2x2 Grid Card</a></li>
+            <li><a class="cds-sidenav__link" href="profile-item.html">Profile Item</a></li>
+            <li><a class="cds-sidenav__link" href="feed.html">Feed</a></li>
+            <li><a class="cds-sidenav__link" href="feed-module.html">Feed Module</a></li>
+            <li><a class="cds-sidenav__link" href="feed-grid-module.html">Feed Grid Module</a></li>
+            <li><a class="cds-sidenav__link" href="list.html">List Item</a></li>
+            <li><a class="cds-sidenav__link" href="list-module.html">List Module</a></li>
+            <li><a class="cds-sidenav__link" href="user-profile.html">User Profile</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="cds-main">
+        <section class="cds-section">
+          <h1 class="cds-section__title">Input</h1>
+          <p class="cds-section__subtitle">Search / Typing / Keyword / Article / Write</p>
+
+          <div class="cds-demo">
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Search (Outlined / Filled, Large)</div>
+              <div class="cds-input-state">
+                <button class="cds-input-state__button" data-target="search-lg" data-state="default">Default</button>
+                <button class="cds-input-state__button" data-target="search-lg" data-state="active-gray">Active Gray</button>
+                <button class="cds-input-state__button" data-target="search-lg" data-state="active-green">Active Green</button>
+                <button class="cds-input-state__button" data-target="search-lg" data-state="completed">Completed</button>
+              </div>
+              <div class="cds-input cds-input--search cds-input--outlined cds-input--lg is-default" data-input-group="search-lg">
+                <input class="cds-input__field" type="text" placeholder="게시판 검색" />
+                <span class="cds-input__icon cds-input__icon--cancel">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.05548 6.99482C7.76258 6.70192 7.28771 6.70192 6.99482 6.99482C6.70192 7.28771 6.70192 7.76258 6.99482 8.05548L8.93936 10L6.99482 11.9446C6.70192 12.2375 6.70192 12.7123 6.99482 13.0052C7.28771 13.2981 7.76258 13.2981 8.05548 13.0052L10 11.0607L11.9446 13.0052C12.2375 13.2981 12.7123 13.2981 13.0052 13.0052C13.2981 12.7123 13.2981 12.2375 13.0052 11.9446L11.0607 10L13.0052 8.05548C13.2981 7.76258 13.2981 7.28771 13.0052 6.99482C12.7123 6.70192 12.2375 6.70192 11.9446 6.99482L10 8.93936L8.05548 6.99482Z" fill="currentColor"/></svg>
+                </span>
+                <span class="cds-input__icon cds-input__icon--search">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.4 9C3.4 5.90721 5.90721 3.4 9 3.4C12.0928 3.4 14.6 5.90721 14.6 9C14.6 12.0928 12.0928 14.6 9 14.6C5.90721 14.6 3.4 12.0928 3.4 9ZM9 2.1C5.18924 2.1 2.1 5.18924 2.1 9C2.1 12.8108 5.18924 15.9 9 15.9C10.6713 15.9 12.2038 15.3058 13.3979 14.3171L16.5404 17.4596C16.7942 17.7135 17.2058 17.7135 17.4596 17.4596C17.7135 17.2058 17.7135 16.7942 17.4596 16.5404L14.3171 13.3979C15.3058 12.2038 15.9 10.6713 15.9 9C15.9 5.18924 12.8108 2.1 9 2.1Z" fill="currentColor"/></svg>
+                </span>
+              </div>
+              <div class="cds-input cds-input--search cds-input--filled cds-input--lg is-default" data-input-group="search-lg">
+                <input class="cds-input__field" type="text" placeholder="게시판 검색" />
+                <span class="cds-input__icon cds-input__icon--cancel">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.05548 6.99482C7.76258 6.70192 7.28771 6.70192 6.99482 6.99482C6.70192 7.28771 6.70192 7.76258 6.99482 8.05548L8.93936 10L6.99482 11.9446C6.70192 12.2375 6.70192 12.7123 6.99482 13.0052C7.28771 13.2981 7.76258 13.2981 8.05548 13.0052L10 11.0607L11.9446 13.0052C12.2375 13.2981 12.7123 13.2981 13.0052 13.0052C13.2981 12.7123 13.2981 12.2375 13.0052 11.9446L11.0607 10L13.0052 8.05548C13.2981 7.76258 13.2981 7.28771 13.0052 6.99482C12.7123 6.70192 12.2375 6.70192 11.9446 6.99482L10 8.93936L8.05548 6.99482Z" fill="currentColor"/></svg>
+                </span>
+                <span class="cds-input__icon cds-input__icon--search">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.4 9C3.4 5.90721 5.90721 3.4 9 3.4C12.0928 3.4 14.6 5.90721 14.6 9C14.6 12.0928 12.0928 14.6 9 14.6C5.90721 14.6 3.4 12.0928 3.4 9ZM9 2.1C5.18924 2.1 2.1 5.18924 2.1 9C2.1 12.8108 5.18924 15.9 9 15.9C10.6713 15.9 12.2038 15.3058 13.3979 14.3171L16.5404 17.4596C16.7942 17.7135 17.2058 17.7135 17.4596 17.4596C17.7135 17.2058 17.7135 16.7942 17.4596 16.5404L14.3171 13.3979C15.3058 12.2038 15.9 10.6713 15.9 9C15.9 5.18924 12.8108 2.1 9 2.1Z" fill="currentColor"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Search (Outlined / Filled, Small)</div>
+              <div class="cds-input-state">
+                <button class="cds-input-state__button" data-target="search-sm" data-state="default">Default</button>
+                <button class="cds-input-state__button" data-target="search-sm" data-state="active-gray">Active Gray</button>
+                <button class="cds-input-state__button" data-target="search-sm" data-state="active-green">Active Green</button>
+                <button class="cds-input-state__button" data-target="search-sm" data-state="completed">Completed</button>
+              </div>
+              <div class="cds-input cds-input--search cds-input--outlined cds-input--sm is-default" data-input-group="search-sm">
+                <input class="cds-input__field" type="text" placeholder="게시판 검색" />
+                <span class="cds-input__icon cds-input__icon--cancel">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.05548 6.99482C7.76258 6.70192 7.28771 6.70192 6.99482 6.99482C6.70192 7.28771 6.70192 7.76258 6.99482 8.05548L8.93936 10L6.99482 11.9446C6.70192 12.2375 6.70192 12.7123 6.99482 13.0052C7.28771 13.2981 7.76258 13.2981 8.05548 13.0052L10 11.0607L11.9446 13.0052C12.2375 13.2981 12.7123 13.2981 13.0052 13.0052C13.2981 12.7123 13.2981 12.2375 13.0052 11.9446L11.0607 10L13.0052 8.05548C13.2981 7.76258 13.2981 7.28771 13.0052 6.99482C12.7123 6.70192 12.2375 6.70192 11.9446 6.99482L10 8.93936L8.05548 6.99482Z" fill="currentColor"/></svg>
+                </span>
+                <span class="cds-input__icon cds-input__icon--search">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.4 9C3.4 5.90721 5.90721 3.4 9 3.4C12.0928 3.4 14.6 5.90721 14.6 9C14.6 12.0928 12.0928 14.6 9 14.6C5.90721 14.6 3.4 12.0928 3.4 9ZM9 2.1C5.18924 2.1 2.1 5.18924 2.1 9C2.1 12.8108 5.18924 15.9 9 15.9C10.6713 15.9 12.2038 15.3058 13.3979 14.3171L16.5404 17.4596C16.7942 17.7135 17.2058 17.7135 17.4596 17.4596C17.7135 17.2058 17.7135 16.7942 17.4596 16.5404L14.3171 13.3979C15.3058 12.2038 15.9 10.6713 15.9 9C15.9 5.18924 12.8108 2.1 9 2.1Z" fill="currentColor"/></svg>
+                </span>
+              </div>
+              <div class="cds-input cds-input--search cds-input--filled cds-input--sm is-default" data-input-group="search-sm">
+                <input class="cds-input__field" type="text" placeholder="게시판 검색" />
+                <span class="cds-input__icon cds-input__icon--cancel">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18ZM8.05548 6.99482C7.76258 6.70192 7.28771 6.70192 6.99482 6.99482C6.70192 7.28771 6.70192 7.76258 6.99482 8.05548L8.93936 10L6.99482 11.9446C6.70192 12.2375 6.70192 12.7123 6.99482 13.0052C7.28771 13.2981 7.76258 13.2981 8.05548 13.0052L10 11.0607L11.9446 13.0052C12.2375 13.2981 12.7123 13.2981 13.0052 13.0052C13.2981 12.7123 13.2981 12.2375 13.0052 11.9446L11.0607 10L13.0052 8.05548C13.2981 7.76258 13.2981 7.28771 13.0052 6.99482C12.7123 6.70192 12.2375 6.70192 11.9446 6.99482L10 8.93936L8.05548 6.99482Z" fill="currentColor"/></svg>
+                </span>
+                <span class="cds-input__icon cds-input__icon--search">
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.4 9C3.4 5.90721 5.90721 3.4 9 3.4C12.0928 3.4 14.6 5.90721 14.6 9C14.6 12.0928 12.0928 14.6 9 14.6C5.90721 14.6 3.4 12.0928 3.4 9ZM9 2.1C5.18924 2.1 2.1 5.18924 2.1 9C2.1 12.8108 5.18924 15.9 9 15.9C10.6713 15.9 12.2038 15.3058 13.3979 14.3171L16.5404 17.4596C16.7942 17.7135 17.2058 17.7135 17.4596 17.4596C17.7135 17.2058 17.7135 16.7942 17.4596 16.5404L14.3171 13.3979C15.3058 12.2038 15.9 10.6713 15.9 9C15.9 5.18924 12.8108 2.1 9 2.1Z" fill="currentColor"/></svg>
+                </span>
+              </div>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Typing</div>
+              <div class="cds-input-state">
+                <button class="cds-input-state__button" data-target="typing" data-state="default">Default</button>
+                <button class="cds-input-state__button" data-target="typing" data-state="active-gray">Active Gray</button>
+                <button class="cds-input-state__button" data-target="typing" data-state="active-green">Active Green</button>
+                <button class="cds-input-state__button" data-target="typing" data-state="error">Error</button>
+              </div>
+              <div class="cds-input cds-input--typing cds-input--outlined is-default" data-input-group="typing">
+                <input class="cds-input__field" type="text" placeholder="소제목" />
+                <span class="cds-input__icon cds-input__icon--cancel">
+                  <img src="../icons/cancel-20x20-fill.svg" alt="" />
+                </span>
+              </div>
+              <div class="cds-input cds-input--typing cds-input--filled is-default" data-input-group="typing">
+                <input class="cds-input__field" type="text" placeholder="소제목" />
+                <span class="cds-input__icon cds-input__icon--cancel">
+                  <img src="../icons/cancel-20x20-fill.svg" alt="" />
+                </span>
+              </div>
+              <p class="cds-input-helper cds-input-helper--error">적합 텍스트 들어갈 예정</p>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Keyword</div>
+              <div class="cds-input-state">
+                <button class="cds-input-state__button" data-target="keyword" data-state="default">Default</button>
+                <button class="cds-input-state__button" data-target="keyword" data-state="active">Active</button>
+                <button class="cds-input-state__button" data-target="keyword" data-state="done">Done</button>
+              </div>
+              <button class="cds-input-keyword is-default" type="button" data-input-group="keyword">
+                <img class="cds-input-keyword__icon" src="../icons/plus-16x16-outline.svg" alt="" />
+                추가하기
+              </button>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Article</div>
+              <div class="cds-input-article cds-input-article--error">
+                <div class="cds-input-article__field">
+                  제목을 최대 100자까지 작성할 때 제목을 최대 100자까지 작성할 때
+                </div>
+                <p class="cds-input-article__helper">띄어쓰기 포함 최대 100자까지 작성할 수 있습니다.</p>
+              </div>
+              <div class="cds-input-article cds-input-article--error">
+                <div class="cds-input-article__field">가격을 입력하세요.</div>
+                <p class="cds-input-article__helper">판매 가격을 입력해 주세요.</p>
+              </div>
+              <div class="cds-input-article">
+                <div class="cds-input-article__field">디지털/가전 &gt; 휴대폰 &gt; SKT</div>
+                <p class="cds-input-article__helper">카테고리를 선택해주세요.</p>
+              </div>
+            </div>
+
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Write</div>
+              <div class="cds-input-state">
+                <button class="cds-input-state__button" data-target="write" data-state="default">Default</button>
+                <button class="cds-input-state__button" data-target="write" data-state="typing">Typing</button>
+              </div>
+              <div class="cds-input-write is-default" data-input-group="write">
+                <img class="cds-input-write__avatar" src="../cupIllust.png" alt="" />
+                <div class="cds-input-write__field">
+                  <span class="cds-input-write__text">댓글을 남겨보세요</span>
+                </div>
+                <span class="cds-input-write__action">
+                  <img src="../icons/send-24x24-fill.svg" alt="" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const stateClasses = [
+        "is-default",
+        "is-active-gray",
+        "is-active-green",
+        "is-completed",
+        "is-error",
+        "is-active",
+        "is-done",
+        "is-typing",
+      ];
+
+      document.querySelectorAll("[data-state]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const targets = document.querySelectorAll(
+            `[data-input-group="${button.dataset.target}"]`
+          );
+          if (!targets.length) {
+            return;
+          }
+
+          targets.forEach((target) => {
+            stateClasses.forEach((state) => target.classList.remove(state));
+            target.classList.add(`is-${button.dataset.state}`);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 등록 - 가격 입력</title>
+    <!--
+      CSS 교체 가이드
+      1) 외부 CSS로 전환: 아래 <style id="inline-styles"> 블록을 통째로 제거
+      2) 링크 사용: 아래 주석을 해제해 styles.css 연결
+      <link rel="stylesheet" href="./styles.css" />
+    -->
+    <style id="inline-styles">
+      :root {
+        --fontfamily-default: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+          "Apple SD Gothic Neo", sans-serif;
+        --letterspacing-default: -0.3px;
+        --fontsize-extended-c2ctop: 26px;
+        --lineheight-extended-c2ctop: 34px;
+        --fontweight-extended-c2ctop: 600;
+        --letterspacing-extended-c2ctop: -1px;
+        --neutral-background-default: #ffffff;
+        --neutral-background-base-basic: #f0f0f0;
+        --neutral-background-base-mainhome: #edf0f4;
+        --neutral-background-raised-1: #f8f9fa;
+        --neutral-background-separated-2: #e5e5e5;
+        --neutral-background-static-alpha-white-5: #ffffff0a;
+        --neutral-foreground-default: #000000;
+        --neutral-foreground-inverted-default: #ffffff;
+        --neutral-foreground-subtle-2: #737373;
+        --neutral-foreground-decorative-2: #c9c9c9;
+        --neutral-foreground-decorative-3: #e5e5e5;
+        --neutral-foreground-static-alpha-black-3: #0000004d;
+        --market-background: #ffffff;
+        --market-gray-raised-1: #f5f6f7;
+        --market-gray-raised-2: #f0f1f2;
+        --market-keyboard-background: #d2d3d8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding-top: 80px;
+        font-family: var(--fontfamily-default);
+        letter-spacing: var(--letterspacing-default);
+        background: var(--neutral-background-base-basic);
+        color: var(--neutral-foreground-default);
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button {
+        font-family: inherit;
+        color: inherit;
+      }
+
+      .screen {
+        width: 390px;
+        min-height: 844px;
+        margin: 0 auto;
+        background: var(--market-background);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .navigation {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .status-bar {
+        height: 50px;
+        padding-top: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .status-time {
+        flex: 1;
+        padding-left: 16px;
+        font-size: 17px;
+        line-height: 22px;
+        font-weight: 600;
+        text-align: center;
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+      }
+
+      .status-notch {
+        width: 124px;
+        height: 10px;
+      }
+
+      .status-levels {
+        flex: 1;
+        padding-right: 16px;
+        display: flex;
+        gap: 7px;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .status-icon {
+        display: block;
+        width: auto;
+        height: auto;
+      }
+
+      .status-icon-cellular {
+        width: 19.2px;
+        height: 12.226px;
+      }
+
+      .status-icon-wifi {
+        width: 17.142px;
+        height: 12.328px;
+      }
+
+      .status-icon-battery {
+        width: 27.328px;
+        height: 13px;
+      }
+
+      .nav-steps {
+        height: 56px;
+        padding: 0 16px 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .step-group {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .step {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        line-height: 20px;
+        font-weight: 600;
+        letter-spacing: -0.3px;
+      }
+
+      .step svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      .step-done {
+        background: var(--market-gray-raised-2);
+        color: var(--neutral-foreground-default);
+      }
+
+      .step-active {
+        background: var(--neutral-foreground-default);
+        color: var(--neutral-foreground-inverted-default);
+      }
+
+      .step-inactive {
+        background: var(--market-gray-raised-2);
+        color: var(--neutral-foreground-decorative-2);
+      }
+
+      .close-button {
+        width: 24px;
+        height: 24px;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .close-button svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .close-button img {
+        width: 28px;
+        height: 28px;
+        display: block;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .price-header {
+        padding: 24px 20px 8px;
+      }
+
+      .price-input {
+        padding: 0 20px;
+      }
+
+      .price-input--stack {
+        padding: 0;
+      }
+
+      .price-input--stack .price-input-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+      }
+
+      .price-suggestion {
+        padding: 0 20px;
+      }
+
+      .input-field {
+        height: 54px;
+        background: var(--market-gray-raised-1);
+        border-radius: 16px;
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .input-text {
+        display: flex;
+        align-items: flex-end;
+        gap: 0;
+      }
+
+      .input-amount {
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: var(--letterspacing-default);
+        color: var(--neutral-foreground-default);
+      }
+
+      .input-unit {
+        font-family: var(--fontfamily-default);
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: var(--letterspacing-default);
+        color: var(--neutral-foreground-default);
+      }
+
+      .text-strong {
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+        font-weight: 600;
+        color: #2e2e2e;
+      }
+
+      .text-dot {
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+        font-weight: 400;
+        color: #2e2e2e;
+        padding: 0 2px;
+      }
+
+      .input-divider {
+        width: 2px;
+        height: 22px;
+        background: var(--neutral-foreground-decorative-3);
+        border-radius: 999px;
+        margin: 0 4px;
+      }
+
+      .clear-button {
+        width: 24px;
+        height: 24px;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #8b8b8b;
+      }
+
+      .clear-icon {
+        width: 24px;
+        height: 24px;
+        display: block;
+      }
+
+      .suggestion-card {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: 300px;
+        align-items: flex-start;
+        overflow: hidden;
+        mask-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          black 10%,
+          black 90%,
+          transparent 100%
+        );
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          transparent 0%,
+          black 10%,
+          black 90%,
+          transparent 100%
+        );
+      }
+      .suggestion-badge {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+      }
+
+      .suggestion-line-group .twkleicon-interaction {
+        position: relative;
+        width: 22px;
+        height: 22px;
+        display: block;
+        flex: 0 0 22px;
+        margin-top: 4px;
+      }
+
+      .suggestion-line-group .twinkle-bg,
+      .suggestion-line-group .twinkle-mini,
+      .suggestion-line-group .twinkle-big {
+        position: absolute;
+        display: block;
+      }
+
+      .suggestion-line-group .twinkle-bg {
+        left: 0;
+        top: 0;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: #eaf3ff;
+      }
+
+      .suggestion-line-group .twinkle-mini {
+        left: 12.2525px;
+        top: 5.25px;
+        width: 5px;
+        height: 5px;
+        transform-origin: center;
+        animation: twinkle-mini 1400ms ease-out infinite;
+        animation-delay: 0.1s;
+      }
+
+      .suggestion-line-group .twinkle-big {
+        left: 4.7523px;
+        top: 7.6844px;
+        width: 9.0009px;
+        height: 9px;
+        transform-origin: center;
+        animation: twinkle-max 1400ms ease-out infinite;
+      }
+
+      @keyframes twinkle-max {
+        0%,
+        10% {
+          transform: scale(0.65);
+          opacity: 0;
+        }
+        25% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+        45%,
+        65% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        85% {
+          transform: scale(0.85);
+          opacity: 0.35;
+        }
+        100% {
+          transform: scale(0.65);
+          opacity: 0;
+        }
+      }
+
+      @keyframes twinkle-mini {
+        0%,
+        12% {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+        30% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
+        50%,
+        70% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        90% {
+          transform: scale(0.8);
+          opacity: 0.4;
+        }
+        100% {
+          transform: scale(0.7);
+          opacity: 0;
+        }
+      }
+
+      .suggestion-text {
+        margin: 0;
+        font-size: 15px;
+        line-height: 22px;
+        letter-spacing: -0.4px;
+        color: var(--neutral-foreground-subtle-2);
+      }
+
+      .suggestion-item {
+        height: var(--suggestion-line-height);
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        width: 100%;
+      }
+
+      .suggestion-line-group {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: 100%;
+      }
+
+      .suggestion-line-text {
+        flex: 1;
+        min-width: 0;
+        margin-top: 2px;
+      }
+
+      .suggestion-subline {
+        width: 100%;
+      }
+
+      .suggestion-rolling {
+        --suggestion-line-height: 52px;
+        height: var(--suggestion-line-height);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .suggestion-rolling-track {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        animation: suggestion-roll 14s ease-in-out infinite;
+      }
+
+
+      @keyframes suggestion-roll {
+        0% {
+          transform: translateY(0);
+        }
+        21.428% {
+          transform: translateY(0);
+        }
+        25% {
+          transform: translateY(calc(-1 * var(--suggestion-line-height)));
+        }
+        46.428% {
+          transform: translateY(calc(-1 * var(--suggestion-line-height)));
+        }
+        50% {
+          transform: translateY(calc(-2 * var(--suggestion-line-height)));
+        }
+        71.428% {
+          transform: translateY(calc(-2 * var(--suggestion-line-height)));
+        }
+        75% {
+          transform: translateY(calc(-3 * var(--suggestion-line-height)));
+        }
+        96.428% {
+          transform: translateY(calc(-3 * var(--suggestion-line-height)));
+        }
+        100% {
+          transform: translateY(calc(-4 * var(--suggestion-line-height)));
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .suggestion-rolling-track {
+          animation: none;
+        }
+      }
+
+      .text-blue {
+        color: #3283fd;
+      }
+
+
+      .bottom-area {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .bottom-action {
+        padding: 36px 20px 20px;
+        background: linear-gradient(
+          180deg,
+          var(--neutral-background-static-alpha-white-5) 0%,
+          var(--neutral-background-default) 34%
+        );
+      }
+
+      .cta-button {
+        width: 100%;
+        height: 50px;
+        border-radius: 12px;
+        border: 0;
+        background: var(--neutral-foreground-default);
+        color: var(--neutral-foreground-inverted-default);
+        font-family: var(--fontfamily-default);
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: var(--letterspacing-default);
+        opacity: 0.3;
+      }
+
+      .cta-button.is-active {
+        opacity: 1;
+      }
+
+      .keyboard {
+        background: var(--market-keyboard-background);
+        padding: 8px 6px 34px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+      }
+
+      .keyboard.is-hidden {
+        display: none;
+      }
+
+      .keyboard-svg img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .keyboard-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .keyboard-row:nth-child(2) .key,
+      .keyboard-row:nth-child(3) .key {
+        height: 47px;
+      }
+
+      .key {
+        height: 46px;
+        border-radius: 5px;
+        border: 0;
+        background: var(--neutral-background-default);
+        box-shadow: 0 1px 0 0 var(--neutral-foreground-static-alpha-black-3);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        color: var(--neutral-foreground-default);
+      }
+
+      .key-main {
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+        font-size: 26px;
+        line-height: 26px;
+        font-weight: 400;
+      }
+
+      .key-sub {
+        font-family: "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+        font-size: 10px;
+        line-height: 13px;
+        font-weight: 700;
+        letter-spacing: -0.2px;
+      }
+
+      .keyboard-row-last .key {
+        height: 46px;
+      }
+
+      .key-ghost {
+        background: transparent;
+        box-shadow: none;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 400;
+      }
+
+      .key-label {
+        padding: 0 8px 6px 0;
+      }
+
+      .key-label img {
+        width: 48px;
+        height: 12px;
+      }
+
+      .key-delete {
+        padding: 0 0 2px 5px;
+      }
+
+      .key-delete img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .home-indicator {
+        position: absolute;
+        left: 50%;
+        bottom: 8px;
+        transform: translateX(-50%);
+        width: 138px;
+        height: 5px;
+        border-radius: 100px;
+        background: var(--neutral-foreground-default);
+      }
+
+      .text-subtle-2 {
+        color: var(--neutral-foreground-subtle-2);
+      }
+
+      .t-heading-xsmall {
+        font-family: "Apple SD Gothic Neo", "SF Pro Text", sans-serif;
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        letter-spacing: var(--letterspacing-default);
+        margin: 0;
+      }
+
+      .t-extended-c2ctop {
+        font-family: var(--fontfamily-default);
+        font-size: var(--fontsize-extended-c2ctop);
+        line-height: var(--lineheight-extended-c2ctop);
+        font-weight: var(--fontweight-extended-c2ctop);
+        letter-spacing: var(--letterspacing-extended-c2ctop);
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="screen price-entry">
+      <header class="navigation">
+        <div class="status-bar" aria-hidden="true">
+          <svg
+            width="393"
+            height="50"
+            viewBox="0 0 393 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M59.5166 25.7231C60.1585 25.7231 60.7673 25.8421 61.3428 26.0801C61.9183 26.3125 62.4274 26.6777 62.8701 27.1758C63.3184 27.6683 63.6698 28.3019 63.9243 29.0767C64.1789 29.8459 64.3062 30.7728 64.3062 31.8574V31.874C64.3062 33.2188 64.1125 34.3698 63.7251 35.3271C63.3377 36.2845 62.7816 37.0205 62.0566 37.5352C61.3372 38.0443 60.4767 38.2988 59.4751 38.2988C58.7391 38.2988 58.075 38.166 57.4829 37.9004C56.8963 37.6292 56.4093 37.2585 56.022 36.7881C55.6401 36.3122 55.3828 35.7699 55.25 35.1611L55.2334 35.0698H57.3335L57.3667 35.1528C57.4718 35.4295 57.6213 35.673 57.8149 35.8833C58.0142 36.0936 58.2521 36.2568 58.5288 36.373C58.811 36.4837 59.1265 36.5391 59.4751 36.5391C60.106 36.5391 60.6206 36.3537 61.019 35.9829C61.423 35.6066 61.7246 35.1058 61.9238 34.4805C62.1286 33.8496 62.2448 33.1523 62.2725 32.3887C62.278 32.3057 62.2808 32.2254 62.2808 32.1479C62.2808 32.0649 62.2808 31.9847 62.2808 31.9072L61.9072 29.9067C61.9072 29.453 61.8021 29.0407 61.5918 28.6699C61.3815 28.2992 61.0965 28.0059 60.7368 27.79C60.3826 27.5742 59.9814 27.4663 59.5332 27.4663C59.1016 27.4663 58.7059 27.5715 58.3462 27.7817C57.9865 27.992 57.6987 28.2798 57.4829 28.645C57.2671 29.0047 57.1592 29.4087 57.1592 29.8569V29.8735C57.1592 30.3384 57.2616 30.7507 57.4663 31.1104C57.6711 31.4645 57.9505 31.744 58.3047 31.9487C58.6589 32.1535 59.0628 32.2559 59.5166 32.2559C59.9704 32.2559 60.3771 32.1562 60.7368 31.957C61.0965 31.7578 61.3815 31.4811 61.5918 31.127C61.8021 30.7728 61.9072 30.3716 61.9072 29.9233V29.9067H62.4053V32.1147H62.1147C61.9709 32.4302 61.7578 32.7235 61.4756 32.9946C61.1934 33.2658 60.8447 33.4844 60.4297 33.6504C60.0202 33.8164 59.5387 33.8994 58.9854 33.8994C58.2217 33.8994 57.5465 33.7279 56.96 33.3848C56.3734 33.0417 55.9113 32.5713 55.5737 31.9736C55.2417 31.376 55.0757 30.7008 55.0757 29.9482V29.9316C55.0757 29.1182 55.2638 28.396 55.6401 27.7651C56.022 27.1287 56.5477 26.6307 57.2173 26.271C57.8924 25.9058 58.6589 25.7231 59.5166 25.7231ZM68.0747 36.3896C67.6984 36.3896 67.383 36.2651 67.1284 36.0161C66.8794 35.7616 66.7549 35.4517 66.7549 35.0864C66.7549 34.7157 66.8794 34.4058 67.1284 34.1567C67.383 33.9022 67.6984 33.7749 68.0747 33.7749C68.4565 33.7749 68.772 33.9022 69.021 34.1567C69.27 34.4058 69.3945 34.7157 69.3945 35.0864C69.3945 35.4517 69.27 35.7616 69.021 36.0161C68.772 36.2651 68.4565 36.3896 68.0747 36.3896ZM68.0747 30.2305C67.6984 30.2305 67.383 30.106 67.1284 29.8569C66.8794 29.6024 66.7549 29.2925 66.7549 28.9272C66.7549 28.5565 66.8794 28.2466 67.1284 27.9976C67.383 27.743 67.6984 27.6157 68.0747 27.6157C68.4565 27.6157 68.772 27.743 69.021 27.9976C69.27 28.2466 69.3945 28.5565 69.3945 28.9272C69.3945 29.2925 69.27 29.6024 69.021 29.8569C68.772 30.106 68.4565 30.2305 68.0747 30.2305ZM77.6538 38V35.7007H71.7935V33.9492C72.1089 33.4124 72.4243 32.8729 72.7397 32.3306C73.0607 31.7882 73.3844 31.2487 73.7109 30.7119C74.043 30.1696 74.3722 29.6356 74.6987 29.1099C75.0308 28.5786 75.36 28.0557 75.6865 27.541C76.0186 27.0208 76.3506 26.5145 76.6826 26.022H79.6958V33.9326H81.3145V35.7007H79.6958V38H77.6538ZM73.7856 33.9824H77.687V27.7319H77.5625C77.319 28.1082 77.0672 28.4956 76.8071 28.894C76.5526 29.2925 76.2952 29.6992 76.0352 30.1143C75.7751 30.5293 75.5177 30.9471 75.2632 31.3677C75.0086 31.7827 74.7568 32.2005 74.5078 32.6211C74.2588 33.0361 74.0181 33.4484 73.7856 33.8579V33.9824ZM86.27 38V28.1304H86.1206L83.1406 30.2305V28.2217L86.27 26.022H88.4033V38H86.27Z"
+              fill="black"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M301.115 27.033C301.115 26.4 300.637 25.8868 300.048 25.8868H298.982C298.393 25.8868 297.915 26.4 297.915 27.033V36.967C297.915 37.6 298.393 38.1132 298.982 38.1132H300.048C300.637 38.1132 301.115 37.6 301.115 36.967V27.033ZM293.681 28.3321H294.748C295.337 28.3321 295.814 28.8576 295.814 29.5058V36.9395C295.814 37.5877 295.337 38.1132 294.748 38.1132H293.681C293.092 38.1132 292.614 37.5877 292.614 36.9395V29.5058C292.614 28.8576 293.092 28.3321 293.681 28.3321ZM289.349 30.9811H288.282C287.693 30.9811 287.216 31.5133 287.216 32.1698V36.9245C287.216 37.581 287.693 38.1132 288.282 38.1132H289.349C289.938 38.1132 290.416 37.581 290.416 36.9245V32.1698C290.416 31.5133 289.938 30.9811 289.349 30.9811ZM284.048 33.4264H282.982C282.393 33.4264 281.915 33.951 281.915 34.5981V36.9415C281.915 37.5886 282.393 38.1132 282.982 38.1132H284.048C284.637 38.1132 285.115 37.5886 285.115 36.9415V34.5981C285.115 33.951 284.637 33.4264 284.048 33.4264Z"
+              fill="black"
+            />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M316.687 28.3022C319.174 28.3023 321.566 29.2243 323.368 30.8778C323.504 31.0055 323.721 31.0039 323.855 30.8742L325.152 29.6107C325.22 29.545 325.257 29.4559 325.257 29.3632C325.256 29.2705 325.218 29.1819 325.149 29.1169C320.418 24.7422 312.954 24.7422 308.223 29.1169C308.155 29.1819 308.116 29.2705 308.115 29.3632C308.115 29.4558 308.152 29.5449 308.22 29.6107L309.518 30.8742C309.651 31.0041 309.869 31.0057 310.004 30.8778C311.807 29.2242 314.199 28.3022 316.687 28.3022ZM316.683 32.5224C318.041 32.5223 319.349 33.0341 320.356 33.9582C320.492 34.0894 320.706 34.0865 320.839 33.9518L322.126 32.6325C322.194 32.5633 322.231 32.4694 322.23 32.3719C322.229 32.2743 322.19 32.1812 322.121 32.1134C319.057 29.2226 314.312 29.2226 311.248 32.1134C311.179 32.1812 311.14 32.2744 311.139 32.3719C311.138 32.4695 311.176 32.5634 311.243 32.6325L312.53 33.9518C312.663 34.0865 312.877 34.0894 313.013 33.9582C314.019 33.0347 315.327 32.523 316.683 32.5224ZM319.208 35.316C319.21 35.4213 319.172 35.5229 319.105 35.5967L316.929 38.0514C316.865 38.1236 316.778 38.1642 316.687 38.1642C316.596 38.1642 316.509 38.1236 316.445 38.0514L314.268 35.5967C314.201 35.5229 314.164 35.4212 314.166 35.3159C314.168 35.2105 314.209 35.1108 314.279 35.0402C315.669 33.7263 317.705 33.7263 319.095 35.0402C319.165 35.1108 319.206 35.2106 319.208 35.316Z"
+              fill="black"
+            />
+            <rect
+              opacity="0.35"
+              x="332.757"
+              y="26"
+              width="24"
+              height="12"
+              rx="3.8"
+              stroke="black"
+            />
+            <path
+              opacity="0.4"
+              d="M358.257 30.2811V34.3566C359.062 34.0114 359.585 33.2085 359.585 32.3189C359.585 31.4293 359.062 30.6263 358.257 30.2811"
+              fill="black"
+            />
+            <rect x="334.257" y="27.5" width="21" height="9" rx="2.5" fill="black" />
+          </svg>
+        </div>
+        <div class="nav-steps">
+          <div class="step-group">
+            <div class="step step-done" aria-label="완료 단계">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path
+                  d="M3.5 8.5l2.6 2.6 6.4-6.4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="step step-active">2</div>
+            <div class="step step-inactive">3</div>
+          </div>
+          <button class="close-button" type="button" aria-label="닫기">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path d="M18.75 5.25L5.25 18.75" stroke="black" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M5.25 5.25L18.75 18.75" stroke="black" stroke-width="1.5" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="price-header">
+          <p class="t-extended-c2ctop">가격을 입력해 주세요.</p>
+        </section>
+        <section class="price-input price-input--stack">
+          <div class="price-input-stack">
+            <div class="input-field">
+              <div class="input-text">
+                <span class="input-amount">45,000</span>
+                <span class="input-divider"></span>
+                <span class="input-unit">원</span>
+              </div>
+              <button class="clear-button" type="button" aria-label="삭제">
+                <svg
+                  class="clear-icon"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12Z"
+                    fill="#A3A3A3"
+                  />
+                  <path d="M15.0052 8.99484L8.99484 15.0053" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M15.0052 15.0052L8.99484 8.99481" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+                </svg>
+              </button>
+            </div>
+            <div class="suggestion-card" aria-label="가격 제안">
+              <div class="suggestion-rolling" aria-live="polite">
+                <div class="suggestion-rolling-track">
+                  <div class="suggestion-item">
+                    <div class="suggestion-line-group">
+                      <div class="twkleicon-interaction" aria-hidden="true">
+                        <span class="twinkle-bg"></span>
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                          class="twinkle-mini"
+                        />
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                        class="twinkle-big"
+                        />
+                      </div>
+                      <p class="suggestion-text suggestion-line-text">
+                        비슷한 상품의 거래가는 <span class="text-blue">32,000</span
+                        ><span class="text-blue">원</span>이었어요.
+                      </p>
+                    </div>
+                    <div class="suggestion-subline">
+                      <p class="suggestion-text">상태와 구성에 따라 거래가는 달라질 수 있어요.</p>
+                    </div>
+                  </div>
+                  <div class="suggestion-item">
+                    <div class="suggestion-line-group">
+                      <div class="twkleicon-interaction" aria-hidden="true">
+                        <span class="twinkle-bg"></span>
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                          class="twinkle-mini"
+                        />
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                        class="twinkle-big"
+                        />
+                      </div>
+                      <p class="suggestion-text suggestion-line-text">
+                        보통 <span class="text-blue">21,000 ~ 45,000</span
+                        ><span class="text-blue">원</span>대에서 거래돼요.
+                      </p>
+                    </div>
+                    <div class="suggestion-subline">
+                      <p class="suggestion-text">상태와 구성에 따라 거래가는 달라질 수 있어요.</p>
+                    </div>
+                  </div>
+                  <div class="suggestion-item">
+                    <div class="suggestion-line-group">
+                      <div class="twkleicon-interaction" aria-hidden="true">
+                        <span class="twinkle-bg"></span>
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                          class="twinkle-mini"
+                        />
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                        class="twinkle-big"
+                        />
+                      </div>
+                      <p class="suggestion-text suggestion-line-text">
+                        직접 구매 당시 가격은 <span class="text-blue">62,000</span
+                        ><span class="text-blue">원</span>이었어요.
+                      </p>
+                    </div>
+                    <div class="suggestion-subline">
+                      <p class="suggestion-text">가격 설정에 참고해 보세요.</p>
+                    </div>
+                  </div>
+                  <div class="suggestion-item">
+                    <div class="suggestion-line-group">
+                      <div class="twkleicon-interaction" aria-hidden="true">
+                        <span class="twinkle-bg"></span>
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                          class="twinkle-mini"
+                        />
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                        class="twinkle-big"
+                        />
+                      </div>
+                      <p class="suggestion-text suggestion-line-text">
+                        새 상품 최저가는 현재 <span class="text-blue">149,000</span
+                        ><span class="text-blue">원</span>이에요.
+                      </p>
+                    </div>
+                    <div class="suggestion-subline">
+                      <p class="suggestion-text">가격 설정에 참고해 보세요.</p>
+                    </div>
+                  </div>
+                  <div class="suggestion-item" aria-hidden="true">
+                    <div class="suggestion-line-group">
+                      <div class="twkleicon-interaction" aria-hidden="true">
+                        <span class="twinkle-bg"></span>
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                          class="twinkle-mini"
+                        />
+                        <img
+                          src="data:image/svg+xml;utf8,%3Csvg%20width%3D%229%22%20height%3D%229%22%20viewBox%3D%220%200%209%209%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M4.5%200C4.64849%200%204.77783%200.100403%204.81915%200.243028C5.4599%202.45481%206.62798%203.6249%208.75526%204.18703C8.89797%204.22474%209%204.35239%209%204.5C9%204.64761%208.89797%204.77526%208.75526%204.81297C6.62798%205.3751%205.4599%206.54519%204.81915%208.75697C4.77783%208.8996%204.64849%209%204.5%209C4.35151%209%204.22217%208.8996%204.18085%208.75697C3.5401%206.54519%202.37202%205.3751%200.244739%204.81297C0.102026%204.77526%200%204.64761%200%204.5C0%204.35239%200.102027%204.22474%200.244739%204.18703C2.37202%203.6249%203.5401%202.45481%204.18085%200.243028C4.22217%200.100403%204.35151%200%204.5%200Z%22%20fill%3D%22url(%23paint0_linear_187_96231)%22/%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22paint0_linear_187_96231%22%20x1%3D%224.5%22%20y1%3D%220%22%20x2%3D%224.5%22%20y2%3D%229%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%3Cstop%20stop-color%3D%22%238953F4%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%233283FD%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E"
+                          alt=""
+                        class="twinkle-big"
+                        />
+                      </div>
+                      <p class="suggestion-text suggestion-line-text">
+                        비슷한 상품의 거래가는 <span class="text-blue">32,000</span
+                        ><span class="text-blue">원</span>이었어요.
+                      </p>
+                    </div>
+                    <div class="suggestion-subline">
+                      <p class="suggestion-text">상태와 구성에 따라 거래가는 달라질 수 있어요.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section class="bottom-area">
+        <div class="bottom-action">
+          <button class="cta-button is-active" type="button">확인</button>
+        </div>
+        <svg
+          width="393"
+          height="291"
+          viewBox="0 0 393 291"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+            <rect width="393" height="291" fill="#D2D3D8" />
+            <g filter="url(#filter0_d_131_6282)">
+              <rect x="6" y="8" width="123" height="46" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M67.9951 33.5V17.7197H67.792L63.1328 21.0967V18.6846L68.0078 15.1807H70.2803V33.5H67.9951Z" fill="black" />
+            </g>
+            <g filter="url(#filter1_d_131_6282)">
+              <rect x="135" y="8" width="123" height="46" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M190.698 33.5V31.9258L196.894 25.2227C199.229 22.6963 199.915 21.7441 199.915 20.1445V20.1191C199.915 18.1895 198.607 16.7422 196.449 16.7422C194.253 16.7422 192.793 18.1768 192.793 20.335L192.78 20.3604L190.597 20.3477L190.571 20.335C190.584 17.085 193.098 14.749 196.602 14.749C199.801 14.749 202.251 16.9199 202.251 19.8779V19.9033C202.251 21.998 201.35 23.5215 198.036 26.9365L193.872 31.2402V31.4434H202.556V33.5H190.698Z" fill="black" />
+              <path d="M183.838 47.5L186.285 40.4541H188.018L190.469 47.5H188.917L188.394 45.791H185.909L185.386 47.5H183.838ZM187.11 41.8604L186.246 44.6875H188.057L187.198 41.8604H187.11ZM193.844 47.5V40.4541H196.925C198.292 40.4541 199.107 41.123 199.107 42.207V42.2168C199.107 42.959 198.556 43.6084 197.833 43.7158V43.8037C198.766 43.877 199.444 44.5752 199.444 45.4785V45.4883C199.444 46.7236 198.512 47.5 197.008 47.5H193.844ZM196.549 41.5479H195.318V43.3838H196.427C197.223 43.3838 197.657 43.0518 197.657 42.4707V42.4609C197.657 41.8896 197.252 41.5479 196.549 41.5479ZM196.598 44.3555H195.318V46.4014H196.632C197.481 46.4014 197.94 46.04 197.94 45.3711V45.3613C197.94 44.707 197.467 44.3555 196.598 44.3555ZM205.949 47.6807C203.908 47.6807 202.643 46.2646 202.643 43.9795V43.9697C202.643 41.6846 203.903 40.2734 205.949 40.2734C207.619 40.2734 208.869 41.3379 209.005 42.8271V42.8857H207.57V42.8516C207.418 42.0605 206.788 41.5234 205.949 41.5234C204.84 41.5234 204.152 42.4561 204.152 43.9697V43.9795C204.152 45.4932 204.84 46.4307 205.954 46.4307C206.798 46.4307 207.409 45.9375 207.565 45.1855L207.575 45.1465H209.01L209.005 45.2002C208.854 46.6748 207.648 47.6807 205.949 47.6807Z" fill="black" />
+            </g>
+            <g filter="url(#filter2_d_131_6282)">
+              <rect x="264" y="8" width="123" height="46" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M328.127 33.8047C324.344 33.8047 321.894 31.6973 321.652 28.8027L321.64 28.6504H323.836L323.849 28.7773C324.026 30.5801 325.689 31.8242 328.127 31.8242C330.526 31.8242 332.164 30.4785 332.164 28.5361V28.5107C332.164 26.2637 330.552 25.0068 327.987 25.0068H325.689V23.0771H327.886C330.069 23.0771 331.593 21.7314 331.593 19.9033V19.8779C331.593 17.9609 330.336 16.8564 328.102 16.8564C325.943 16.8564 324.407 17.999 324.217 19.8525L324.204 19.9795H322.008L322.021 19.8525C322.312 16.8691 324.674 14.876 328.102 14.876C331.593 14.876 333.891 16.8184 333.891 19.5986V19.624C333.891 21.8838 332.291 23.4326 330.006 23.915V23.9658C332.672 24.1943 334.487 25.8574 334.487 28.46V28.4854C334.487 31.5449 331.796 33.8047 328.127 33.8047Z" fill="black" />
+              <path d="M316.837 47.5V40.4541H319.611C321.706 40.4541 322.917 41.7188 322.917 43.9258V43.9355C322.917 46.2109 321.72 47.5 319.611 47.5H316.837ZM318.312 46.2842H319.377C320.68 46.2842 321.413 45.4639 321.413 43.96V43.9502C321.413 42.5 320.656 41.6699 319.377 41.6699H318.312V46.2842ZM326.496 47.5V40.4541H331.164V41.6699H327.971V43.3691H330.983V44.502H327.971V46.2842H331.164V47.5H326.496ZM334.895 47.5V40.4541H339.509V41.6699H336.37V43.5596H339.236V44.7266H336.37V47.5H334.895Z" fill="black" />
+            </g>
+            <g filter="url(#filter3_d_131_6282)">
+              <rect x="6" y="61" width="123" height="47" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M69.5439 87V83.2041H60.6191V81.1221C63.0947 76.9707 65.9004 72.502 68.4648 68.6807H71.7783V81.1602H74.3809V83.2041H71.7783V87H69.5439ZM62.9551 81.1729H69.5566V70.8008H69.4043C67.3477 73.873 64.9482 77.6562 62.9551 81.0205V81.1729Z" fill="black" />
+              <path d="M59.9312 101.181C57.8365 101.181 56.5523 99.7695 56.5523 97.4746V97.4648C56.5523 95.2041 57.8463 93.7734 59.8971 93.7734C61.5621 93.7734 62.7779 94.7305 62.9879 96.1367L62.9977 96.1855H61.5328L61.523 96.1367C61.3229 95.4385 60.7223 95.0234 59.8971 95.0234C58.7594 95.0234 58.0562 95.9512 58.0562 97.4502V97.46C58.0562 98.9883 58.7936 99.9307 59.9557 99.9307C60.9225 99.9307 61.5865 99.3398 61.6158 98.4512L61.6207 98.3193H60.0973V97.2451H63.0562V98.1387C63.0562 100.009 61.8551 101.181 59.9312 101.181ZM66.6504 101V93.9541H68.125V96.8154H71.2988V93.9541H72.7734V101H71.2988V98.0312H68.125V101H66.6504ZM76.6605 101V93.9541H78.1352V101H76.6605Z" fill="black" />
+            </g>
+            <g filter="url(#filter4_d_131_6282)">
+              <rect x="135" y="61" width="123" height="47" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M196.525 87.4316C193.11 87.4316 190.673 85.2354 190.406 82.3027L190.394 82.1631H192.59L192.603 82.2646C192.818 84.0166 194.405 85.4131 196.551 85.4131C198.988 85.4131 200.664 83.6738 200.664 81.1982V81.1729C200.664 78.7354 198.963 76.9961 196.589 76.9961C195.37 76.9961 194.329 77.3643 193.542 78.1133C193.225 78.418 192.933 78.7734 192.704 79.2051H190.724L191.688 68.6807H201.883V70.7246H193.491L192.869 76.9199H193.072C193.885 75.6885 195.319 75.0156 196.982 75.0156C200.423 75.0156 202.898 77.5928 202.898 81.1348V81.1602C202.898 84.8545 200.245 87.4316 196.525 87.4316Z" fill="black" />
+              <path d="M187.54 101.181C186.085 101.181 185.201 100.316 185.162 98.9932V98.9541H186.592V98.9834C186.622 99.5254 186.944 99.9062 187.52 99.9062C188.145 99.9062 188.472 99.5303 188.472 98.8223V93.9541H189.947V98.832C189.947 100.316 189.063 101.181 187.54 101.181ZM193.839 101V93.9541H195.313V97.1182H195.401L198.004 93.9541H199.645L197.076 97.04L199.825 101H198.058L196.012 98.0068L195.313 98.8467V101H193.839ZM203.117 101V93.9541H204.591V99.7842H207.726V101H203.117Z" fill="black" />
+            </g>
+            <g filter="url(#filter5_d_131_6282)">
+              <rect x="264" y="61" width="123" height="47" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M328.241 87.4316C324.89 87.4316 321.348 85.0703 321.348 78.1768V78.1514C321.348 71.9053 323.95 68.249 328.394 68.249C331.466 68.249 333.751 70.0518 334.373 72.7559L334.411 72.9209H332.113L332.062 72.7812C331.504 71.2451 330.222 70.293 328.368 70.293C325.042 70.293 323.684 73.543 323.544 77.3643C323.531 77.5039 323.531 77.6562 323.531 77.7959H323.772C324.445 76.2979 326.172 74.9648 328.647 74.9648C332.088 74.9648 334.652 77.5801 334.652 81.0967V81.1221C334.652 84.7783 331.936 87.4316 328.241 87.4316ZM324.077 81.0967C324.077 83.5088 325.893 85.4131 328.216 85.4131C330.514 85.4131 332.354 83.5469 332.354 81.1729V81.1475C332.354 78.71 330.628 76.958 328.254 76.958C325.88 76.958 324.077 78.6973 324.077 81.084V81.0967Z" fill="black" />
+              <path d="M314.362 101V93.9541H316.051L318 99.1104H318.087L320.031 93.9541H321.72V101H320.407V96.2051H320.309L318.503 101H317.58L315.773 96.2051H315.675V101H314.362ZM325.612 101V93.9541H326.843L330.095 98.4414H330.173V93.9541H331.584V101H330.363L327.102 96.4932H327.023V101H325.612ZM338.557 101.181C336.462 101.181 335.163 99.7549 335.163 97.4795V97.4697C335.163 95.1895 336.482 93.7734 338.557 93.7734C340.632 93.7734 341.946 95.1943 341.946 97.4697V97.4795C341.946 99.7549 340.637 101.181 338.557 101.181ZM338.557 99.9307C339.704 99.9307 340.442 98.9688 340.442 97.4795V97.4697C340.442 95.9756 339.7 95.0234 338.557 95.0234C337.41 95.0234 336.667 95.9756 336.667 97.4697V97.4795C336.667 98.9688 337.395 99.9307 338.557 99.9307Z" fill="black" />
+            </g>
+            <g filter="url(#filter6_d_131_6282)">
+              <rect x="6" y="115" width="123" height="47" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M62.9043 141L71.1309 124.902V124.725H61.3301V122.681H73.4541V124.801L65.3037 141H62.9043Z" fill="black" />
+              <path d="M50.932 155V147.954H53.8373C55.3217 147.954 56.3129 148.911 56.3129 150.361V150.371C56.3129 151.821 55.3217 152.778 53.8373 152.778H52.4066V155H50.932ZM53.476 149.121H52.4066V151.626H53.476C54.3207 151.626 54.8188 151.177 54.8188 150.376V150.366C54.8188 149.565 54.3207 149.121 53.476 149.121ZM62.9295 155.181C60.8348 155.181 59.5359 153.755 59.5359 151.479V151.47C59.5359 149.189 60.8543 147.773 62.9295 147.773C65.0047 147.773 66.3182 149.194 66.3182 151.47V151.479C66.3182 152.778 65.8934 153.799 65.1414 154.434L66.0887 155.698H64.7166L64.1795 154.98C63.8035 155.112 63.3836 155.181 62.9295 155.181ZM62.9295 153.931C63.076 153.931 63.2176 153.916 63.3543 153.882L62.451 152.681H63.823L64.2771 153.291C64.6189 152.861 64.8143 152.241 64.8143 151.479V151.47C64.8143 149.976 64.0721 149.023 62.9295 149.023C61.782 149.023 61.0398 149.976 61.0398 151.47V151.479C61.0398 152.969 61.7674 153.931 62.9295 153.931ZM69.8977 155V147.954H72.8322C74.4338 147.954 75.3518 148.809 75.3518 150.195V150.205C75.3518 151.108 74.883 151.885 74.0773 152.202L75.5617 155H73.8918L72.5783 152.422H71.3723V155H69.8977ZM71.3723 151.348H72.6711C73.4084 151.348 73.843 150.928 73.843 150.234V150.225C73.843 149.546 73.3889 149.106 72.6516 149.106H71.3723V151.348ZM81.5387 155.181C79.8541 155.181 78.7896 154.375 78.7066 153.125L78.7018 153.047H80.1227L80.1275 153.096C80.1812 153.623 80.7525 153.979 81.5777 153.979C82.3639 153.979 82.9059 153.604 82.9059 153.062V153.057C82.9059 152.593 82.5592 152.334 81.6852 152.153L80.943 152.002C79.4781 151.704 78.8482 151.021 78.8482 149.951V149.946C78.8482 148.638 79.9713 147.773 81.5338 147.773C83.1793 147.773 84.1461 148.643 84.2389 149.819L84.2437 149.883H82.857L82.8473 149.824C82.7643 149.321 82.276 148.97 81.5338 148.97C80.8062 148.975 80.3229 149.307 80.3229 149.834V149.839C80.3229 150.298 80.6646 150.571 81.4947 150.742L82.2418 150.894C83.7311 151.201 84.3805 151.797 84.3805 152.896V152.9C84.3805 154.297 83.2965 155.181 81.5387 155.181Z" fill="black" />
+            </g>
+            <g filter="url(#filter7_d_131_6282)">
+              <rect x="135" y="115" width="123" height="47" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M196.5 141.305C192.615 141.305 189.848 139.121 189.848 136.049V136.023C189.848 133.764 191.435 131.885 193.783 131.339V131.288C191.777 130.666 190.508 129.143 190.508 127.213V127.188C190.508 124.42 193.034 122.376 196.5 122.376C199.966 122.376 202.492 124.42 202.492 127.188V127.213C202.492 129.143 201.223 130.666 199.217 131.288V131.339C201.565 131.885 203.152 133.764 203.152 136.023V136.049C203.152 139.121 200.385 141.305 196.5 141.305ZM196.5 130.438C198.709 130.438 200.22 129.181 200.22 127.403V127.378C200.22 125.601 198.709 124.344 196.5 124.344C194.291 124.344 192.78 125.601 192.78 127.378V127.403C192.78 129.181 194.291 130.438 196.5 130.438ZM196.5 139.312C199.026 139.312 200.829 137.89 200.829 135.909V135.884C200.829 133.878 199.039 132.443 196.5 132.443C193.961 132.443 192.171 133.878 192.171 135.884V135.909C192.171 137.89 193.974 139.312 196.5 139.312Z" fill="black" />
+              <path d="M186.172 155V149.17H184.058V147.954H189.761V149.17H187.647V155H186.172ZM196.192 155.181C194.386 155.181 193.238 154.136 193.238 152.568V147.954H194.713V152.437C194.713 153.35 195.245 153.931 196.192 153.931C197.14 153.931 197.667 153.35 197.667 152.437V147.954H199.142V152.568C199.142 154.131 198.009 155.181 196.192 155.181ZM204.874 155L202.526 147.954H204.181L205.739 153.359H205.827L207.379 147.954H209.039L206.691 155H204.874Z" fill="black" />
+            </g>
+            <g filter="url(#filter8_d_131_6282)">
+              <rect x="264" y="115" width="123" height="47" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M327.759 122.249C331.11 122.249 334.652 124.61 334.652 131.504V131.529C334.652 137.775 332.05 141.432 327.606 141.432C324.534 141.432 322.249 139.629 321.627 136.925L321.589 136.76H323.887L323.938 136.899C324.496 138.436 325.778 139.388 327.632 139.388C330.958 139.388 332.316 136.138 332.456 132.316C332.469 132.177 332.469 132.024 332.469 131.885H332.228C331.555 133.383 329.828 134.716 327.353 134.716C323.912 134.716 321.348 132.101 321.348 128.584V128.559C321.348 124.902 324.064 122.249 327.759 122.249ZM327.746 132.723C330.12 132.723 331.923 130.983 331.923 128.597V128.584C331.923 126.172 330.107 124.268 327.784 124.268C325.486 124.268 323.646 126.134 323.646 128.508V128.533C323.646 130.971 325.372 132.723 327.746 132.723Z" fill="black" />
+              <path d="M311.413 155L309.547 147.954H311.08L312.179 152.988H312.257L313.541 147.954H314.787L316.095 152.988H316.173L317.262 147.954H318.786L316.915 155H315.534L314.201 150.254H314.122L312.804 155H311.413ZM321.823 155L324.059 151.45V151.436L321.833 147.954H323.571L325.065 150.493H325.124L326.608 147.954H328.259L325.949 151.46V151.479L328.224 155H326.545L325.002 152.529H324.953L323.415 155H321.823ZM333.669 155V152.368L331.218 147.954H332.815L334.367 150.918H334.455L336.003 147.954H337.6L335.144 152.368V155H333.669ZM340.784 155V154.038L344.329 149.258V149.17H340.867V147.954H346.126V148.911L342.59 153.696V153.784H346.223V155H340.784Z" fill="black" />
+            </g>
+            <path d="M46.0996 188.4H51.5V189.6H46.0996V195H44.9004V189.6H39.5V188.4H44.9004V183H46.0996V188.4Z" fill="black" />
+            <path d="M67.0195 184.103L64.5391 188.4H69.5V189.6H64.5391L67.0195 193.896L65.9805 194.496L63.5 190.199L61.0195 194.496L59.9805 193.896L62.4609 189.6H57.5V188.4H62.4609L59.9805 184.103L61.0195 183.504L63.499 187.8L65.9805 183.504L67.0195 184.103Z" fill="black" />
+            <path d="M79.5996 185.9H83.4004V183H84.5996V185.9H87.5V187.1H84.5996V190.9H87.5V192.1H84.5996V195H83.4004V192.1H79.5996V195H78.4004V192.1H75.5V190.9H78.4004V187.1H75.5V185.9H78.4004V183H79.5996V185.9ZM79.5996 190.9H83.4004V187.1H79.5996V190.9Z" fill="black" />
+            <g filter="url(#filter9_d_131_6282)">
+              <rect x="135" y="169" width="123" height="46" rx="5" fill="white" shape-rendering="crispEdges" />
+              <path d="M196.487 201.432C192.438 201.432 190.025 197.737 190.025 191.847V191.821C190.025 185.931 192.438 182.249 196.487 182.249C200.537 182.249 202.975 185.931 202.975 191.821V191.847C202.975 197.737 200.537 201.432 196.487 201.432ZM196.487 199.438C199.115 199.438 200.677 196.519 200.677 191.847V191.821C200.677 187.149 199.115 184.255 196.487 184.255C193.859 184.255 192.323 187.149 192.323 191.821V191.847C192.323 196.519 193.859 199.438 196.487 199.438Z" fill="black" />
+            </g>
+            <path d="M327.459 187.54C327.205 187.287 326.794 187.287 326.54 187.54C326.286 187.794 326.286 188.206 326.54 188.46L329.08 191L326.54 193.54C326.286 193.794 326.286 194.206 326.54 194.46C326.794 194.713 327.205 194.713 327.459 194.46L330 191.919L332.54 194.46C332.794 194.713 333.205 194.713 333.459 194.46C333.713 194.206 333.713 193.794 333.459 193.54L330.919 191L333.459 188.46C333.713 188.206 333.713 187.794 333.459 187.54C333.205 187.287 332.794 187.287 332.54 187.54L330 190.081L327.459 187.54Z" fill="black" />
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M325.184 182.8C324.406 182.8 323.657 183.103 323.098 183.645L316.613 189.922C316.004 190.512 316.004 191.488 316.613 192.078L323.098 198.355C323.657 198.897 324.406 199.2 325.184 199.2H335.66C337.504 199.2 339 197.705 339 195.86V186.3C339 184.367 337.433 182.8 335.5 182.8H325.184ZM335.5 184.2C336.659 184.2 337.6 185.14 337.6 186.3V195.86C337.6 196.932 336.731 197.8 335.66 197.8H325.184C324.769 197.8 324.37 197.638 324.071 197.35L317.587 191.072C317.546 191.033 317.546 190.967 317.587 190.928L324.071 184.65C324.37 184.362 324.769 184.2 325.184 184.2H335.5Z"
+              fill="black"
+            />
+            <rect x="126" y="278" width="138" height="5" rx="2.5" fill="black" />
+            <defs>
+              <filter id="filter0_d_131_6282" x="6" y="8" width="123" height="47" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter1_d_131_6282" x="135" y="8" width="123" height="47" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter2_d_131_6282" x="264" y="8" width="123" height="47" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter3_d_131_6282" x="6" y="61" width="123" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter4_d_131_6282" x="135" y="61" width="123" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter5_d_131_6282" x="264" y="61" width="123" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter6_d_131_6282" x="6" y="115" width="123" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter7_d_131_6282" x="135" y="115" width="123" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter8_d_131_6282" x="264" y="115" width="123" height="48" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+              <filter id="filter9_d_131_6282" x="135" y="169" width="123" height="47" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feOffset dy="1" />
+                <feComposite in2="hardAlpha" operator="out" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_131_6282" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_131_6282" result="shape" />
+              </filter>
+            </defs>
+        </svg>
+      </section>
+
+      <div class="home-indicator"></div>
+    </div>
+  </body>
+</html>

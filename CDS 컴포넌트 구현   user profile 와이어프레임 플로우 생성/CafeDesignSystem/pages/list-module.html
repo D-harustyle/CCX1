@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafe Design System - List Module</title>
+    <link rel="stylesheet" href="../design-tokens/tokens.css" />
+    <link rel="stylesheet" href="../components/thumbnail.css" />
+    <link rel="stylesheet" href="../components/list.css" />
+    <link rel="stylesheet" href="../components/profile-item.css" />
+    <link rel="stylesheet" href="../components/header.css" />
+    <link rel="stylesheet" href="../components/list-module.css" />
+    <link rel="stylesheet" href="../cdsIndex.css" />
+  </head>
+  <body class="cds-page">
+    <header class="cds-topbar">
+      <span class="cds-topbar__title">CDS</span>
+    </header>
+
+    <div class="cds-layout">
+      <aside class="cds-sidenav">
+        <div class="cds-sidenav__title">Components</div>
+        <nav aria-label="Component navigation">
+          <ul class="cds-sidenav__list">
+            <li><a class="cds-sidenav__link" href="../cdsIndex.html">Button</a></li>
+            <li><a class="cds-sidenav__link" href="badge.html">Badge</a></li>
+            <li><a class="cds-sidenav__link" href="chip.html">Chip</a></li>
+            <li><a class="cds-sidenav__link" href="control.html">Control</a></li>
+            <li><a class="cds-sidenav__link" href="header.html">Header</a></li>
+            <li><a class="cds-sidenav__link" href="input.html">Input</a></li>
+            <li><a class="cds-sidenav__link" href="navigation.html">Navigation</a></li>
+            <li><a class="cds-sidenav__link" href="pagination-dot.html">Pagination Dot</a></li>
+            <li><a class="cds-sidenav__link" href="thumbnail.html">Thumbnail</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2.html">2x2 Grid</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2-card.html">2x2 Grid Card</a></li>
+            <li><a class="cds-sidenav__link" href="profile-item.html">Profile Item</a></li>
+            <li><a class="cds-sidenav__link" href="feed.html">Feed</a></li>
+            <li><a class="cds-sidenav__link" href="feed-module.html">Feed Module</a></li>
+            <li><a class="cds-sidenav__link" href="feed-grid-module.html">Feed Grid Module</a></li>
+            <li><a class="cds-sidenav__link" href="list.html">List Item</a></li>
+            <li><a class="cds-sidenav__link" href="list-module.html">List Module</a></li>
+            <li><a class="cds-sidenav__link" href="user-profile.html">User Profile</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="cds-main">
+        <section class="cds-section">
+          <h1 class="cds-section__title">List Module</h1>
+          <p class="cds-section__subtitle">List item thumb-lg + profile feed-small</p>
+
+          <div class="cds-demo">
+            <div class="cds-demo__group">
+              <div class="cds-demo__group-title">Module</div>
+              <div class="cds-demo__items cds-demo__items--list-module">
+                <div class="cds-list-module">
+                  <div class="cds-header cds-header--basic">
+                    <div class="cds-header__main">
+                      <div class="cds-header__title-group">
+                        <h2 class="cds-header__title">리스트 모듈</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="cds-list-module__item">
+                    <div class="cds-list-module__content">
+                      <div class="cds-profile-item cds-profile-item--feed-small">
+                        <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-24 cds-profile-item__avatar">
+                          <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                        </figure>
+                        <div class="cds-profile-item__info">
+                          <span class="cds-profile-item__name">러닝메이트</span>
+                          <svg class="cds-profile-item__icon cds-profile-item__icon--more" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="6.5" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="17.5" r="1.5" fill="currentColor"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <article class="cds-list-item cds-list-item--list cds-list-item--thumb-lg">
+                        <div class="cds-list-item__content">
+                          <div class="cds-list-item__title-block">
+                            <h3 class="cds-list-item__title cds-list-item__title--single">
+                              러닝 시작 전 스트레칭 루틴 공유합니다 러닝 초보 필수
+                            </h3>
+                            <p class="cds-list-item__title cds-list-item__title--triple">
+                              러닝 전 5분 스트레칭과 호흡 루틴으로 부상 예방하고 기록도 올려보세요. 오늘은
+                              페이스 조절 팁과 워밍업 루틴까지 함께 정리했습니다.
+                            </p>
+                          </div>
+                        </div>
+                        <figure class="cds-thumbnail cds-thumbnail--ratio-1-1 cds-thumbnail--list">
+                          <img class="cds-thumbnail__image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="" />
+                        </figure>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="cds-list-module__item">
+                    <div class="cds-list-module__content">
+                      <div class="cds-profile-item cds-profile-item--feed-small">
+                        <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-24 cds-profile-item__avatar">
+                          <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                        </figure>
+                        <div class="cds-profile-item__info">
+                          <span class="cds-profile-item__name">페이스메이커</span>
+                          <svg class="cds-profile-item__icon cds-profile-item__icon--more" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="6.5" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="17.5" r="1.5" fill="currentColor"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <article class="cds-list-item cds-list-item--list cds-list-item--thumb-lg">
+                        <div class="cds-list-item__content">
+                          <div class="cds-list-item__title-block">
+                            <h3 class="cds-list-item__title cds-list-item__title--single">
+                              인터벌 러닝 루틴 공유합니다 30분 완주 챌린지
+                            </h3>
+                            <p class="cds-list-item__title cds-list-item__title--triple">
+                              3분 조깅 + 1분 빠르게 달리기를 반복하면 체력과 페이스가 함께 올라갑니다.
+                              러닝 워치 설정 팁도 같이 확인해보세요.
+                            </p>
+                          </div>
+                        </div>
+                        <figure class="cds-thumbnail cds-thumbnail--ratio-1-1 cds-thumbnail--list">
+                          <img class="cds-thumbnail__image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="" />
+                        </figure>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="cds-list-module__item">
+                    <div class="cds-list-module__content">
+                      <div class="cds-profile-item cds-profile-item--feed-small">
+                        <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-24 cds-profile-item__avatar">
+                          <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                        </figure>
+                        <div class="cds-profile-item__info">
+                          <span class="cds-profile-item__name">트레드러너</span>
+                          <svg class="cds-profile-item__icon cds-profile-item__icon--more" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="6.5" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="17.5" r="1.5" fill="currentColor"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <article class="cds-list-item cds-list-item--list cds-list-item--thumb-lg">
+                        <div class="cds-list-item__content">
+                          <div class="cds-list-item__title-block">
+                            <h3 class="cds-list-item__title cds-list-item__title--single">
+                              비 오는 날 러닝 대체 루틴 실내 트레드밀 팁
+                            </h3>
+                            <p class="cds-list-item__title cds-list-item__title--triple">
+                              경사도 1~2%로 설정하면 야외 러닝과 비슷한 부하를 만들 수 있어요.
+                              러닝 후 스트레칭 체크리스트도 함께 공유합니다.
+                            </p>
+                          </div>
+                        </div>
+                        <figure class="cds-thumbnail cds-thumbnail--ratio-1-1 cds-thumbnail--list">
+                          <img class="cds-thumbnail__image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="" />
+                        </figure>
+                      </article>
+                    </div>
+                  </div>
+
+                  <div class="cds-list-module__item">
+                    <div class="cds-list-module__content">
+                      <div class="cds-profile-item cds-profile-item--feed-small">
+                        <figure class="cds-thumbnail cds-thumbnail--circle cds-thumbnail--size-24 cds-profile-item__avatar">
+                          <img class="cds-thumbnail__image" src="../cupIllust.png" alt="" />
+                        </figure>
+                        <div class="cds-profile-item__info">
+                          <span class="cds-profile-item__name">리커버리런</span>
+                          <svg class="cds-profile-item__icon cds-profile-item__icon--more" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="6.5" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                            <circle cx="12" cy="17.5" r="1.5" fill="currentColor"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <article class="cds-list-item cds-list-item--list cds-list-item--thumb-lg">
+                        <div class="cds-list-item__content">
+                          <div class="cds-list-item__title-block">
+                            <h3 class="cds-list-item__title cds-list-item__title--single">
+                              러닝 후 회복 루틴 폼롤러와 스트레칭
+                            </h3>
+                            <p class="cds-list-item__title cds-list-item__title--triple">
+                              종아리와 햄스트링 중심으로 7분만 풀어도 다음날 피로가 덜합니다.
+                              추천 루틴과 시간 배분표를 공유합니다.
+                            </p>
+                          </div>
+                        </div>
+                        <figure class="cds-thumbnail cds-thumbnail--ratio-1-1 cds-thumbnail--list">
+                          <img class="cds-thumbnail__image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="" />
+                        </figure>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

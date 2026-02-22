@@ -1,0 +1,466 @@
+/* cafe.molecule.navigation.ios */
+
+/* ===========================================
+   Base Navigation
+   =========================================== */
+
+.cds-nav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--cafe-color-background);
+}
+
+.cds-nav--green {
+  background-color: var(--cafe-color-brand);
+}
+
+/* GNB Bar */
+.cds-nav__bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  gap: 8px;
+  padding: 6px 12px;
+  box-sizing: border-box;
+}
+
+/* ===========================================
+   Icon Button (cafe.atom.button.specific)
+   =========================================== */
+
+.cds-nav__icon-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 12px;
+  flex-shrink: 0;
+  color: var(--cafe-color-onbackgroundprimary);
+}
+
+.cds-nav__icon-btn svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.cds-nav--green .cds-nav__icon-btn {
+  color: var(--cafe-color-textwhite);
+}
+
+/* Circle style icon button (titleNone + R=3) */
+.cds-nav__icon-btn--circle {
+  background-color: var(--cafe-color-alphablackopaque);
+  border-radius: 40px;
+  color: var(--cafe-color-textwhite);
+}
+
+/* ===========================================
+   Title Area
+   =========================================== */
+
+.cds-nav__title {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.cds-nav__title-text {
+  margin: 0;
+  font-family: var(--text-heading-xLarge-font-family);
+  font-weight: var(--text-heading-xLarge-font-weight);
+  font-size: var(--text-heading-xLarge-font-size);
+  line-height: calc(var(--text-heading-xLarge-font-size) * 1.3333333);
+  letter-spacing: calc(var(--text-heading-xLarge-font-size) * -0.02);
+  color: var(--cafe-color-onbackgroundprimary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cds-nav--green .cds-nav__title-text {
+  color: var(--cafe-color-textwhite);
+}
+
+/* Title center alignment for some variants */
+.cds-nav__title--center {
+  justify-content: center;
+  text-align: center;
+}
+
+/* Expand more icon in title */
+.cds-nav__title-expand {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: var(--cafe-color-onbackgroundprimary);
+}
+
+.cds-nav__title-expand svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+/* ===========================================
+   Right Actions Area
+   =========================================== */
+
+.cds-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ===========================================
+   Text Button (cafe.atom.button.large / ghost)
+   =========================================== */
+
+.cds-nav__text-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 11px 14px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-family: var(--text-label-largeStrong-font-family);
+  font-weight: var(--text-label-largeStrong-font-weight);
+  font-size: var(--text-label-largeStrong-font-size);
+  line-height: calc(var(--text-label-largeStrong-font-size) * 1.4666667);
+  letter-spacing: calc(var(--text-label-largeStrong-font-size) * -0.02);
+  color: var(--cafe-color-onbackgroundtertiary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cds-nav--green .cds-nav__text-btn {
+  color: var(--cafe-color-textwhite);
+}
+
+/* Filled button (medium / secondary) */
+.cds-nav__text-btn--filled {
+  padding: 10px 12px;
+  background-color: var(--cafe-color-brandcontainerprimary);
+  font-family: var(--text-label-mediumStrong-font-family);
+  font-weight: var(--text-label-mediumStrong-font-weight);
+  font-size: var(--text-label-mediumStrong-font-size);
+  line-height: calc(var(--text-label-mediumStrong-font-size) * 1.3571429);
+  letter-spacing: calc(var(--text-label-mediumStrong-font-size) * -0.0214286);
+  color: var(--cafe-color-brand);
+}
+
+/* ===========================================
+   Variant: title1line
+   =========================================== */
+
+/* L=1, R=1: back + title(center) + icon */
+.cds-nav--title1line .cds-nav__bar {
+  justify-content: center;
+}
+
+/* L=none, R=1: title(left) + icon */
+.cds-nav--title1line-noLeft .cds-nav__bar {
+  justify-content: stretch;
+}
+
+/* L=1, R=none: back + title(left) */
+.cds-nav--title1line-noRight .cds-nav__bar {
+  justify-content: stretch;
+}
+
+/* L=1, R=2: back + title(center) + 2 icons */
+.cds-nav--title1line-r2 .cds-nav__bar {
+  padding: 0 12px;
+}
+
+/* L=1, R=3: location + title+expand + right icons */
+.cds-nav--title1line-r3 .cds-nav__bar {
+  padding: 0 12px;
+}
+
+/* ===========================================
+   Variant: titleNone
+   =========================================== */
+
+.cds-nav--titleNone .cds-nav__bar {
+  padding: 0 12px;
+}
+
+/* L=1, R=none: just back icon */
+.cds-nav--titleNone-noRight .cds-nav__bar {
+  justify-content: flex-start;
+}
+
+/* L=none, R=1: just right icon */
+.cds-nav--titleNone-noLeft .cds-nav__bar {
+  justify-content: flex-end;
+}
+
+/* L=1, R=1: space-between */
+.cds-nav--titleNone-lr .cds-nav__bar {
+  justify-content: space-between;
+}
+
+/* L=1, R=2: space-between + 4px gap */
+.cds-nav--titleNone-r2 .cds-nav__bar {
+  justify-content: space-between;
+  gap: 4px;
+}
+
+/* L=1, R=3: circle icons with dark bg */
+.cds-nav--titleNone-r3 .cds-nav__bar {
+  justify-content: space-between;
+  gap: 6px;
+}
+
+/* ===========================================
+   Variant: titleLogo
+   =========================================== */
+
+.cds-nav--titleLogo .cds-nav__bar {
+  justify-content: space-between;
+  gap: 4px;
+  padding: 6px 12px 6px 20px;
+}
+
+.cds-nav__logo svg {
+  display: block;
+  height: 24px;
+  width: auto;
+  color: var(--cafe-color-onbackgroundprimary);
+}
+
+/* ===========================================
+   Variant: text2line
+   =========================================== */
+
+.cds-nav--text2line .cds-nav__bar {
+  padding: 0 12px;
+}
+
+.cds-nav__title-2line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.cds-nav__title-main {
+  margin: 0;
+  font-family: var(--text-heading-medium-font-family);
+  font-weight: var(--text-heading-medium-font-weight);
+  font-size: var(--text-heading-medium-font-size);
+  line-height: calc(var(--text-heading-medium-font-size) * 1.375);
+  letter-spacing: calc(var(--text-heading-medium-font-size) * -0.02);
+  color: var(--cafe-color-onbackgroundprimary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.cds-nav__title-sub {
+  margin: 0;
+  font-family: var(--text-label-xSmall-font-family);
+  font-weight: var(--text-label-xSmall-font-weight);
+  font-size: var(--text-label-xSmall-font-size);
+  line-height: calc(var(--text-label-xSmall-font-size) * 1.3333333);
+  letter-spacing: calc(var(--text-label-xSmall-font-size) * -0.025);
+  color: var(--cafe-color-onbackgroundassist);
+}
+
+/* ===========================================
+   Variant: text2lineMulti
+   =========================================== */
+
+.cds-nav--text2lineMulti .cds-nav__bar {
+  padding: 0 12px;
+  gap: 4px;
+}
+
+.cds-nav--text2lineMulti-r2 .cds-nav__bar {
+  padding: 0 16px;
+}
+
+.cds-nav__title-multi {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+}
+
+.cds-nav__title-multi-main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.cds-nav__title-multi-main-text {
+  margin: 0;
+  font-family: var(--text-heading-medium-font-family);
+  font-weight: var(--text-heading-medium-font-weight);
+  font-size: var(--text-heading-medium-font-size);
+  line-height: calc(var(--text-heading-medium-font-size) * 1.375);
+  letter-spacing: calc(var(--text-heading-medium-font-size) * -0.02);
+  color: var(--cafe-color-textwhite);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.cds-nav__title-multi-sub {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cds-nav__title-multi-sub-text {
+  margin: 0;
+  font-family: var(--text-label-xSmall-font-family);
+  font-weight: var(--text-label-xSmall-font-weight);
+  font-size: var(--text-label-xSmall-font-size);
+  line-height: calc(var(--text-label-xSmall-font-size) * 1.3333333);
+  letter-spacing: calc(var(--text-label-xSmall-font-size) * -0.025);
+  color: var(--cafe-color-alphawhiteopaque);
+}
+
+.cds-nav__divider-vertical {
+  width: 1px;
+  height: 8px;
+  background-color: var(--cafe-color-alphawhitefrosted);
+  flex-shrink: 0;
+}
+
+.cds-nav__outlink {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.cds-nav__outlink-icon svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+}
+
+/* ===========================================
+   Variant: search
+   =========================================== */
+
+.cds-nav--search .cds-nav__bar {
+  padding: 0 12px;
+  gap: 8px;
+}
+
+.cds-nav--search-noRight .cds-nav__bar {
+  padding: 2px 12px;
+  gap: 4px;
+}
+
+.cds-nav__search-field {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+  height: 34px;
+  padding: 0 16px;
+  background-color: var(--cafe-color-inputbackground);
+  border-radius: 10px;
+  border: none;
+  box-sizing: border-box;
+}
+
+.cds-nav--green .cds-nav__search-field {
+  background-color: var(--cafe-color-alphawhitesemi);
+}
+
+.cds-nav__search-text {
+  margin: 0;
+  font-family: var(--text-body-medium-font-family);
+  font-weight: var(--text-body-medium-font-weight);
+  font-size: var(--text-body-medium-font-size);
+  line-height: calc(var(--text-body-medium-font-size) * 1.4666667);
+  letter-spacing: calc(var(--text-body-medium-font-size) * -0.02);
+  color: var(--cafe-color-onbackgroundassist);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.cds-nav--green .cds-nav__search-text {
+  color: var(--cafe-color-alphawhiteopaque);
+}
+
+/* Search field small icon buttons */
+.cds-nav__search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--cafe-color-onbackgroundassist);
+}
+
+.cds-nav__search-icon svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.cds-nav--green .cds-nav__search-icon {
+  color: var(--cafe-color-alphawhiteopaque);
+}
+
+/* ===========================================
+   Badge (notification dot on icon)
+   =========================================== */
+
+.cds-nav__icon-btn--badge {
+  position: relative;
+}
+
+.cds-nav__badge {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  min-width: 6px;
+  height: 6px;
+  background-color: var(--cafe-color-accent);
+  border-radius: 3px;
+}
+
+/* ===========================================
+   Demo / Examples
+   =========================================== */
+
+.cds-nav-examples {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 402px;
+}
+
+.cds-nav-examples .cds-nav {
+  overflow: hidden;
+}

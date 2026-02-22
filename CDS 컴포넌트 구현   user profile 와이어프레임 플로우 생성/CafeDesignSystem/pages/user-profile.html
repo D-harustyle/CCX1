@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cafe Design System - User Profile</title>
+    <link rel="stylesheet" href="../design-tokens/tokens.css" />
+    <link rel="stylesheet" href="../components/control.css" />
+    <link rel="stylesheet" href="../components/navigation.css" />
+    <link rel="stylesheet" href="user-profile.css" />
+    <link rel="stylesheet" href="../cdsIndex.css" />
+  </head>
+  <body class="cds-page">
+    <header class="cds-topbar">
+      <span class="cds-topbar__title">CDS</span>
+    </header>
+
+    <div class="cds-layout">
+      <aside class="cds-sidenav">
+        <div class="cds-sidenav__title">Components</div>
+        <nav aria-label="Component navigation">
+          <ul class="cds-sidenav__list">
+            <li><a class="cds-sidenav__link" href="../cdsIndex.html">Button</a></li>
+            <li><a class="cds-sidenav__link" href="badge.html">Badge</a></li>
+            <li><a class="cds-sidenav__link" href="chip.html">Chip</a></li>
+            <li><a class="cds-sidenav__link" href="control.html">Control</a></li>
+            <li><a class="cds-sidenav__link" href="header.html">Header</a></li>
+            <li><a class="cds-sidenav__link" href="input.html">Input</a></li>
+            <li><a class="cds-sidenav__link" href="navigation.html">Navigation</a></li>
+            <li><a class="cds-sidenav__link" href="pagination-dot.html">Pagination Dot</a></li>
+            <li><a class="cds-sidenav__link" href="thumbnail.html">Thumbnail</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2.html">2x2 Grid</a></li>
+            <li><a class="cds-sidenav__link" href="grid-2x2-card.html">2x2 Grid Card</a></li>
+            <li><a class="cds-sidenav__link" href="profile-item.html">Profile Item</a></li>
+            <li><a class="cds-sidenav__link" href="feed.html">Feed</a></li>
+            <li><a class="cds-sidenav__link" href="feed-module.html">Feed Module</a></li>
+            <li><a class="cds-sidenav__link" href="feed-grid-module.html">Feed Grid Module</a></li>
+            <li><a class="cds-sidenav__link" href="list.html">List Item</a></li>
+            <li><a class="cds-sidenav__link" href="list-module.html">List Module</a></li>
+            <li><a class="cds-sidenav__link" href="user-profile.html">User Profile</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="cds-main">
+        <section class="cds-section">
+          <h1 class="cds-section__title">User Profile</h1>
+          <p class="cds-section__subtitle">모바일 프로필 설정 화면 (워킹 플로우)</p>
+
+          <div class="cds-demo">
+            <div class="cds-demo__group" style="max-width:100%;">
+              <div class="up">
+
+                <!-- ===== Screen: Main ===== -->
+                <div class="up__screen is-active" data-screen="main">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기">
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+                      </button>
+                      <div class="cds-nav__title cds-nav__title--center">
+                        <h1 class="cds-nav__title-text">설정</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-profile">
+                    <div class="up-profile__avatar-wrap">
+                      <img class="up-profile__avatar" src="../cupIllust.png" alt="프로필 사진" />
+                      <button class="up-profile__camera" data-navigate="edit-profile" aria-label="프로필 편집">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.94983 1.78357H10.0143C10.4221 1.78357 10.8024 2.07809 10.9108 2.53455L11.191 3.71423L11.2731 4.05994H13.3336C14.1894 4.06011 14.8833 4.75395 14.8834 5.60974V12.6664C14.8834 13.5223 14.1895 14.217 13.3336 14.2172H2.66663C1.81058 14.2172 1.11682 13.5224 1.11682 12.6664V5.60974C1.11698 4.75383 1.81068 4.05994 2.66663 4.05994H4.63928L4.72913 3.72791L5.06213 2.50134C5.18137 2.06223 5.55291 1.78357 5.94983 1.78357Z" stroke="currentColor" stroke-width="0.9"/><circle cx="8" cy="8.6333" r="2.5" stroke="currentColor" stroke-width="0.9"/></svg>
+                      </button>
+                    </div>
+                    <div class="up-profile__text">
+                      <h2 class="up-profile__name" id="up-display-name">카페러너</h2>
+                      <p class="up-profile__email">caferunner@naver.com</p>
+                    </div>
+                  </div>
+
+                  <div class="up-menu">
+                    <div class="up-menu__section">
+                      <h3 class="up-menu__section-title">내 정보</h3>
+                      <button class="up-menu__item" data-navigate="edit-profile">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M11 15.6665H18" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M14.3061 2.32388C13.5727 1.5927 12.3855 1.59449 11.6543 2.32787C9.23209 4.75739 4.8708 9.11443 3.15899 10.8241C2.692 11.2906 2.39475 11.8948 2.30596 12.5488C2.21716 13.2029 2.11744 13.9296 2.03397 14.5358C1.94259 15.1993 2.51612 15.7639 3.17852 15.6646C3.77762 15.5748 4.49166 15.4695 5.12622 15.3806C5.78658 15.288 6.39957 14.9917 6.87211 14.5212C8.59186 12.809 12.9487 8.47018 15.3688 6.05006C16.0982 5.32063 16.1015 4.13899 15.376 3.40556L14.3061 2.32388Z" stroke="currentColor" stroke-width="1.3"/><path d="M10.1851 3.86807L13.9023 7.58447" stroke="currentColor" stroke-width="1.3"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">프로필 편집</p>
+                          <p class="up-menu__desc">이름, 소개, 프로필 사진 변경</p>
+                        </div>
+                        <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </button>
+                      <button class="up-menu__item" data-navigate="account">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M6.50024 6.65V5.25C6.50024 3.317 8.06725 1.75 10.0002 1.75C11.9332 1.75 13.5002 3.317 13.5002 5.25V6.65" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M3.87868 17.3713C4.75736 18.25 6.17157 18.25 9 18.25H11C13.8284 18.25 15.2426 18.25 16.1213 17.3713M3.87868 17.3713C3 16.4926 3 15.0784 3 12.25C3 9.42157 3 8.00736 3.87868 7.12868M3.87868 17.3713C3.87868 17.3713 3.87868 17.3713 3.87868 17.3713ZM16.1213 17.3713C17 16.4926 17 15.0784 17 12.25C17 9.42157 17 8.00736 16.1213 7.12868M16.1213 17.3713C16.1213 17.3713 16.1213 17.3713 16.1213 17.3713ZM16.1213 7.12868C15.2426 6.25 13.8284 6.25 11 6.25H9C6.17157 6.25 4.75736 6.25 3.87868 7.12868M16.1213 7.12868C16.1213 7.12868 16.1213 7.12868 16.1213 7.12868ZM3.87868 7.12868C3.87868 7.12868 3.87868 7.12868 3.87868 7.12868Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path fill-rule="evenodd" clip-rule="evenodd" d="M10.8501 12.486C11.2427 12.2155 11.5 11.7628 11.5 11.25C11.5 10.4216 10.8284 9.75 10 9.75C9.17157 9.75 8.5 10.4216 8.5 11.25C8.5 11.8053 8.80169 12.29 9.2501 12.5494V14.2503H10.8501V12.486Z" fill="currentColor"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">계정 관리</p>
+                          <p class="up-menu__desc">비밀번호, 이메일, 연동 계정</p>
+                        </div>
+                        <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </button>
+                    </div>
+
+                    <div class="up-menu__section">
+                      <h3 class="up-menu__section-title">앱 설정</h3>
+                      <button class="up-menu__item" data-navigate="notifications">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M9.95999 2.89991C6.78686 2.90457 4.01036 4.95759 4.01036 9.04501L3.9936 11.3257C3.98916 11.9303 3.86935 12.5284 3.64061 13.088L3.43524 13.5905C3.1798 14.2154 3.63948 14.8999 4.31462 14.8999H15.5681C16.2525 14.8999 16.7123 14.1983 16.4392 13.5708L16.2703 13.1826C16.0002 12.562 15.8658 11.8908 15.8762 11.214L15.9096 9.04501C15.9096 4.93896 13.1331 2.89525 9.95999 2.89991Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.46 14.8938C12.46 16.4563 11.3758 17.3938 9.96054 17.3938C8.54528 17.3938 7.46002 16.2745 7.46002 14.8938" stroke="currentColor" stroke-width="1.3" stroke-linecap="square"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">알림 설정</p>
+                        </div>
+                        <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </button>
+                      <button class="up-menu__item" data-navigate="theme">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M10 2.5V4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M10 15.5V17.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4.7 4.7L6.1 6.1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M13.9 13.9L15.3 15.3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M2.5 10H4.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M15.5 10H17.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M4.7 15.3L6.1 13.9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M13.9 6.1L15.3 4.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">테마 설정</p>
+                        </div>
+                        <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </button>
+                      <button class="up-menu__item" data-navigate="privacy">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2.65039C14.0593 2.65039 17.3496 5.94071 17.3496 10C17.3496 14.0593 14.0593 17.3496 10 17.3496C5.94071 17.3496 2.65039 14.0593 2.65039 10C2.65039 5.94071 5.94071 2.65039 10 2.65039Z" stroke="currentColor" stroke-width="1.3"/><rect x="9.19995" y="6.25" width="1.6" height="1.6" rx="0.8" fill="currentColor"/><path d="M9.3999 8.75H10.5999V13.75H9.3999V8.75Z" fill="currentColor"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">개인정보 처리방침</p>
+                        </div>
+                        <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </button>
+                    </div>
+
+                    <div class="up-menu__section">
+                      <h3 class="up-menu__section-title">기타</h3>
+                      <button class="up-menu__item" data-navigate="app-info">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.1499 7.95452C2.1499 5.21821 4.85257 3 8.18885 3C11.5251 3 14.2278 5.21821 14.2278 7.95452C14.2278 10.6908 11.524 12.909 8.18997 12.909C7.57481 12.9098 6.96205 12.8322 6.36651 12.678L4.40063 14.0103L4.60473 11.9356C3.1177 11.0329 2.1499 9.58846 2.1499 7.95452ZM17.8502 10.0964C17.8502 8.42323 16.8678 6.14559 14.9042 5.44693H14.903C15.1823 6.04242 15.337 6.69398 15.337 7.39375C15.337 10.7794 13.5382 13.842 8.18449 13.9811C9.20948 14.802 10.5631 15.301 12.0467 15.301C12.6391 15.3012 13.2286 15.2193 13.7984 15.0577L15.6858 16.4572L15.4918 14.2783C16.9194 13.3295 17.8502 11.8122 17.8502 10.0964Z" fill="currentColor"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">앱 정보</p>
+                        </div>
+                        <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                      </button>
+                      <button class="up-menu__item up-menu__item--danger" data-action="logout">
+                        <span class="up-menu__icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M2.8501 5.03213C2.8501 4.28654 3.45451 3.68213 4.2001 3.68213H10.6987C11.4442 3.68213 12.0487 4.28654 12.0487 5.03213V5.331C12.0487 5.68999 12.3397 5.981 12.6987 5.981C13.0576 5.981 13.3487 5.68999 13.3487 5.331V5.03213C13.3487 3.56858 12.1622 2.38213 10.6987 2.38213H4.2001C2.73654 2.38213 1.5501 3.56857 1.5501 5.03213V14.8254C1.5501 16.2889 2.73654 17.4754 4.2001 17.4754H10.6987C12.1622 17.4754 13.3487 16.2889 13.3487 14.8254V14.7506C13.3487 14.3916 13.0576 14.1006 12.6987 14.1006C12.3397 14.1006 12.0487 14.3916 12.0487 14.7506V14.8254C12.0487 15.5709 11.4442 16.1754 10.6987 16.1754H4.2001C3.45451 16.1754 2.8501 15.5709 2.8501 14.8254V5.03213ZM14.691 6.6281C14.9448 6.37426 15.3564 6.37426 15.6102 6.6281L18.2215 9.23941C18.5144 9.5323 18.5144 10.0072 18.2215 10.3001L15.6102 12.9114C15.3564 13.1652 14.9448 13.1652 14.691 12.9114C14.4371 12.6575 14.4371 12.246 14.691 11.9921L16.2634 10.4197H9.09698C8.738 10.4197 8.44698 10.1287 8.44698 9.76974C8.44698 9.41075 8.738 9.11974 9.09698 9.11974H16.2634L14.691 7.54734C14.4371 7.2935 14.4371 6.88194 14.691 6.6281Z" fill="currentColor"/></svg></span>
+                        <div class="up-menu__text">
+                          <p class="up-menu__label">로그아웃</p>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Edit Profile ===== -->
+                <div class="up__screen" data-screen="edit-profile">
+                  <nav class="cds-nav cds-nav--title1line">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title cds-nav__title--center">
+                        <h1 class="cds-nav__title-text">프로필 편집</h1>
+                      </div>
+                      <button class="cds-nav__text-btn" type="button" data-action="save-profile">저장</button>
+                    </div>
+                  </nav>
+
+                  <div class="up-profile" style="padding-bottom:calc(var(--text-heading-xLarge-font-size)*1.1111112);">
+                    <div class="up-profile__avatar-wrap">
+                      <img class="up-profile__avatar" src="../cupIllust.png" alt="프로필 사진" />
+                      <span class="up-profile__camera">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M5.94983 1.78357H10.0143C10.4221 1.78357 10.8024 2.07809 10.9108 2.53455L11.191 3.71423L11.2731 4.05994H13.3336C14.1894 4.06011 14.8833 4.75395 14.8834 5.60974V12.6664C14.8834 13.5223 14.1895 14.217 13.3336 14.2172H2.66663C1.81058 14.2172 1.11682 13.5224 1.11682 12.6664V5.60974C1.11698 4.75383 1.81068 4.05994 2.66663 4.05994H4.63928L4.72913 3.72791L5.06213 2.50134C5.18137 2.06223 5.55291 1.78357 5.94983 1.78357Z" stroke="currentColor" stroke-width="0.9"/><circle cx="8" cy="8.6333" r="2.5" stroke="currentColor" stroke-width="0.9"/></svg>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="up-form">
+                    <div class="up-form__group">
+                      <label class="up-form__label">이름</label>
+                      <input class="up-form__input" type="text" id="up-name-input" value="카페러너" placeholder="이름을 입력하세요" />
+                    </div>
+                    <div class="up-form__group">
+                      <label class="up-form__label">아이디</label>
+                      <input class="up-form__input" type="text" value="@caferunner" placeholder="아이디" readonly style="color:var(--cafe-color-textinformation);" />
+                    </div>
+                    <div class="up-form__group">
+                      <label class="up-form__label">소개</label>
+                      <textarea class="up-form__textarea" id="up-bio-input" maxlength="150" placeholder="자기소개를 입력하세요">러닝을 사랑하는 카페 회원입니다. 매일 아침 5km 달리기가 일상이에요.</textarea>
+                      <p class="up-form__counter"><span id="up-bio-count">38</span>/150</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Notifications ===== -->
+                <div class="up__screen" data-screen="notifications">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title">
+                        <h1 class="cds-nav__title-text">알림 설정</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-content">
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">전체 알림</p>
+                        <p class="up-setting__desc">모든 알림을 켜거나 끕니다</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--on cds-control-button" data-toggle="master">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+
+                    <div class="up-divider"></div>
+
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">댓글 알림</p>
+                        <p class="up-setting__desc">내 글에 댓글이 달리면 알림</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--on cds-control-button" data-toggle="comments">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">좋아요 알림</p>
+                        <p class="up-setting__desc">내 글에 좋아요가 눌리면 알림</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--on cds-control-button" data-toggle="likes">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">새 게시글 알림</p>
+                        <p class="up-setting__desc">구독 카페에 새 글이 올라오면 알림</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--off cds-control-button" data-toggle="new-posts">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">이벤트 알림</p>
+                        <p class="up-setting__desc">이벤트 및 프로모션 정보</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--off cds-control-button" data-toggle="events">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+
+                    <div class="up-divider"></div>
+
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">방해금지 모드</p>
+                        <p class="up-setting__desc">22:00 ~ 08:00 알림 차단</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--off cds-control-button" data-toggle="dnd">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Account ===== -->
+                <div class="up__screen" data-screen="account">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title">
+                        <h1 class="cds-nav__title-text">계정 관리</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-content">
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">이메일</p>
+                      <p class="up-info-row__value">caferunner@naver.com</p>
+                    </div>
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">가입일</p>
+                      <p class="up-info-row__value">2024.03.15</p>
+                    </div>
+
+                    <div class="up-divider"></div>
+
+                    <button class="up-menu__item" data-navigate="change-password">
+                      <div class="up-menu__text">
+                        <p class="up-menu__label">비밀번호 변경</p>
+                      </div>
+                      <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </button>
+                    <button class="up-menu__item" data-navigate="linked-accounts">
+                      <div class="up-menu__text">
+                        <p class="up-menu__label">연동 계정 관리</p>
+                      </div>
+                      <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </button>
+
+                    <div class="up-divider"></div>
+
+                    <button class="up-menu__item up-menu__item--danger" data-action="delete-account">
+                      <div class="up-menu__text">
+                        <p class="up-menu__label">계정 탈퇴</p>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Change Password ===== -->
+                <div class="up__screen" data-screen="change-password">
+                  <nav class="cds-nav cds-nav--title1line">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title cds-nav__title--center">
+                        <h1 class="cds-nav__title-text">비밀번호 변경</h1>
+                      </div>
+                      <button class="cds-nav__text-btn" type="button" data-action="save-password">변경</button>
+                    </div>
+                  </nav>
+
+                  <div class="up-form">
+                    <div class="up-form__group">
+                      <label class="up-form__label">현재 비밀번호</label>
+                      <input class="up-form__input" type="password" placeholder="현재 비밀번호 입력" />
+                    </div>
+                    <div class="up-form__group">
+                      <label class="up-form__label">새 비밀번호</label>
+                      <input class="up-form__input" type="password" placeholder="8자 이상 영문, 숫자 조합" />
+                    </div>
+                    <div class="up-form__group">
+                      <label class="up-form__label">새 비밀번호 확인</label>
+                      <input class="up-form__input" type="password" placeholder="새 비밀번호 다시 입력" />
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Linked Accounts ===== -->
+                <div class="up__screen" data-screen="linked-accounts">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title">
+                        <h1 class="cds-nav__title-text">연동 계정 관리</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-content">
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">네이버 계정</p>
+                        <p class="up-setting__desc">caferunner@naver.com</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--on cds-control-button" data-toggle="naver">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">Google 계정</p>
+                        <p class="up-setting__desc">연동되지 않음</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--off cds-control-button" data-toggle="google">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+                    <div class="up-setting">
+                      <div class="up-setting__text">
+                        <p class="up-setting__label">Apple 계정</p>
+                        <p class="up-setting__desc">연동되지 않음</p>
+                      </div>
+                      <button class="cds-toggle cds-toggle--medium cds-toggle--off cds-control-button" data-toggle="apple">
+                        <span class="cds-toggle__knob"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Theme ===== -->
+                <div class="up__screen" data-screen="theme">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title">
+                        <h1 class="cds-nav__title-text">테마 설정</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-content">
+                    <div class="up-theme">
+                      <button class="up-theme__item is-selected" data-theme="system">
+                        <span class="cds-control cds-control--radio cds-control--on">
+                          <svg class="cds-control__icon cds-control__icon--radio" viewBox="0 0 20 20">
+                            <circle class="cds-control__icon-ring" cx="10" cy="10" r="9" />
+                          </svg>
+                        </span>
+                        <span class="up-theme__label">시스템 설정 따르기</span>
+                      </button>
+                      <button class="up-theme__item" data-theme="light">
+                        <span class="cds-control cds-control--radio cds-control--off">
+                          <svg class="cds-control__icon cds-control__icon--radio" viewBox="0 0 20 20">
+                            <circle class="cds-control__icon-ring" cx="10" cy="10" r="9" />
+                          </svg>
+                        </span>
+                        <span class="up-theme__label">라이트 모드</span>
+                      </button>
+                      <button class="up-theme__item" data-theme="dark">
+                        <span class="cds-control cds-control--radio cds-control--off">
+                          <svg class="cds-control__icon cds-control__icon--radio" viewBox="0 0 20 20">
+                            <circle class="cds-control__icon-ring" cx="10" cy="10" r="9" />
+                          </svg>
+                        </span>
+                        <span class="up-theme__label">다크 모드</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: Privacy ===== -->
+                <div class="up__screen" data-screen="privacy">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title">
+                        <h1 class="cds-nav__title-text">개인정보 처리방침</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-content" style="padding:calc(var(--text-heading-xLarge-font-size)*0.8888889);">
+                    <p style="margin:0;font-family:var(--text-body-medium-font-family);font-size:var(--text-body-medium-font-size);line-height:calc(var(--text-body-medium-font-size)*1.6);color:var(--cafe-color-onbackgroundsecondary);">
+                      카페 디자인 시스템(이하 "서비스")은 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 등 관련 법령을 준수합니다.<br/><br/>
+                      <strong style="font-weight:var(--text-heading-medium-font-weight);">1. 수집하는 개인정보 항목</strong><br/>
+                      서비스는 회원가입, 서비스 이용 시 아래 개인정보를 수집합니다.<br/>
+                      - 필수: 이메일, 비밀번호, 닉네임<br/>
+                      - 선택: 프로필 사진, 소개글<br/><br/>
+                      <strong style="font-weight:var(--text-heading-medium-font-weight);">2. 개인정보 이용 목적</strong><br/>
+                      - 회원 식별 및 서비스 제공<br/>
+                      - 서비스 개선 및 통계 분석<br/>
+                      - 고객 문의 대응<br/><br/>
+                      <strong style="font-weight:var(--text-heading-medium-font-weight);">3. 개인정보 보유 기간</strong><br/>
+                      회원 탈퇴 시 즉시 파기합니다. 단, 관계 법령에 따라 일정 기간 보관이 필요한 경우 해당 기간까지 보관합니다.<br/><br/>
+                      <strong style="font-weight:var(--text-heading-medium-font-weight);">4. 문의</strong><br/>
+                      개인정보 관련 문의: privacy@cafe.naver.com
+                    </p>
+                  </div>
+                </div>
+
+                <!-- ===== Screen: App Info ===== -->
+                <div class="up__screen" data-screen="app-info">
+                  <nav class="cds-nav cds-nav--title1line cds-nav--title1line-noRight">
+                    <div class="cds-nav__bar">
+                      <button class="cds-nav__icon-btn" type="button" aria-label="뒤로가기" data-back>
+                        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                          <path d="M13.5 4.5L6.07071 11.9293C6.03166 11.9683 6.03166 12.0317 6.07071 12.0707L13.5 19.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                        </svg>
+                      </button>
+                      <div class="cds-nav__title">
+                        <h1 class="cds-nav__title-text">앱 정보</h1>
+                      </div>
+                    </div>
+                  </nav>
+
+                  <div class="up-content">
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">앱 버전</p>
+                      <p class="up-info-row__value">3.12.1</p>
+                    </div>
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">빌드 번호</p>
+                      <p class="up-info-row__value">20260206</p>
+                    </div>
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">디자인 시스템</p>
+                      <p class="up-info-row__value">CDS v2.4</p>
+                    </div>
+
+                    <div class="up-divider"></div>
+
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">오픈소스 라이선스</p>
+                      <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="up-info-row">
+                      <p class="up-info-row__label">이용 약관</p>
+                      <svg class="up-menu__chevron" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4.5L13.4293 9.92929C13.4683 9.96834 13.4683 10.0317 13.4293 10.0707L8 15.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Toast -->
+                <div class="up-toast" id="up-toast"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const screenHistory = ["main"];
+
+      function navigateTo(screenId) {
+        document.querySelectorAll(".up__screen").forEach((s) => {
+          s.classList.remove("is-active");
+        });
+        const target = document.querySelector(`[data-screen="${screenId}"]`);
+        if (target) {
+          target.classList.add("is-active");
+          screenHistory.push(screenId);
+        }
+      }
+
+      function goBack() {
+        if (screenHistory.length <= 1) return;
+        screenHistory.pop();
+        const prev = screenHistory[screenHistory.length - 1];
+        document.querySelectorAll(".up__screen").forEach((s) => {
+          s.classList.remove("is-active");
+        });
+        const target = document.querySelector(`[data-screen="${prev}"]`);
+        if (target) target.classList.add("is-active");
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("up-toast");
+        toast.textContent = message;
+        toast.classList.add("is-visible");
+        setTimeout(() => toast.classList.remove("is-visible"), 2000);
+      }
+
+      document.querySelectorAll("[data-navigate]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          navigateTo(btn.dataset.navigate);
+        });
+      });
+
+      document.querySelectorAll("[data-back]").forEach((btn) => {
+        btn.addEventListener("click", goBack);
+      });
+
+      document.querySelectorAll(".cds-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const isOn = toggle.classList.contains("cds-toggle--on");
+          toggle.classList.toggle("cds-toggle--on", !isOn);
+          toggle.classList.toggle("cds-toggle--off", isOn);
+        });
+      });
+
+      document.querySelectorAll("[data-theme]").forEach((item) => {
+        item.addEventListener("click", () => {
+          document.querySelectorAll("[data-theme]").forEach((t) => {
+            t.classList.remove("is-selected");
+            const radio = t.querySelector(".cds-control");
+            radio.classList.remove("cds-control--on");
+            radio.classList.add("cds-control--off");
+          });
+          item.classList.add("is-selected");
+          const radio = item.querySelector(".cds-control");
+          radio.classList.remove("cds-control--off");
+          radio.classList.add("cds-control--on");
+          showToast(`테마가 변경되었습니다`);
+        });
+      });
+
+      const saveProfileBtn = document.querySelector('[data-action="save-profile"]');
+      if (saveProfileBtn) {
+        saveProfileBtn.addEventListener("click", () => {
+          const nameInput = document.getElementById("up-name-input");
+          const displayName = document.getElementById("up-display-name");
+          if (nameInput && displayName) {
+            displayName.textContent = nameInput.value;
+          }
+          showToast("프로필이 저장되었습니다");
+          goBack();
+        });
+      }
+
+      const savePasswordBtn = document.querySelector('[data-action="save-password"]');
+      if (savePasswordBtn) {
+        savePasswordBtn.addEventListener("click", () => {
+          showToast("비밀번호가 변경되었습니다");
+          goBack();
+        });
+      }
+
+      const logoutBtn = document.querySelector('[data-action="logout"]');
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          if (confirm("로그아웃 하시겠습니까?")) {
+            showToast("로그아웃 되었습니다");
+          }
+        });
+      }
+
+      const deleteBtn = document.querySelector('[data-action="delete-account"]');
+      if (deleteBtn) {
+        deleteBtn.addEventListener("click", () => {
+          if (confirm("정말 탈퇴하시겠습니까? 이 작업은 되돌릴 수 없습니다.")) {
+            showToast("계정이 탈퇴되었습니다");
+            navigateTo("main");
+            screenHistory.length = 0;
+            screenHistory.push("main");
+          }
+        });
+      }
+
+      const bioInput = document.getElementById("up-bio-input");
+      const bioCount = document.getElementById("up-bio-count");
+      if (bioInput && bioCount) {
+        bioCount.textContent = bioInput.value.length;
+        bioInput.addEventListener("input", () => {
+          bioCount.textContent = bioInput.value.length;
+        });
+      }
+    </script>
+  </body>
+</html>

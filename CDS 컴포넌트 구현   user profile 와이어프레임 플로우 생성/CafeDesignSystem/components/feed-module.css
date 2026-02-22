@@ -1,0 +1,31 @@
+/* Module: profile feed-large + rich feed item */
+.cds-feed-module {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--text-heading-xLarge-font-size) * 0.5555556);
+  width: 100%;
+  background-color: var(--cafe-color-background);
+  padding: calc(var(--text-heading-xLarge-font-size) * 1.1111112) 0;
+}
+
+.cds-feed-module__profile {
+  display: flex;
+  width: 100%;
+  padding: 0 calc(var(--text-heading-xLarge-font-size) * 0.8888889);
+  box-sizing: border-box;
+}
+
+.cds-feed-module__profile .cds-profile-item--feed-large {
+  width: 100%;
+  flex: 1;
+  max-width: 100%;
+  padding: 0;
+}
+
+.cds-feed-module__item {
+  width: 100%;
+}
+
+.cds-feed-module .cds-profile-item__name {
+  color: var(--cafe-color-onbackgroundprimary);
+}

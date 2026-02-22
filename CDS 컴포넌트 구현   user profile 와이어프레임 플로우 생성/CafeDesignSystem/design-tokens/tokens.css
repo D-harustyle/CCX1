@@ -1,0 +1,498 @@
+/* ===========================================
+   Cafe Design System - Combined Tokens
+   Generated from Figma Design Tokens
+   =========================================== */
+
+:root {
+
+  /* ===========================================
+     CORE TOKENS
+     =========================================== */
+
+  /* Neutral Colors */
+  --core-neutral-n0: #ffffff;
+  --core-neutral-n10: #f5f6f7;
+  --core-neutral-n20: #f0f1f2;
+  --core-neutral-n30: #eaeced;
+  --core-neutral-n40: #dadcdd;
+  --core-neutral-n50: #c8cacc;
+  --core-neutral-n60: #bbbdbf;
+  --core-neutral-n70: #949699;
+  --core-neutral-n80: #8f9194;
+  --core-neutral-n90: #67696b;
+  --core-neutral-n100: #4e5052;
+  --core-neutral-n110: #353738;
+  --core-neutral-n120: #272829;
+  --core-neutral-n130: #1b1b1c;
+  --core-neutral-n140: #111112;
+  --core-neutral-n150: #050505;
+  --core-neutral-n160: #000000;
+
+  /* Green Colors */
+  --core-green-g0: #ffffff;
+  --core-green-g10: #e9faf2;
+  --core-green-g20: #d7f2e5;
+  --core-green-g30: #caeada;
+  --core-green-g40: #b9e2ce;
+  --core-green-g50: #a6dac1;
+  --core-green-g60: #8ed2b2;
+  --core-green-g70: #73caa0;
+  --core-green-g80: #55c38e;
+  --core-green-g90: #36bb7b;
+  --core-green-g100: #19b369;
+  --core-green-g110: #00ab58;
+  --core-green-g120: #00994f;
+  --core-green-g130: #006635;
+  --core-green-g140: #00381d;
+  --core-green-g150: #000d07;
+
+  /* Blue Colors */
+  --core-blue-b0: #ffffff;
+  --core-blue-b10: #f2f8ff;
+  --core-blue-b15: #ebf3ff;
+  --core-blue-b20: #b6d8ff;
+  --core-blue-b30: #79b8ff;
+  --core-blue-b40: #3d97ff;
+  --core-blue-b45: #3283fd;
+  --core-blue-b50: #0076ff;
+  --core-blue-b60: #005cc7;
+  --core-blue-b70: #00397a;
+  --core-blue-b80: #01244b;
+  --core-blue-b90: #1e2b3e;
+
+  /* Red Colors */
+  --core-red-r0: #ffffff;
+  --core-red-r10: #fff2f2;
+  --core-red-r20: #fec3c3;
+  --core-red-r30: #fc9494;
+  --core-red-r40: #f96464;
+  --core-red-r50: #f53535;
+  --core-red-r60: #c72626;
+  --core-red-r70: #692a2b;
+  --core-red-r80: #281c1d;
+
+  /* Deep Blue Colors */
+  --core-deepblue-db10: #f0f6fc;
+  --core-deepblue-db20: #d3e5f9;
+  --core-deepblue-db30: #b5d0f3;
+  --core-deepblue-db40: #96b9ea;
+  --core-deepblue-db50: #6f9dd7;
+  --core-deepblue-db60: #5983cd;
+  --core-deepblue-db70: #3c65b6;
+  --core-deepblue-db80: #23489c;
+  --core-deepblue-db90: #102f80;
+  --core-deepblue-db100: #021b66;
+
+  /* Purple Colors */
+  --core-purple-pr10: #f5f2ff;
+  --core-purple-pr20: #dfd8fc;
+  --core-purple-pr30: #c8bcf8;
+  --core-purple-pr40: #b0a0f1;
+  --core-purple-pr50: #9884e7;
+  --core-purple-pr60: #7e68d9;
+  --core-purple-pr70: #654cc7;
+  --core-purple-pr80: #4d33b2;
+  --core-purple-pr90: #371e9c;
+  --core-purple-pr100: #260e87;
+
+  /* Pink Colors */
+  --core-pink-pk10: #ffedf1;
+  --core-pink-pk20: #fed1dc;
+  --core-pink-pk30: #fcbbcc;
+  --core-pink-pk40: #f9a6bb;
+  --core-pink-pk50: #f590a9;
+  --core-pink-pk60: #ef7a97;
+  --core-pink-pk70: #e76485;
+  --core-pink-pk80: #de4f73;
+  --core-pink-pk90: #d53b62;
+  --core-pink-pk100: #cc2952;
+
+  /* Orange Colors */
+  --core-orange-or10: #fcf2ed;
+  --core-orange-or20: #fee4d8;
+  --core-orange-or30: #fdd1be;
+  --core-orange-or40: #fbbea3;
+  --core-orange-or50: #f9aa89;
+  --core-orange-or60: #f5976e;
+  --core-orange-or70: #f18354;
+  --core-orange-or80: #eb703b;
+  --core-orange-or90: #e65d22;
+  --core-orange-or100: #e04b0b;
+
+  /* Sky Blue Colors */
+  --core-skyblue-sb10: #f0f6fc;
+  --core-skyblue-sb20: #dbedff;
+  --core-skyblue-sb30: #c0dffe;
+  --core-skyblue-sb40: #a6d1fd;
+  --core-skyblue-sb50: #8cc4fb;
+  --core-skyblue-sb60: #71b5f9;
+  --core-skyblue-sb70: #57a7f7;
+  --core-skyblue-sb80: #3d98f4;
+  --core-skyblue-sb90: #248af0;
+  --core-skyblue-sb100: #0c7de8;
+
+  /* Rose Colors */
+  --core-rose-rd10: #fcf0f2;
+  --core-rose-rd20: #fdd9dc;
+  --core-rose-rd30: #fabfc5;
+  --core-rose-rd40: #f5a4ac;
+  --core-rose-rd50: #ee8a94;
+  --core-rose-rd60: #e56f7b;
+  --core-rose-rd70: #d95562;
+  --core-rose-rd80: #ca3c4a;
+  --core-rose-rd90: #bb2635;
+  --core-rose-rd100: #ad1323;
+
+  /* Brown Colors */
+  --core-brown-br10: #faf2e8;
+  --core-brown-br20: #fbe7d4;
+  --core-brown-br30: #f3d4b4;
+  --core-brown-br40: #e8be93;
+  --core-brown-br50: #d9a672;
+  --core-brown-br60: #c38b52;
+  --core-brown-br70: #b2784a;
+  --core-brown-br80: #86511c;
+  --core-brown-br90: #63370a;
+  --core-brown-br100: #422100;
+
+  /* Pine Green Colors */
+  --core-pinegreen-pg10: #edfaf4;
+  --core-pinegreen-pg20: #d0f2e6;
+  --core-pinegreen-pg30: #b3edd8;
+  --core-pinegreen-pg40: #93e3c6;
+  --core-pinegreen-pg50: #76dab5;
+  --core-pinegreen-pg60: #55c59c;
+  --core-pinegreen-pg70: #37aa80;
+  --core-pinegreen-pg80: #1e8a63;
+  --core-pinegreen-pg90: #0b6947;
+  --core-pinegreen-pg100: #004a2f;
+
+  /* Olive Green Colors */
+  --core-olivegreen-og10: #f2f7e9;
+  --core-olivegreen-og20: #e8f5d7;
+  --core-olivegreen-og30: #def3c0;
+  --core-olivegreen-og40: #cbe8a2;
+  --core-olivegreen-og50: #b5d983;
+  --core-olivegreen-og60: #9cc364;
+  --core-olivegreen-og70: #7fa747;
+  --core-olivegreen-og80: #60862c;
+  --core-olivegreen-og90: #446318;
+  --core-olivegreen-og100: #2b420a;
+
+  /* Ultramarine Blue Colors */
+  --core-ultramarineblue-ub10: #f2f7ff;
+  --core-ultramarineblue-ub20: #d8e3fe;
+  --core-ultramarineblue-ub30: #bdccfb;
+  --core-ultramarineblue-ub40: #a2b3f8;
+  --core-ultramarineblue-ub50: #8797f3;
+  --core-ultramarineblue-ub60: #6c79ec;
+  --core-ultramarineblue-ub70: #5159e4;
+  --core-ultramarineblue-ub80: #3839d9;
+  --core-ultramarineblue-ub90: #251fcc;
+  --core-ultramarineblue-ub100: #1809b8;
+
+  /* Cinnamon Colors */
+  --core-cinnamon-cn10: #fcf1ed;
+  --core-cinnamon-cn20: #fce5df;
+  --core-cinnamon-cn30: #f7d3ca;
+  --core-cinnamon-cn40: #f0c0b5;
+  --core-cinnamon-cn50: #e5ac9e;
+  --core-cinnamon-cn60: #d69685;
+  --core-cinnamon-cn70: #c37e6d;
+  --core-cinnamon-cn80: #ad6755;
+  --core-cinnamon-cn90: #955140;
+  --core-cinnamon-cn100: #803e2e;
+
+  /* Teal Green Colors */
+  --core-tealgreen-tg10: #edfaf9;
+  --core-tealgreen-tg20: #cdf2f2;
+  --core-tealgreen-tg30: #aeeded;
+  --core-tealgreen-tg40: #91e5e5;
+  --core-tealgreen-tg50: #76e0e0;
+  --core-tealgreen-tg60: #57cece;
+  --core-tealgreen-tg70: #3ab8b8;
+  --core-tealgreen-tg80: #219d9d;
+  --core-tealgreen-tg90: #0e8080;
+  --core-tealgreen-tg100: #006666;
+
+  /* Gray Colors */
+  --core-gray-gy10: #f5f6f8;
+  --core-gray-gy20: #f5f7fd;
+  --core-gray-gy30: #e5e7ea;
+  --core-gray-gy40: #333336;
+
+  /* Alpha Colors */
+  --core-alpha-alphawhite3: #ffffff08;
+  --core-alpha-alphawhite7: #ffffff12;
+  --core-alpha-alphawhite10: #ffffff1a;
+  --core-alpha-alphawhite12: #ffffff1f;
+  --core-alpha-alphawhite30: #ffffff4d;
+  --core-alpha-alphawhite50: #ffffff80;
+  --core-alpha-alphawhite70: #ffffffb3;
+  --core-alpha-alphablack3: #00000008;
+  --core-alpha-alphablack7: #00000012;
+  --core-alpha-alphablack10: #0000001a;
+  --core-alpha-alphablack12: #0000001f;
+  --core-alpha-alphablack30: #0000004d;
+  --core-alpha-alphablack50: #00000080;
+  --core-alpha-alphablack70: #000000b3;
+
+  /* ===========================================
+     CAFE SYSTEM TOKENS
+     =========================================== */
+
+  /* Background Colors */
+  --cafe-color-background: var(--core-neutral-n0);
+  --cafe-color-onbackgroundprimary: var(--core-neutral-n140);
+  --cafe-color-onbackgroundsecondary: var(--core-neutral-n120);
+  --cafe-color-onbackgroundtertiary: var(--core-neutral-n90);
+  --cafe-color-onbackgroundassist: var(--core-neutral-n70);
+  --cafe-color-backgroundcontainerprimary: var(--core-neutral-n10);
+  --cafe-color-backgroundcontainersecondary: var(--core-neutral-n20);
+  --cafe-color-backgroundcontainertertiary: var(--core-neutral-n120);
+  --cafe-color-onbackgroundcontainerprimary: var(--core-neutral-n120);
+  --cafe-color-onbackgroundcontainersecondary: var(--core-neutral-n70);
+  --cafe-color-onbackgroundcontainertertiary: var(--core-neutral-n90);
+
+  /* Divider Colors */
+  --cafe-color-dividerprimary: var(--core-neutral-n10);
+  --cafe-color-dividersecondary: var(--core-neutral-n20);
+  --cafe-color-dividertertiary: var(--core-neutral-n30);
+
+  /* Outline Colors */
+  --cafe-color-outlinecard: var(--core-neutral-n20);
+  --cafe-color-outlinebuttonprimary: var(--core-green-g110);
+  --cafe-color-outlinebuttonsecondary: var(--core-green-g40);
+  --cafe-color-outlinebuttontertiary: var(--core-neutral-n30);
+  --cafe-color-outlinechip: var(--core-neutral-n30);
+
+  /* Alpha Colors */
+  --cafe-color-alphablackclear: var(--core-alpha-alphablack3);
+  --cafe-color-alphablackseethrough: var(--core-alpha-alphablack7);
+  --cafe-color-alphablacksemi: var(--core-alpha-alphablack10);
+  --cafe-color-alphablacktranslucent: var(--core-alpha-alphablack12);
+  --cafe-color-alphablackfrosted: var(--core-alpha-alphablack30);
+  --cafe-color-alphablackopaque: var(--core-alpha-alphablack50);
+  --cafe-color-alphablackunclear: var(--core-alpha-alphablack70);
+  --cafe-color-alphawhiteclear: var(--core-alpha-alphawhite3);
+  --cafe-color-alphawhiteseethrough: var(--core-alpha-alphawhite7);
+  --cafe-color-alphawhitesemi: var(--core-alpha-alphawhite10);
+  --cafe-color-alphawhitetranslucent: var(--core-alpha-alphawhite12);
+  --cafe-color-alphawhitefrosted: var(--core-alpha-alphawhite30);
+  --cafe-color-alphawhiteopaque: var(--core-alpha-alphawhite50);
+  --cafe-color-alphawhiteunclear: var(--core-alpha-alphawhite70);
+
+  /* Brand Colors */
+  --cafe-color-brand: var(--core-green-g110);
+  --cafe-color-onbrand: var(--core-green-g0);
+  --cafe-color-brandcontainerprimary: var(--core-green-g10);
+  --cafe-color-brandcontainersecondary: var(--core-green-g20);
+  --cafe-color-onbrandcontainer: var(--core-green-g110);
+
+  /* Accent Colors */
+  --cafe-color-accent: var(--core-red-r50);
+  --cafe-color-onaccent: var(--core-red-r0);
+  --cafe-color-accentcontainerprimary: var(--core-red-r10);
+  --cafe-color-accentcontainersecondary: var(--core-red-r10);
+  --cafe-color-onaccentcontainerprimary: var(--core-red-r50);
+  --cafe-color-onaccentcontainersecondary: var(--core-neutral-n140);
+  --cafe-color-onaccentcontainertertiary: var(--core-neutral-n80);
+
+  /* Town Colors */
+  --cafe-color-town: var(--core-blue-b50);
+  --cafe-color-ontown: var(--core-blue-b0);
+  --cafe-color-towncontainer: var(--core-blue-b10);
+  --cafe-color-ontowncontainer: var(--core-blue-b50);
+
+  /* Text & Icon Colors */
+  --cafe-color-sheetbackground: var(--core-neutral-n0);
+  --cafe-color-textpriority: var(--core-neutral-n160);
+  --cafe-color-textinformation: var(--core-neutral-n80);
+  --cafe-color-textsell: var(--core-orange-or90);
+  --cafe-color-textsoldout: var(--core-neutral-n60);
+  --cafe-color-textwhite: var(--core-neutral-n0);
+  --cafe-color-textread: var(--core-alpha-alphablack30);
+  --cafe-color-textbluelink: var(--core-blue-b50);
+  --cafe-color-iconprimary: var(--core-green-g110);
+  --cafe-color-iconsecondary: var(--core-neutral-n40);
+  --cafe-color-icontertiary: var(--core-neutral-n80);
+  --cafe-color-iconlike: var(--core-red-r50);
+  --cafe-color-iconwhite: var(--core-neutral-n0);
+
+  /* Badge Colors */
+  --cafe-color-badgestar: var(--core-ultramarineblue-ub80);
+  --cafe-color-badgepower: var(--core-green-g100);
+  --cafe-color-badgenotice: var(--core-neutral-n100);
+  --cafe-color-badgecertify: #3052ff;
+
+  /* Action Colors */
+  --cafe-color-actionhover: var(--core-alpha-alphablack3);
+  --cafe-color-actionpressed: var(--core-alpha-alphablack3);
+
+  /* Cafe Skin Colors */
+  --cafe-color-cafeskinrose: var(--core-rose-rd90);
+  --cafe-color-cafeskinpink: var(--core-pink-pk80);
+  --cafe-color-cafeskinorange: var(--core-orange-or80);
+  --cafe-color-cafeskinbrown: var(--core-brown-br70);
+  --cafe-color-cafeskincinnamon: var(--core-cinnamon-cn100);
+  --cafe-color-cafeskinskyblue: var(--core-skyblue-sb100);
+  --cafe-color-cafeskinultramarineblue: var(--core-ultramarineblue-ub80);
+  --cafe-color-cafeskindeepblue: var(--core-deepblue-db80);
+  --cafe-color-cafeskingreen: var(--core-green-g110);
+  --cafe-color-cafeskintealgreen: var(--core-tealgreen-tg80);
+  --cafe-color-cafeskinpinegreen: var(--core-pinegreen-pg90);
+  --cafe-color-cafeskinolivegreen: var(--core-olivegreen-og80);
+  --cafe-color-cafeskinpurple: var(--core-purple-pr80);
+  --cafe-color-cafeskingray: var(--core-neutral-n90);
+  --cafe-color-cafeskindarkgray: var(--core-neutral-n110);
+  --cafe-color-oncafeskin: var(--core-neutral-n0);
+
+  /* Cafe Skin Container Colors */
+  --cafe-color-cafeskincontainerrose: var(--core-rose-rd10);
+  --cafe-color-cafeskincontainerpink: var(--core-pink-pk10);
+  --cafe-color-cafeskincontainerorange: var(--core-orange-or10);
+  --cafe-color-cafeskincontainerbrown: var(--core-brown-br10);
+  --cafe-color-cafeskincontainercinnamon: var(--core-cinnamon-cn10);
+  --cafe-color-cafeskincontainerskyblue: var(--core-skyblue-sb10);
+  --cafe-color-cafeskincontainerultramarineblue: var(--core-ultramarineblue-ub10);
+  --cafe-color-cafeskincontainerdeepblue: var(--core-deepblue-db10);
+  --cafe-color-cafeskincontainergreen: var(--core-green-g10);
+  --cafe-color-cafeskincontainertealgreen: var(--core-tealgreen-tg10);
+  --cafe-color-cafeskincontainerpinegreen: var(--core-pinegreen-pg10);
+  --cafe-color-cafeskincontainerolivegreen: var(--core-olivegreen-og10);
+  --cafe-color-cafeskincontainerpurple: var(--core-purple-pr10);
+  --cafe-color-cafeskincontainergray: var(--core-neutral-n10);
+  --cafe-color-cafeskincontainerdarkgray: var(--core-neutral-n20);
+
+  /* On Cafe Skin Container Colors */
+  --cafe-color-oncafeskincontainerrose: var(--core-rose-rd90);
+  --cafe-color-oncafeskincontainerpink: var(--core-pink-pk80);
+  --cafe-color-oncafeskincontainerorange: var(--core-orange-or80);
+  --cafe-color-oncafeskincontainerbrown: var(--core-brown-br70);
+  --cafe-color-oncafeskincontainercinnamon: var(--core-cinnamon-cn100);
+  --cafe-color-oncafeskincontainerskyblue: var(--core-skyblue-sb100);
+  --cafe-color-oncafeskincontainergreen: var(--core-green-g110);
+  --cafe-color-oncafeskincontainerultramarineblue: var(--core-ultramarineblue-ub80);
+  --cafe-color-oncafeskincontainerdeepblue: var(--core-deepblue-db80);
+  --cafe-color-oncafeskincontainertealgreen: var(--core-tealgreen-tg80);
+  --cafe-color-oncafeskincontainerpinegreen: var(--core-pinegreen-pg90);
+  --cafe-color-oncafeskincontainerolivegreen: var(--core-olivegreen-og80);
+  --cafe-color-oncafeskincontainerpurple: var(--core-purple-pr80);
+  --cafe-color-oncafeskincontainergray: var(--core-neutral-n90);
+  --cafe-color-oncafeskincontainerdarkgray: var(--core-neutral-n110);
+
+  /* Cafe Skin Border Colors */
+  --cafe-color-cafeskinborderrose: var(--core-rose-rd30);
+  --cafe-color-cafeskinborderpink: var(--core-pink-pk30);
+  --cafe-color-cafeskinborderorange: var(--core-orange-or30);
+  --cafe-color-cafeskinborderbrown: var(--core-brown-br30);
+  --cafe-color-cafeskinbordercinnamon: var(--core-cinnamon-cn30);
+  --cafe-color-cafeskinborderskyblue: var(--core-skyblue-sb30);
+  --cafe-color-cafeskinborderultramarineblue: var(--core-ultramarineblue-ub30);
+  --cafe-color-cafeskinborderdeppblue: var(--core-deepblue-db30);
+  --cafe-color-cafeskinbordergreen: var(--core-green-g40);
+  --cafe-color-cafeskinbordertealgreen: var(--core-tealgreen-tg30);
+  --cafe-color-cafeskinborderpinegreen: var(--core-pinegreen-pg40);
+  --cafe-color-cafeskinborderolivegreen: var(--core-olivegreen-og40);
+  --cafe-color-cafeskinborderpurple: var(--core-purple-pr30);
+  --cafe-color-cafeskinbordergray: var(--core-neutral-n40);
+  --cafe-color-cafeskinborderdarkgray: var(--core-neutral-n60);
+
+  /* Misc Colors */
+  --cafe-color-inputbackground: var(--core-alpha-alphablack3);
+  --cafe-color-comtoolbackground: var(--core-green-g10);
+  --cafe-color-webfooterbuttonbackground: var(--core-neutral-n0);
+  --cafe-color-black: var(--core-neutral-n160);
+  --cafe-color-adbluecontainer: var(--core-blue-b15);
+  --cafe-color-adblue: var(--core-blue-b45);
+  --cafe-color-adctadefault: var(--core-deepblue-db50);
+  --cafe-color-adgraycontainerprimary: var(--core-gray-gy10);
+  --cafe-color-adgraycontainersecondary: var(--core-neutral-n0);
+  --cafe-color-adgraycontainertertiary: var(--core-gray-gy20);
+  --cafe-color-warningbackground: var(--core-rose-rd90);
+  --cafe-color-bestbackground: var(--core-gray-gy20);
+
+  /* ===========================================
+     TEXT STYLE TOKENS
+     =========================================== */
+
+  --text-display-xLarge-font-family: 'Apple SD Gothic Neo';
+  --text-display-xLarge-font-weight: 700;
+  --text-display-xLarge-font-size: 28px;
+  --text-display-large-font-family: 'Apple SD Gothic Neo';
+  --text-display-large-font-weight: 700;
+  --text-display-large-font-size: 22px;
+  --text-display-medium-font-family: 'Apple SD Gothic Neo';
+  --text-display-medium-font-weight: 700;
+  --text-display-medium-font-size: 18px;
+  --text-display-small-font-family: 'Apple SD Gothic Neo';
+  --text-display-small-font-weight: 700;
+  --text-display-small-font-size: 17px;
+  --text-heading-xxLarge-font-family: 'Apple SD Gothic Neo';
+  --text-heading-xxLarge-font-weight: 600;
+  --text-heading-xxLarge-font-size: 20px;
+  --text-heading-xLarge-font-family: 'Apple SD Gothic Neo';
+  --text-heading-xLarge-font-weight: 600;
+  --text-heading-xLarge-font-size: 18px;
+  --text-heading-large-font-family: 'Apple SD Gothic Neo';
+  --text-heading-large-font-weight: 600;
+  --text-heading-large-font-size: 17px;
+  --text-heading-medium-font-family: 'Apple SD Gothic Neo';
+  --text-heading-medium-font-weight: 600;
+  --text-heading-medium-font-size: 16px;
+  --text-heading-small-font-family: 'Apple SD Gothic Neo';
+  --text-heading-small-font-weight: 700;
+  --text-heading-small-font-size: 15px;
+  --text-body-xLarge-font-family: 'Apple SD Gothic Neo';
+  --text-body-xLarge-font-weight: 400;
+  --text-body-xLarge-font-size: 17px;
+  --text-body-large-font-family: 'Apple SD Gothic Neo';
+  --text-body-large-font-weight: 400;
+  --text-body-large-font-size: 16px;
+  --text-body-medium-font-family: 'Apple SD Gothic Neo';
+  --text-body-medium-font-weight: 400;
+  --text-body-medium-font-size: 15px;
+  --text-body-small-font-family: 'Apple SD Gothic Neo';
+  --text-body-small-font-weight: 400;
+  --text-body-small-font-size: 14px;
+  --text-body-xSmall-font-family: 'Apple SD Gothic Neo';
+  --text-body-xSmall-font-weight: 400;
+  --text-body-xSmall-font-size: 13px;
+  --text-label-xLarge-font-family: 'Apple SD Gothic Neo';
+  --text-label-xLarge-font-weight: 600;
+  --text-label-xLarge-font-size: 16px;
+  --text-label-largeStrong-font-family: 'Apple SD Gothic Neo';
+  --text-label-largeStrong-font-weight: 600;
+  --text-label-largeStrong-font-size: 15px;
+  --text-label-mediumStrong-font-family: 'Apple SD Gothic Neo';
+  --text-label-mediumStrong-font-weight: 600;
+  --text-label-mediumStrong-font-size: 14px;
+  --text-label-smallStrong-font-family: 'Apple SD Gothic Neo';
+  --text-label-smallStrong-font-weight: 600;
+  --text-label-smallStrong-font-size: 13px;
+  --text-label-xSmall-font-family: 'Apple SD Gothic Neo';
+  --text-label-xSmall-font-weight: 400;
+  --text-label-xSmall-font-size: 12px;
+
+}
+
+/* Text Style Classes */
+.text-display-xLarge { font-family: 'Apple SD Gothic Neo'; font-weight: 700; font-size: 28px; letter-spacing: -0.30px; }
+.text-display-large { font-family: 'Apple SD Gothic Neo'; font-weight: 700; font-size: 22px; letter-spacing: -0.30px; }
+.text-display-medium { font-family: 'Apple SD Gothic Neo'; font-weight: 700; font-size: 18px; letter-spacing: -0.30px; }
+.text-display-small { font-family: 'Apple SD Gothic Neo'; font-weight: 700; font-size: 17px; letter-spacing: -0.30px; }
+.text-heading-xxLarge { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 20px; letter-spacing: -0.30px; }
+.text-heading-xLarge { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 18px; letter-spacing: -0.30px; }
+.text-heading-large { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 17px; letter-spacing: -0.30px; }
+.text-heading-medium { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 16px; letter-spacing: -0.30px; }
+.text-heading-small { font-family: 'Apple SD Gothic Neo'; font-weight: 700; font-size: 15px; letter-spacing: -0.30px; }
+.text-body-xLarge { font-family: 'Apple SD Gothic Neo'; font-weight: 400; font-size: 17px; letter-spacing: -0.30px; }
+.text-body-large { font-family: 'Apple SD Gothic Neo'; font-weight: 400; font-size: 16px; letter-spacing: -0.30px; }
+.text-body-medium { font-family: 'Apple SD Gothic Neo'; font-weight: 400; font-size: 15px; letter-spacing: -0.30px; }
+.text-body-small { font-family: 'Apple SD Gothic Neo'; font-weight: 400; font-size: 14px; letter-spacing: -0.30px; }
+.text-body-xSmall { font-family: 'Apple SD Gothic Neo'; font-weight: 400; font-size: 13px; letter-spacing: -0.30px; }
+.text-label-xLarge { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 16px; letter-spacing: -0.30px; }
+.text-label-largeStrong { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 15px; letter-spacing: -0.30px; }
+.text-label-mediumStrong { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 14px; letter-spacing: -0.30px; }
+.text-label-smallStrong { font-family: 'Apple SD Gothic Neo'; font-weight: 600; font-size: 13px; letter-spacing: -0.30px; }
+.text-label-xSmall { font-family: 'Apple SD Gothic Neo'; font-weight: 400; font-size: 12px; letter-spacing: -0.30px; }
