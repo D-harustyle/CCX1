@@ -265,7 +265,7 @@
     .tab-section {
       display: flex;
       flex-direction: column;
-      gap: -1px;
+      position: relative;
     }
 
     .tab-bar {
@@ -273,6 +273,7 @@
       flex-direction: row;
       align-items: center;
       gap: 20px;
+      position: relative;
     }
 
     .tab-item {
@@ -292,21 +293,22 @@
       letter-spacing: -0.3px;
       color: #737373;
       font-weight: 400;
+      transition: color 0.3s;
     }
 
     .tab-item--active .tab-item__text {
       color: #000000;
+      font-weight: 600;
     }
 
-    .tab-item__indicator {
-      width: 100%;
+    .tab-indicator {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
       height: 2px;
-      background: #000000;
-      opacity: 0;
-    }
-
-    .tab-item--active .tab-item__indicator {
-      opacity: 1;
+      background-color: #000000;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 2;
     }
 
     .tab-divider {
@@ -1172,20 +1174,17 @@
             <div class="tab-bar">
               <div class="tab-item tab-item--active" data-tab="all">
                 <span class="tab-item__text">전체 멤버</span>
-                <div class="tab-item__indicator"></div>
               </div>
               <div class="tab-item" data-tab="suspended">
                 <span class="tab-item__text">활동 정지 멤버</span>
-                <div class="tab-item__indicator"></div>
               </div>
               <div class="tab-item" data-tab="expelled">
                 <span class="tab-item__text">강제 탈퇴 멤버</span>
-                <div class="tab-item__indicator"></div>
               </div>
               <div class="tab-item" data-tab="staff">
                 <span class="tab-item__text">스탭 관리</span>
-                <div class="tab-item__indicator"></div>
               </div>
+              <div class="tab-indicator" id="tabIndicator"></div>
             </div>
             <div class="tab-divider"></div>
           </div>
@@ -1527,11 +1526,48 @@
   </div>
 
   <script>
-    document.querySelectorAll('.tab-item').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('tab-item--active'));
-        tab.classList.add('tab-item--active');
+    // Tab indicator sliding logic
+    const tabBar = document.querySelector('.tab-bar');
+    const tabs = document.querySelectorAll('.tab-item');
+    const tabIndicator = document.getElementById('tabIndicator');
+
+    function updateTabIndicator(activeTab) {
+      if (!activeTab || !tabIndicator) return;
+
+      // Calculate width and position relative to the tab-bar container
+      requestAnimationFrame(() => {
+        const tabBarRect = tabBar.getBoundingClientRect();
+        const tabText = activeTab.querySelector('.tab-item__text');
+        const textRect = tabText.getBoundingClientRect();
+
+        const offsetLeft = textRect.left - tabBarRect.left;
+        const width = textRect.width;
+
+        tabIndicator.style.width = `${width}px`;
+        tabIndicator.style.transform = `translateX(${offsetLeft}px)`;
       });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('tab-item--active'));
+        tab.classList.add('tab-item--active');
+        updateTabIndicator(tab);
+      });
+    });
+
+    // Initialize the indicator on load and window resize
+    window.addEventListener('load', () => {
+      // Small timeout to ensure fonts are loaded and layout is stable
+      setTimeout(() => {
+        const initialActiveTab = document.querySelector('.tab-item--active');
+        updateTabIndicator(initialActiveTab);
+      }, 50);
+    });
+
+    window.addEventListener('resize', () => {
+      const currentActiveTab = document.querySelector('.tab-item--active');
+      updateTabIndicator(currentActiveTab);
     });
 
     document.querySelectorAll('.pagination__number').forEach(btn => {
