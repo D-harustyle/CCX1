@@ -49,8 +49,7 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 8px;
-      padding: 44px 20px 24px 24px;
+      padding: 44px 20px 20px 32px;
     }
 
     .sidebar__logo a {
@@ -58,12 +57,45 @@
       align-items: center;
       text-decoration: none;
       color: inherit;
+      cursor: pointer;
     }
 
     .sidebar__logo img {
-      height: 22px;
-      width: 145px;
+      height: 24px;
+      width: auto;
       display: block;
+    }
+
+    .sidebar__profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 20px 20px;
+      gap: 8px;
+    }
+
+    .sidebar__avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      /* slight shadow for the 3D ghost */
+    }
+
+    .sidebar__name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111111;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar__role {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888888;
+      letter-spacing: -0.3px;
     }
 
     .sidebar__menu {
@@ -207,41 +239,68 @@
       gap: 18px;
     }
 
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .btn-ai-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
     .btn-ai {
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      gap: 2px;
-      padding: 9px 14px 9px 12px;
-      background: #F5F9FF;
-      border-radius: 8px;
+      gap: 6px;
+      padding: 6px 16px;
+      background: #EDF3FB;
+      border-radius: 9999px;
       border: none;
-      cursor: pointer;
+      height: 42px;
+      box-sizing: border-box;
     }
 
     .btn-ai__icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 14px;
       height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    .btn-ai__icon svg {
-      width: 11.37px;
+    .btn-ai__icon img {
+      width: 12px;
       height: 12px;
+    }
+
+    .btn-ai__avatar-out {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .btn-ai__text {
       font-size: 13px;
-      line-height: 1.385;
+      font-weight: 600;
+      color: #3283FD;
       letter-spacing: -0.3px;
-      background: linear-gradient(108deg, rgba(134, 85, 244, 1) 7%, rgba(59, 126, 252, 1) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      padding-bottom: 1px;
     }
 
     .topbar__profile {
@@ -1086,6 +1145,219 @@
         font-size: 11px;
       }
     }
+
+    /* ===== AGENT CHAT WINDOW ===== */
+    .agent-chat-window {
+      position: absolute;
+      top: 90px;
+      right: 120px;
+      width: 420px;
+      height: 650px;
+      background: #FFFFFF;
+      border-radius: 24px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 1000;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.96);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .agent-chat-window--visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .chat-header {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    .chat-header__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #E89A3C;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+    }
+
+    .chat-header__text {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #111111;
+      letter-spacing: -0.3px;
+    }
+
+    .chat-header__text strong {
+      font-size: 17px;
+    }
+
+    .chat-card {
+      background: #FCFCFC;
+      border: 1px solid #F0F0F0;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .chat-card__title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 16px;
+    }
+
+    .chat-card__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      background: #F4F6FA;
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .chat-card__row:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-card__label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #111111;
+    }
+
+    .chat-card__icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-card__value {
+      font-size: 16px;
+      font-weight: 800;
+      color: #111111;
+    }
+
+    .chat-btn-secondary {
+      background: #EAF1FE;
+      color: #3283FD;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      align-self: flex-end;
+      margin-top: 16px;
+    }
+
+    .chat-list-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-list-section__title {
+      font-size: 12px;
+      color: #888888;
+      font-weight: 500;
+    }
+
+    .chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-list-item {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .chat-list-item__rank {
+      font-size: 13px;
+      font-weight: 800;
+      color: #111111;
+      width: 16px;
+    }
+
+    .chat-list-item__content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .chat-list-item__title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #111111;
+      line-height: 1.4;
+    }
+
+    .chat-list-item__meta {
+      font-size: 11px;
+      color: #A3A3A3;
+    }
+
+    .chat-list-item__thumb {
+      width: 56px;
+      height: 32px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #000;
+    }
+
+    .chat-input-area {
+      background: #F1F3F5;
+      border-radius: 9999px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 4px 16px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: #111111;
+      padding: 12px 0;
+    }
+
+    .chat-input-area input::placeholder {
+      color: #A3A3A3;
+    }
+
+    .chat-input-area button {
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
   </style>
 </head>
 
@@ -1099,9 +1371,9 @@
           <span></span>
           <span></span>
         </button>
-        <div class="mobile-header__logo">
+        <a href="index.html" class="mobile-header__logo">
           <img src="assets/logo.svg" alt="Cafe Manage">
-        </div>
+        </a>
       </div>
       <div class="mobile-header__right">
         <button class="mobile-header__search" aria-label="검색">
@@ -1131,15 +1403,11 @@
         </button>
       </div>
       <div class="mobile-nav__menu">
-        <a href="home.html" class="mobile-nav__item mobile-nav__item--active">
-          <span class="mobile-nav__item-icon"><img src="assets/sidebar-home-filled.svg" alt=""></span>
-          Home
-        </a>
-        <a href="#" class="mobile-nav__item">
-          <span class="mobile-nav__item-icon"><img src="assets/sidebar-cafe-outlined.svg" alt=""></span>
+        <a href="index.html" class="mobile-nav__item mobile-nav__item--active">
+          <span class="mobile-nav__item-icon"><img src="assets/sidebar-cafe-active.svg" alt=""></span>
           카페 운영
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="post.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-post-outlined.svg" alt=""></span>
           게시글 관리
         </a>
@@ -1147,27 +1415,27 @@
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-member-outlined.svg" alt=""></span>
           멤버 관리
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="reward.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-reward-outlined.svg" alt=""></span>
           보상 관리
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="settings.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-settings-outlined.svg" alt=""></span>
           운영권한 &amp; 설정
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="comm.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-comm-outlined.svg" alt=""></span>
           커뮤니케이션
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="report.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-report-outlined.svg" alt=""></span>
           카페 성장 리포트
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="biz.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-biz-outlined.svg" alt=""></span>
           카페 비즈센터
         </a>
-        <a href="#" class="mobile-nav__item">
+        <a href="decor.html" class="mobile-nav__item">
           <span class="mobile-nav__item-icon"><img src="assets/sidebar-decor-outlined.svg" alt=""></span>
           카페 꾸미기
         </a>
@@ -1178,16 +1446,22 @@
       <!-- Left Sidebar -->
       <aside class="sidebar">
         <div class="sidebar__logo">
-          <img src="assets/logo.svg" alt="Cafe Manage">
-        </div>
-        <nav class="sidebar__menu">
-          <a href="home.html" class="menu-item menu-item--active">
-            <span class="menu-item__icon">
-              <img src="assets/icon-home.svg" alt="">
-            </span>
-            <span class="menu-item__label">매니저 홈</span>
+          <a href="index.html">
+            <img src="assets/logo.svg" alt="Cafe Manage">
           </a>
-          <a href="cafe.html" class="menu-item">
+        </div>
+        <div class="sidebar__profile">
+          <img class="sidebar__avatar" src="assets/avatar.png" alt="Profile Avatar">
+          <div class="sidebar__name">GAMST</div>
+          <div class="sidebar__role">카페 운영진, 매니저</div>
+        </div>
+
+        <div class="sidebar__divider">
+          <div class="sidebar__divider-line"></div>
+        </div>
+
+        <nav class="sidebar__menu">
+          <a href="index.html" class="menu-item menu-item--active">
             <span class="menu-item__icon">
               <img src="assets/icon-cafe.svg" alt="">
             </span>
@@ -1264,23 +1538,12 @@
             </div>
           </div>
           <div class="topbar__right">
-            <button class="btn-ai">
-              <span class="btn-ai__icon">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <linearGradient id="aiGrad" x1="6" y1="0" x2="6" y2="12" gradientUnits="userSpaceOnUse">
-                      <stop stop-color="#8953F4" />
-                      <stop offset="1" stop-color="#3283FD" />
-                    </linearGradient>
-                  </defs>
-                  <path d="M6 0.5L7.5 4.5L11.5 6L7.5 7.5L6 11.5L4.5 7.5L0.5 6L4.5 4.5L6 0.5Z" fill="url(#aiGrad)"
-                    opacity="0.4" />
-                </svg>
-              </span>
-              <span class="btn-ai__text">Ai Staff 업그레이드</span>
-            </button>
-            <div class="topbar__profile">
-              <img src="assets/avatar.png" alt="프로필">
+            <div class="btn-ai-wrap" onclick="toggleAgentChat()">
+              <div class="btn-ai">
+                <span class="btn-ai__icon"><img src="assets/ai-staff-icon.svg" alt=""></span>
+                <span class="btn-ai__text">궁금하면 매니저 Agent와 대화하기</span>
+              </div>
+              <img class="btn-ai__avatar-out" src="assets/profile-agent.png" alt="Agent Avatar">
             </div>
           </div>
         </header>
@@ -1603,7 +1866,96 @@
       if (closeBtn) closeBtn.addEventListener('click', closeNav);
       if (overlay) overlay.addEventListener('click', closeNav);
     });
+
+    // Toggle Agent Chat Window
+    function toggleAgentChat() {
+      const chatWin = document.getElementById('agentChatWindow');
+      if (chatWin) {
+        chatWin.classList.toggle('agent-chat-window--visible');
+      }
+    }
+
+    // Close chat window when clicking outside
+    document.addEventListener('click', (e) => {
+      const chatWin = document.getElementById('agentChatWindow');
+      const trigger = document.querySelector('.btn-ai-wrap');
+      if (chatWin && chatWin.classList.contains('agent-chat-window--visible')) {
+        if (!chatWin.contains(e.target) && !trigger.contains(e.target)) {
+          chatWin.classList.remove('agent-chat-window--visible');
+        }
+      }
+    });
   </script>
+
+  <!-- Agent Chat UI Overlay -->
+  <div class="agent-chat-window" id="agentChatWindow">
+    <div class="chat-header">
+      <img class="chat-header__avatar" src="assets/profile-agent.png" alt="Agent">
+      <div class="chat-header__text">
+        <strong>안녕하세요</strong><br>
+        카페 관리하기 따~악 좋은 날씨네요!<br>
+        감스트님을 위해서 오늘의 추천 먼저 해보아요.
+      </div>
+    </div>
+
+    <div class="chat-card">
+      <div class="chat-card__title">오늘의 관리</div>
+      <div class="chat-card__row">
+        <div class="chat-card__label">
+          <div class="chat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.6">
+              <circle cx="10" cy="10" r="10" fill="#EAE5F9" />
+              <circle cx="10" cy="8" r="3" stroke="#8953F4" stroke-width="1.5" />
+              <path d="M5 16C5 13.5 7 12 10 12C13 12 15 13.5 15 16" stroke="#8953F4" stroke-width="1.5"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <span>가입자수</span>
+        </div>
+        <div class="chat-card__value">243</div>
+      </div>
+      <div class="chat-card__row">
+        <div class="chat-card__label">
+          <div class="chat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.6">
+              <circle cx="10" cy="10" r="10" fill="#F4F6FB" />
+              <path
+                d="M10 5C10 5 7 8.58172 7 11C7 12.6569 8.34315 14 10 14C11.6569 14 13 12.6569 13 11C13 8.58172 10 5 10 5Z"
+                stroke="#3283FD" stroke-width="1.5" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span>방문수</span>
+        </div>
+        <div class="chat-card__value">23,409</div>
+      </div>
+      <div class="chat-card__row">
+        <div class="chat-card__label">
+          <div class="chat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.6">
+              <circle cx="10" cy="10" r="10" fill="#FFF0F0" />
+              <path d="M10 6V10M10 14V13.5" stroke="#F15151" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span>미처리 신고건</span>
+        </div>
+        <div class="chat-card__value">3</div>
+      </div>
+      <button class="chat-btn-secondary">지난 이벤트 참여자 몇명인지 확인 좀</button>
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="chat-input-area">
+      <input type="text" placeholder="매니저 Agent에게 궁금한 것" />
+      <button>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="#D1D1D1" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
 </body>
 
 </html>
