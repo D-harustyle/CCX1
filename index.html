@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하루 AI Design Archive - CCX1</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #60a5fa;
+            --gradient-start: #3b82f6;
+            --gradient-end: #8b5cf6;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-list li {
+            margin-bottom: 0.75rem;
+        }
+
+        .link-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: color 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .link-list a::before {
+            content: '→';
+            margin-right: 0.5rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.2s ease;
+            color: var(--accent);
+        }
+
+        .link-list a:hover {
+            color: var(--accent-hover);
+        }
+
+        .link-list a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Highlight prominent links */
+        .highlight-link {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .highlight-link:hover {
+            background: rgba(59, 130, 246, 0.2);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>하루 AI Design Archive</h1>
+            <p class="subtitle">CCX1 프로젝트의 모든 디자인 결과물을 한 곳에서 확인하세요</p>
+        </header>
+
+        <div class="grid">
+            <!-- 1. 카페 매니저 -->
+            <div class="card">
+                <h2 class="card-title">☕ 카페 매니저 PC/MO</h2>
+                <ul class="link-list">
+                    <li><a href="./카페 매니저 PC-MO 구현 (멤버관리까지 구현)/home.html">홈 화면 (Home)</a></li>
+                    <li><a href="./카페 매니저 PC-MO 구현 (멤버관리까지 구현)/member-management.html">멤버 관리 (Member Management)</a></li>
+                </ul>
+                <a href="./카페 매니저 PC-MO 구현 (멤버관리까지 구현)/home.html" class="highlight-link">주요 화면 보기</a>
+            </div>
+
+            <!-- 2. 셀러/마켓 -->
+            <div class="card">
+                <h2 class="card-title">🏪 자영님 플리마켓</h2>
+                <ul class="link-list">
+                    <li><a href="./자영님 플리마켓 인터랙션 작업파일/prototypeFinal.html">최종 프로토타입 (Final)</a></li>
+                </ul>
+                <a href="./자영님 플리마켓 인터랙션 작업파일/prototypeFinal.html" class="highlight-link">인터랙션 보기</a>
+            </div>
+
+            <!-- 3. 홈 분석 및 목업 -->
+            <div class="card">
+                <h2 class="card-title">📊 섹션홈 & 데이터 분석</h2>
+                <ul class="link-list">
+                    <li><a href="./섹션홈_클릭수 기반 분석 및 목업와이어프레임/section-home-analysis.html">클릭수 기반 분석 리포트</a></li>
+                    <li><a href="./섹션홈_클릭수 기반 분석 및 목업와이어프레임/section-home-mockups.html">홈 목업 와이어프레임</a></li>
+                </ul>
+                <a href="./섹션홈_클릭수 기반 분석 및 목업와이어프레임/section-home-analysis.html" class="highlight-link">분석 결과 보기</a>
+            </div>
+
+            <!-- 4. 카페 디자인 시스템 (CDS) -->
+            <div class="card" style="grid-column: 1 / -1;">
+                <h2 class="card-title">🎨 차기 카페플랫폼 디자인 시스템 (CDS)</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">User Profile 와이어프레임 및 주요 컴포넌트 모음</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div>
+                        <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">Core Pages</h3>
+                        <ul class="link-list">
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/cdsIndex.html">CDS 인덱스 (메인)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/user-profile.html">유저 프로필 (User Profile)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/home.html">홈 (Home)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/CDSMapping.html">컴포넌트 매핑도</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">Modules & Feeds</h3>
+                        <ul class="link-list">
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/feed.html">피드 (Feed)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/feed-module.html">피드 모듈 (Feed Module)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/list-module.html">리스트 모듈 (List Module)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/grid-2x2-card.html">2x2 그리드 카드</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 style="font-size: 1.1rem; color: #fff; margin-bottom: 0.5rem;">UI Components</h3>
+                        <ul class="link-list">
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/header.html">헤더 (Header)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/navigation.html">네비게이션 (Navigation)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/badge.html">뱃지 (Badge)</a></li>
+                            <li><a href="./CDS 컴포넌트 구현   user profile 와이어프레임 플로우 생성/CafeDesignSystem/pages/chip.html">칩 (Chip)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
