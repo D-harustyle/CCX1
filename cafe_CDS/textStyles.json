@@ -1,0 +1,687 @@
+{
+  "fileName": "AiTEST용 디자인 시스템",
+  "textStyles": [
+    {
+      "name": "display/xLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Bold",
+      "fontSize": 28,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/large",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Bold",
+      "fontSize": 22,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/medium",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Bold",
+      "fontSize": 18,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/small",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Bold",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/xSmall",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Bold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/en/xLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Bold",
+      "fontSize": 28,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/en/large",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Bold",
+      "fontSize": 22,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/en/medium",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Bold",
+      "fontSize": 18,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/en/small",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Bold",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "display/en/xSmall",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Bold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/xxLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 20,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/xLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 18,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/large",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/medium",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/small",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Bold",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/en/xxLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 20,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/en/xLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 18,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/en/large",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/en/medium",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "heading/en/small",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Bold",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/xxLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 24,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/xLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/large",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/mediumStrong",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/mediumRegular",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/small",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/en/xxLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 24,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/en/xLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/en/large",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/en/mediumStrong",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/en/mediumRegular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "title/en/small",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/xLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/large",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/medium",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/small",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/xSmall",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 13,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/en/xLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 17,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/en/large",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/en/medium",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/en/small",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "body/en/xSmall",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 13,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/xLarge",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/largeStrong",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/largeRegular",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/mediumStrong",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/mediumRegular",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/smallStrong",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 13,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/smallRegular",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 13,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/xSmall",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 12,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/xxSmallStrong",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "SemiBold",
+      "fontSize": 10,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/xxSmallRegular",
+      "fontFamily": "Apple SD Gothic Neo",
+      "fontWeight": "Regular",
+      "fontSize": 10,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/xLarge",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 16,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/largeStrong",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/largeRegular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 15,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/mediumStrong",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/mediumRegular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 14,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/smallStrong",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 13,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/smallRegular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 13,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/xSmall",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 12,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/xxSmallStrong",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Semibold",
+      "fontSize": 10,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "label/en/xxSmallRegular",
+      "fontFamily": "SF Pro Text",
+      "fontWeight": "Regular",
+      "fontSize": 10,
+      "letterSpacing": {
+        "unit": "PIXELS",
+        "value": -0.30000001192092896
+      },
+      "textCase": "ORIGINAL"
+    }
+  ]
+}

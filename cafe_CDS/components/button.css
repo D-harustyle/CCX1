@@ -1,0 +1,176 @@
+/* Figma: atom/button (cafe.atom.button.*) */
+.cds-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--cds-button-gap);
+  padding: var(--cds-button-padding-y) var(--cds-button-padding-x);
+  border: var(--cds-button-border-width) solid var(--cds-button-border-color);
+  border-radius: var(--cds-button-radius);
+  font-family: var(--cds-button-font-family);
+  font-weight: var(--cds-button-font-weight);
+  font-size: var(--cds-button-font-size);
+  line-height: var(--cds-button-line-height);
+  letter-spacing: var(--cds-button-letter-spacing);
+  color: var(--cds-button-text-color);
+  background-color: var(--cds-button-background-color);
+}
+
+.cds-button__label {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.cds-button__icon {
+  display: inline-flex;
+  width: var(--cds-button-icon-size);
+  height: var(--cds-button-icon-size);
+}
+
+.cds-button__icon img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Size presets */
+.cds-button--xlarge {
+  --cds-button-font-family: var(--text-label-xLarge-font-family);
+  --cds-button-font-weight: var(--text-label-xLarge-font-weight);
+  --cds-button-font-size: var(--text-label-xLarge-font-size);
+  --cds-button-line-height: calc(var(--text-label-xLarge-font-size) * 1.5);
+  --cds-button-letter-spacing: calc(var(--text-label-xLarge-font-size) * -0.01875);
+  --cds-button-padding-y: calc(var(--text-label-xLarge-font-size) * 0.75);
+  --cds-button-padding-x: var(--text-label-xLarge-font-size);
+  --cds-button-radius: calc(var(--text-label-xLarge-font-size) * 0.75);
+  --cds-button-border-width: calc(var(--text-label-xLarge-font-size) * 0.08);
+  --cds-button-icon-size: calc(var(--text-label-xLarge-font-size) * 1.25);
+  --cds-button-gap: calc(var(--text-label-xLarge-font-size) * 0.125);
+}
+
+.cds-button--large {
+  --cds-button-font-family: var(--text-label-largeStrong-font-family);
+  --cds-button-font-weight: var(--text-label-largeStrong-font-weight);
+  --cds-button-font-size: var(--text-label-largeStrong-font-size);
+  --cds-button-line-height: calc(var(--text-label-largeStrong-font-size) * 1.4666667);
+  --cds-button-letter-spacing: calc(var(--text-label-largeStrong-font-size) * -0.02);
+  --cds-button-padding-y: calc(var(--text-label-largeStrong-font-size) * 0.7333334);
+  --cds-button-padding-x: calc(var(--text-label-largeStrong-font-size) * 0.9333334);
+  --cds-button-radius: calc(var(--text-label-largeStrong-font-size) * 0.6666667);
+  --cds-button-border-width: calc(var(--text-label-largeStrong-font-size) * 0.0866667);
+  --cds-button-icon-size: calc(var(--text-label-largeStrong-font-size) * 1.3333334);
+  --cds-button-gap: calc(var(--text-label-largeStrong-font-size) * 0.1333334);
+}
+
+.cds-button--medium {
+  --cds-button-font-family: var(--text-label-mediumStrong-font-family);
+  --cds-button-font-weight: var(--text-label-mediumStrong-font-weight);
+  --cds-button-font-size: var(--text-label-mediumStrong-font-size);
+  --cds-button-line-height: calc(var(--text-label-mediumStrong-font-size) * 1.3571429);
+  --cds-button-letter-spacing: calc(var(--text-label-mediumStrong-font-size) * -0.0214286);
+  --cds-button-padding-y: calc(var(--text-label-mediumStrong-font-size) * 0.7142858);
+  --cds-button-padding-x: calc(var(--text-label-mediumStrong-font-size) * 0.8571429);
+  --cds-button-radius: calc(var(--text-label-mediumStrong-font-size) * 0.7142858);
+  --cds-button-border-width: calc(var(--text-label-mediumStrong-font-size) * 0.0928572);
+  --cds-button-icon-size: calc(var(--text-label-mediumStrong-font-size) * 1.1428572);
+  --cds-button-gap: calc(var(--text-label-mediumStrong-font-size) * 0.1428572);
+}
+
+.cds-button--small {
+  --cds-button-font-family: var(--text-body-xSmall-font-family);
+  --cds-button-font-weight: var(--text-body-xSmall-font-weight);
+  --cds-button-font-size: var(--text-body-xSmall-font-size);
+  --cds-button-line-height: calc(var(--text-body-xSmall-font-size) * 1.3846154);
+  --cds-button-letter-spacing: calc(var(--text-body-xSmall-font-size) * -0.0230769);
+  --cds-button-padding-y: calc(var(--text-body-xSmall-font-size) * 0.6153847);
+  --cds-button-padding-x: calc(var(--text-body-xSmall-font-size) * 0.6923077);
+  --cds-button-radius: calc(var(--text-body-xSmall-font-size) * 0.6153847);
+  --cds-button-border-width: calc(var(--text-body-xSmall-font-size) * 0.1);
+  --cds-button-icon-size: calc(var(--text-body-xSmall-font-size) * 1.2307693);
+  --cds-button-gap: calc(var(--text-body-xSmall-font-size) * 0.1538462);
+}
+
+.cds-button--xsmall {
+  --cds-button-font-family: var(--text-body-xSmall-font-family);
+  --cds-button-font-weight: var(--text-body-xSmall-font-weight);
+  --cds-button-font-size: var(--text-body-xSmall-font-size);
+  --cds-button-line-height: calc(var(--text-body-xSmall-font-size) * 1.3846154);
+  --cds-button-letter-spacing: calc(var(--text-body-xSmall-font-size) * -0.0230769);
+  --cds-button-padding-y: calc(var(--text-body-xSmall-font-size) * 0.4615385);
+  --cds-button-padding-x: calc(var(--text-body-xSmall-font-size) * 0.6153847);
+  --cds-button-radius: calc(var(--text-body-xSmall-font-size) * 0.4615385);
+  --cds-button-border-width: calc(var(--text-body-xSmall-font-size) * 0.1);
+  --cds-button-icon-size: calc(var(--text-body-xSmall-font-size) * 1.2307693);
+  --cds-button-gap: calc(var(--text-body-xSmall-font-size) * 0.1538462);
+}
+
+/* Shape */
+.cds-button--rectangle {
+  border-radius: var(--cds-button-radius);
+}
+
+.cds-button--capsule {
+  border-radius: calc(var(--text-label-xLarge-font-size) * 2);
+}
+
+/* Types + variants */
+.cds-button--filled {
+  --cds-button-background-color: var(--cafe-color-brand);
+  --cds-button-text-color: var(--cafe-color-onbrand);
+  --cds-button-border-color: transparent;
+}
+
+.cds-button--filled.cds-button--secondary {
+  --cds-button-background-color: var(--cafe-color-brandcontainerprimary);
+  --cds-button-text-color: var(--cafe-color-brand);
+  --cds-button-border-color: transparent;
+}
+
+.cds-button--filled.cds-button--tertiary {
+  --cds-button-background-color: var(--cafe-color-backgroundcontainersecondary);
+  --cds-button-text-color: var(--cafe-color-onbackgroundcontainerprimary);
+  --cds-button-border-color: transparent;
+}
+
+.cds-button--filled.cds-button--optional {
+  --cds-button-background-color: var(--core-purple-pr80);
+  --cds-button-text-color: var(--cafe-color-textwhite);
+  --cds-button-border-color: transparent;
+}
+
+.cds-button--outlined {
+  --cds-button-background-color: transparent;
+  --cds-button-text-color: var(--cafe-color-brand);
+  --cds-button-border-color: var(--cafe-color-outlinebuttonprimary);
+}
+
+.cds-button--outlined.cds-button--secondary {
+  --cds-button-text-color: var(--cafe-color-brand);
+  --cds-button-border-color: var(--cafe-color-outlinebuttonsecondary);
+}
+
+.cds-button--outlined.cds-button--tertiary {
+  --cds-button-text-color: var(--cafe-color-onbackgroundcontainerprimary);
+  --cds-button-border-color: var(--cafe-color-outlinebuttontertiary);
+}
+
+.cds-button--outlined.cds-button--optional {
+  --cds-button-text-color: var(--core-purple-pr80);
+  --cds-button-border-color: var(--core-purple-pr80);
+}
+
+.cds-button--ghost {
+  --cds-button-background-color: transparent;
+  --cds-button-text-color: var(--cafe-color-brand);
+  --cds-button-border-color: transparent;
+}
+
+.cds-button--ghost.cds-button--tertiary {
+  --cds-button-text-color: var(--cafe-color-onbackgroundcontainerprimary);
+}
+
+.cds-button--ghost.cds-button--optional {
+  --cds-button-text-color: var(--core-purple-pr80);
+}
