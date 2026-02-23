@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카페 매니저 - 멤버 관리</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #FFFFFF;
+      min-height: 100vh;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .body {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+    }
+
+    /* ===== LEFT SIDEBAR ===== */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      width: 280px;
+      min-width: 280px;
+      align-self: stretch;
+      background: rgba(50, 131, 253, 0.05);
+      min-height: 100vh;
+      position: sticky;
+      top: 0;
+    }
+
+    .sidebar__logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 44px 20px 20px 32px;
+    }
+
+    .sidebar__logo a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .sidebar__logo img {
+      height: 24px;
+      width: auto;
+      display: block;
+    }
+
+    .sidebar__profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px 20px 20px;
+      gap: 6px;
+    }
+
+    .sidebar__avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 4px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      /* slight shadow for the 3D ghost */
+      background: #E89A3C;
+    }
+
+    .sidebar__name {
+      font-size: 15px;
+      font-weight: 600;
+      color: #111111;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar__role {
+      font-size: 12px;
+      font-weight: 500;
+      color: #888888;
+      letter-spacing: -0.3px;
+    }
+
+    .sidebar__menu {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 12px 16px 20px;
+    }
+
+    .menu-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 12px;
+      border-radius: 12px;
+      margin: 0;
+      background: transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .menu-item:hover {
+      background: #edf3fb;
+    }
+
+    .menu-item--active {
+      background: #edf3fb;
+    }
+
+    .menu-item--active:hover {
+      background: #e2ebf6;
+    }
+
+    .sidebar__divider {
+      padding: 12px 8px;
+    }
+
+    .sidebar__divider-line {
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .menu-item__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      position: relative;
+    }
+
+    .menu-item__icon img {
+      width: 24px;
+      height: 24px;
+    }
+
+    .menu-item__label {
+      font-size: 16px;
+      line-height: 1.25;
+      letter-spacing: -0.3px;
+      color: #000000;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .menu-item--active .menu-item__label {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .menu-item--grey .menu-item__label {
+      color: #787878;
+    }
+
+    /* ===== RIGHT CONTENT ===== */
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* === TOP BAR === */
+    .topbar {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 80px;
+      padding: 36px 120px 0px;
+    }
+
+    .topbar__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .breadcrumb {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .breadcrumb__item {
+      font-size: 16px;
+      line-height: 1.3125;
+      letter-spacing: -0.3px;
+      color: #C9C9C9;
+      text-decoration: none;
+    }
+
+    .breadcrumb__item--current {
+      color: #424242;
+    }
+
+    .breadcrumb__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 12px;
+      height: 12px;
+    }
+
+    .breadcrumb__arrow img {
+      width: 12px;
+      height: 12px;
+    }
+
+    .topbar__right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 18px;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-4px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .btn-ai-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      animation: float 2.5s ease-in-out infinite;
+    }
+
+    .btn-ai {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      background: #EDF3FB;
+      border-radius: 9999px;
+      border: none;
+      height: 42px;
+      box-sizing: border-box;
+    }
+
+    .btn-ai__icon {
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-ai__icon img {
+      width: 12px;
+      height: 12px;
+    }
+
+    .btn-ai__avatar-out {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-ai__text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #3283FD;
+      letter-spacing: -0.3px;
+    }
+
+    .btn-back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .topbar__profile {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .topbar__profile img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+    .main {
+      display: flex;
+      flex-direction: column;
+      padding: 60px 120px 100px;
+    }
+
+    .main__title {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 36px;
+    }
+
+    .main__title h1 {
+      font-size: 40px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.5px;
+      color: #000000;
+    }
+
+    /* === TAB BAR === */
+    .tab-section {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .tab-bar {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .tab-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .tab-item__text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 18px 2px;
+      font-size: 17px;
+      line-height: 1.3125;
+      letter-spacing: -0.3px;
+      color: #737373;
+      font-weight: 400;
+      transition: color 0.3s;
+    }
+
+    .tab-item--active .tab-item__text {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .tab-indicator {
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      height: 2px;
+      background-color: #000000;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), width 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 2;
+    }
+
+    .tab-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    /* === SEARCH BAR === */
+    .search-section {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      padding-top: 24px;
+    }
+
+    .search-input {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 20px 13px 16px;
+      background: #F8F9FA;
+      border-radius: 12px;
+      border: none;
+      flex: 1;
+    }
+
+    .search-input__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .search-input__text {
+      font-size: 15px;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+      color: #C9C9C9;
+    }
+
+    .sort-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      padding: 10px 20px;
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .sort-btn__text {
+      font-family: 'Pretendard', sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.357;
+      letter-spacing: -0.3px;
+      color: #424242;
+    }
+
+    .sort-btn__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 11px;
+      height: 11px;
+    }
+
+    .sort-btn__icon img {
+      width: 11px;
+      height: 11px;
+    }
+
+    /* === MEMBER TABLE === */
+    .member-table {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .member-table__header {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 28px 0px 8px;
+    }
+
+    .member-table__col-check {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex: 0 0 30%;
+      min-width: 200px;
+    }
+
+    .member-table__col-check--with-label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .member-table__cols {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .col-grade,
+    .col-visit-count,
+    .col-posts,
+    .col-comments {
+      flex: 1;
+      min-width: 0;
+      font-size: 13px;
+      line-height: 1.385;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+    }
+
+    .col-join-date,
+    .col-last-visit {
+      flex: 1.25;
+      min-width: 0;
+      font-size: 13px;
+      line-height: 1.385;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+    }
+
+    .col-gender {
+      flex: 0.5;
+      min-width: 0;
+      font-size: 13px;
+      line-height: 1.385;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+    }
+
+    .header-label {
+      font-size: 13px;
+      line-height: 1.385;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+    }
+
+    /* === RADIO/CHECKBOX === */
+    .radio {
+      display: flex;
+      align-items: center;
+      padding-right: 14px;
+      cursor: pointer;
+    }
+
+    .radio img {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* === MEMBER ROW === */
+    .member-row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 14px 16px;
+      margin: 0 -16px;
+      gap: 6px;
+      border-radius: 12px;
+      transition: background-color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .member-row:hover {
+      background-color: #F8F9FA;
+    }
+
+    .member-row__info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      flex: 0 0 30%;
+      min-width: 200px;
+    }
+
+    .member-row__info-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      min-width: 0;
+    }
+
+    .member-row__avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 99999px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .member-row__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .member-row__name {
+      font-size: 15px;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+      color: #000000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .member-row__cols {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .member-row__cols .col-grade,
+    .member-row__cols .col-visit-count,
+    .member-row__cols .col-posts,
+    .member-row__cols .col-comments,
+    .member-row__cols .col-join-date,
+    .member-row__cols .col-last-visit,
+    .member-row__cols .col-gender {
+      color: #000000;
+      font-size: 15px;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+    }
+
+    .row-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    /* === PAGINATION === */
+    .pagination {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      padding: 30px 0px 20px;
+      background: #FFFFFF;
+      border-radius: 8px;
+    }
+
+    .pagination__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .pagination__btn img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .pagination__numbers {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .pagination__number {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      font-size: 12px;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+    }
+
+    .pagination__number--active {
+      background: #F8F9FA;
+      color: #000000;
+    }
+
+    /* === FOOTER === */
+    .footer {
+      display: flex;
+      flex-direction: row;
+      gap: 46px;
+      padding-top: 90px;
+    }
+
+    .footer__copyright {
+      font-size: 12px;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+      flex: 1;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer__link {
+      font-size: 12px;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+      color: #A3A3A3;
+      text-decoration: none;
+    }
+
+    .footer__link-divider {
+      width: 1px;
+      height: 10px;
+      background: rgba(0, 0, 0, 0.08);
+      margin: 3px 0;
+    }
+
+    /* Mobile Navigation Drawer */
+    .mobile-nav-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .mobile-nav-overlay--visible {
+      opacity: 1;
+    }
+
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      background: #FFFFFF;
+      z-index: 201;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .mobile-nav--open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .mobile-nav__logo img {
+      width: 100px;
+      height: 15px;
+    }
+
+    .mobile-nav__close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mobile-nav__menu {
+      display: flex;
+      flex-direction: column;
+      padding: 8px 0;
+    }
+
+    .mobile-nav__item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.7);
+      font-family: 'Pretendard', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.333;
+      letter-spacing: -0.3px;
+      transition: background 0.15s ease;
+    }
+
+    .mobile-nav__item:hover {
+      background: rgba(0, 0, 0, 0.03);
+    }
+
+    .mobile-nav__item--active {
+      background: rgba(50, 131, 253, 0.08);
+      color: #3283FD;
+      font-weight: 600;
+    }
+
+    .mobile-nav__item-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .mobile-nav__item-icon img {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ===== MOBILE RESPONSIVE ===== */
+    .mobile-header {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .mobile-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 16px 0;
+      }
+
+      .mobile-header__left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .mobile-header__hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 4px 2px;
+      }
+
+      .mobile-header__hamburger span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background: #000000;
+        border-radius: 1px;
+      }
+
+      .mobile-header__logo img {
+        width: 100px;
+        height: 15px;
+      }
+
+      .mobile-header__right {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .mobile-header__profile {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .mobile-header__profile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .topbar {
+        padding: 16px 16px 0;
+        gap: 12px;
+      }
+
+      .topbar__right {
+        display: none;
+      }
+
+      .topbar__left {
+        flex: 1;
+      }
+
+      .breadcrumb__item {
+        font-size: 13px;
+      }
+
+      .main {
+        padding: 24px 16px 40px;
+      }
+
+      .main__title {
+        padding-bottom: 12px;
+      }
+
+      .main__title h1 {
+        font-size: 24px;
+      }
+
+      .tab-bar {
+        gap: 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .tab-item__text {
+        font-size: 14px;
+        padding: 14px 10px;
+        white-space: nowrap;
+      }
+
+      .search-section {
+        flex-direction: row;
+        gap: 8px;
+        padding-top: 16px;
+      }
+
+      .search-input {
+        padding: 10px 14px 10px 12px;
+        border-radius: 10px;
+        gap: 6px;
+      }
+
+      .search-input__text {
+        font-size: 13px;
+      }
+
+      .sort-btn {
+        padding: 10px 14px;
+        white-space: nowrap;
+      }
+
+      .sort-btn__text {
+        font-size: 13px;
+      }
+
+      .member-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .member-table__header {
+        min-width: 800px;
+        padding: 20px 0px 8px;
+      }
+
+      .member-table__col-check {
+        flex: 0 0 25%;
+        min-width: 160px;
+      }
+
+      .member-row {
+        min-width: 800px;
+      }
+
+      .member-row__info {
+        flex: 0 0 25%;
+        min-width: 160px;
+      }
+
+      .member-row__info-inner {
+        gap: 8px;
+      }
+
+      .member-row__avatar {
+        width: 28px;
+        height: 28px;
+      }
+
+      .member-row__name {
+        font-size: 13px;
+      }
+
+      .member-row__cols .col-grade,
+      .member-row__cols .col-visit-count,
+      .member-row__cols .col-posts,
+      .member-row__cols .col-comments,
+      .member-row__cols .col-join-date,
+      .member-row__cols .col-last-visit,
+      .member-row__cols .col-gender {
+        font-size: 13px;
+      }
+
+      .pagination {
+        gap: 8px;
+        padding: 20px 0px 16px;
+        flex-wrap: wrap;
+      }
+
+      .pagination__btn {
+        width: 32px;
+        height: 32px;
+      }
+
+      .pagination__btn img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .pagination__numbers {
+        gap: 2px;
+      }
+
+      .pagination__number {
+        width: 32px;
+        height: 32px;
+        font-size: 11px;
+      }
+
+      .footer {
+        flex-direction: column;
+        gap: 12px;
+        padding-top: 32px;
+      }
+
+      .footer__links {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .footer__link {
+        font-size: 11px;
+      }
+
+      .footer__copyright {
+        font-size: 11px;
+      }
+    }
+
+    /* ===== AGENT CHAT WINDOW ===== */
+    .agent-chat-window {
+      position: absolute;
+      top: 90px;
+      right: 120px;
+      width: 420px;
+      height: 650px;
+      background: #FFFFFF;
+      border-radius: 24px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      z-index: 1000;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px) scale(0.96);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .agent-chat-window--visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .chat-header {
+      display: flex;
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    .chat-header__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #E89A3C;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      flex-shrink: 0;
+    }
+
+    .chat-header__text {
+      font-size: 17px;
+      line-height: 1.5;
+      color: #111111;
+      letter-spacing: -0.3px;
+    }
+
+    .chat-header__text strong {
+      font-size: 17px;
+    }
+
+    .chat-card {
+      background: #FCFCFC;
+      border: 1px solid #F0F0F0;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .chat-card__title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #111111;
+      margin-bottom: 16px;
+    }
+
+    .chat-card__row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      background: #F4F6FA;
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .chat-card__row:last-child {
+      margin-bottom: 0;
+    }
+
+    .chat-card__label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: #111111;
+    }
+
+    .chat-card__icon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-card__value {
+      font-size: 16px;
+      font-weight: 800;
+      color: #111111;
+    }
+
+    .chat-btn-secondary {
+      background: #EAF1FE;
+      color: #3283FD;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      align-self: flex-end;
+      margin-top: 16px;
+    }
+
+    .chat-list-section {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-list-section__title {
+      font-size: 12px;
+      color: #888888;
+      font-weight: 500;
+    }
+
+    .chat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .chat-list-item {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .chat-list-item__rank {
+      font-size: 13px;
+      font-weight: 800;
+      color: #111111;
+      width: 16px;
+    }
+
+    .chat-list-item__content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .chat-list-item__title {
+      font-size: 14px;
+      font-weight: 500;
+      color: #111111;
+      line-height: 1.4;
+    }
+
+    .chat-list-item__meta {
+      font-size: 11px;
+      color: #A3A3A3;
+    }
+
+    .chat-list-item__thumb {
+      width: 56px;
+      height: 32px;
+      border-radius: 4px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #000;
+    }
+
+    .chat-input-area {
+      background: #F1F3F5;
+      border-radius: 9999px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 4px 16px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      color: #111111;
+      padding: 12px 0;
+    }
+
+    .chat-input-area input::placeholder {
+      color: #A3A3A3;
+    }
+
+    .chat-input-area button {
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="body">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Sidebar Logo & Profile -->
+        <div class="sidebar__logo">
+          <a href="index.html">
+            <img src="assets/logo.svg" alt="Cafe Manage">
+          </a>
+        </div>
+        <div class="sidebar__profile">
+          <img class="sidebar__avatar" src="assets/avatar.png" alt="Profile Avatar">
+          <div class="sidebar__name">GAMST</div>
+          <div class="sidebar__role">카페 운영진, 매니저</div>
+        </div>
+
+        <div class="sidebar__divider">
+          <div class="sidebar__divider-line"></div>
+        </div>
+
+        <nav class="sidebar__menu">
+          <a href="cafe_manage.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-cafe.svg" alt="">
+            </span>
+            <span class="menu-item__label">카페 운영</span>
+          </a>
+          <a href="post.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-post.svg" alt="">
+            </span>
+            <span class="menu-item__label">게시글 관리</span>
+          </a>
+          <a href="member-management.html" class="menu-item menu-item--active">
+            <span class="menu-item__icon">
+              <img src="assets/icon-member.svg" alt="">
+            </span>
+            <span class="menu-item__label">멤버 관리</span>
+          </a>
+          <a href="reward.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-reward.svg" alt="">
+            </span>
+            <span class="menu-item__label">보상 관리</span>
+          </a>
+          <a href="settings.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-settings.svg" alt="">
+            </span>
+            <span class="menu-item__label">운영권한 및 설정</span>
+          </a>
+          <a href="comm.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-comm.svg" alt="">
+            </span>
+            <span class="menu-item__label">커뮤니케이션</span>
+          </a>
+          <a href="report.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-report.svg" alt="">
+            </span>
+            <span class="menu-item__label">성장 리포트</span>
+          </a>
+          <a href="decor.html" class="menu-item">
+            <span class="menu-item__icon">
+              <img src="assets/icon-decor.svg" alt="">
+            </span>
+            <span class="menu-item__label">카페 꾸미기</span>
+          </a>
+          <div class="sidebar__divider">
+            <div class="sidebar__divider-line"></div>
+          </div>
+          <a href="biz.html" class="menu-item menu-item--grey">
+            <span class="menu-item__icon">
+              <img src="assets/icon-biz.svg" alt="">
+            </span>
+            <span class="menu-item__label">카페 비즈센터</span>
+          </a>
+        </nav>
+      </aside>
+
+      <!-- Right Content -->
+      <section class="content">
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+        <nav class="mobile-nav" id="mobileNav">
+          <div class="mobile-nav__header">
+            <div class="mobile-nav__logo">
+              <img src="assets/logo.svg" alt="Cafe Manage">
+            </div>
+            <button class="mobile-nav__close" id="mobileNavClose" aria-label="닫기">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 5L15 15M15 5L5 15" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </button>
+          </div>
+          <div class="mobile-nav__menu">
+            <a href="cafe_manage.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-cafe-outlined.svg" alt=""></span>
+              카페 운영
+            </a>
+            <a href="post.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-post-outlined.svg" alt=""></span>
+              게시글 관리
+            </a>
+            <a href="member-management.html" class="mobile-nav__item mobile-nav__item--active">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-member-active.svg" alt=""></span>
+              멤버 관리
+            </a>
+            <a href="reward.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-reward-outlined.svg" alt=""></span>
+              보상 관리
+            </a>
+            <a href="settings.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-settings-outlined.svg" alt=""></span>
+              운영권한 &amp; 설정
+            </a>
+            <a href="comm.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-comm-outlined.svg" alt=""></span>
+              커뮤니케이션
+            </a>
+            <a href="report.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-report-outlined.svg" alt=""></span>
+              카페 성장 리포트
+            </a>
+            <a href="biz.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-biz-outlined.svg" alt=""></span>
+              카페 비즈센터
+            </a>
+            <a href="decor.html" class="mobile-nav__item">
+              <span class="mobile-nav__item-icon"><img src="assets/sidebar-decor-outlined.svg" alt=""></span>
+              카페 꾸미기
+            </a>
+          </div>
+        </nav>
+
+        <!-- Mobile Header -->
+        <div class="mobile-header">
+          <div class="mobile-header__left">
+            <button class="mobile-header__hamburger" aria-label="메뉴">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
+            <a href="index.html" class="mobile-header__logo">
+              <img src="assets/logo.svg" alt="Cafe Manage">
+            </a>
+          </div>
+          <div class="mobile-header__right">
+            <div class="mobile-header__profile">
+              <img src="assets/profile-icon.svg" alt="프로필">
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Bar -->
+        <header class="topbar">
+          <div class="topbar__left">
+            <nav class="breadcrumb">
+              <a href="index.html" class="breadcrumb__item">Home</a>
+              <span class="breadcrumb__arrow">
+                <img src="assets/breadcrumb-arrow.svg" alt="">
+              </span>
+              <span class="breadcrumb__item breadcrumb__item--current">멤버 관리</span>
+            </nav>
+          </div>
+          <div class="topbar__right">
+            <div class="btn-ai-wrap" onclick="toggleAgentChat()">
+              <div class="btn-ai">
+                <span class="btn-ai__icon"><img src="assets/ai-staff-icon.svg" alt=""></span>
+                <span class="btn-ai__text">궁금하면 매니저 Agent와 대화하기</span>
+              </div>
+              <img class="btn-ai__avatar-out" src="assets/profile-agent.png" alt="Agent Avatar">
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+          <!-- Title -->
+          <div class="main__title">
+            <h1>멤버 관리</h1>
+          </div>
+
+          <!-- Tab Section -->
+          <div class="tab-section">
+            <div class="tab-bar">
+              <div class="tab-item tab-item--active" data-tab="all">
+                <span class="tab-item__text">전체 멤버</span>
+              </div>
+              <div class="tab-item" data-tab="suspended">
+                <span class="tab-item__text">활동 정지 멤버</span>
+              </div>
+              <div class="tab-item" data-tab="expelled">
+                <span class="tab-item__text">강제 탈퇴 멤버</span>
+              </div>
+              <div class="tab-item" data-tab="staff">
+                <span class="tab-item__text">스탭 관리</span>
+              </div>
+              <div class="tab-indicator" id="tabIndicator"></div>
+            </div>
+            <div class="tab-divider"></div>
+          </div>
+
+          <!-- Search Section -->
+          <div class="search-section">
+            <div class="search-input">
+              <span class="search-input__icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="6.01" cy="6.01" r="5.01" stroke="#A3A3A3" stroke-width="1.2" />
+                  <line x1="9.87" y1="9.87" x2="13" y2="13" stroke="#A3A3A3" stroke-width="1.2"
+                    stroke-linecap="round" />
+                </svg>
+              </span>
+              <span class="search-input__text">찾고 싶은 멤버를 검색해보세요</span>
+            </div>
+            <button class="sort-btn">
+              <span class="sort-btn__text">정렬</span>
+              <span class="sort-btn__icon">
+                <img src="assets/icon-sort.svg" alt="">
+              </span>
+            </button>
+          </div>
+
+          <!-- Member Table -->
+          <div class="member-table">
+            <!-- Header -->
+            <div class="member-table__header">
+              <div class="member-table__col-check">
+                <label class="radio">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                    <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </label>
+                <span class="header-label">별명(아이디)</span>
+              </div>
+              <div class="member-table__cols">
+                <span class="col-grade">등급</span>
+                <span class="col-join-date">가입일</span>
+                <span class="col-last-visit">최종 방문일</span>
+                <span class="col-visit-count">방문수</span>
+                <span class="col-posts">게시글 수</span>
+                <span class="col-comments">댓글수</span>
+                <span class="col-gender">성별</span>
+              </div>
+            </div>
+
+            <!-- Member Rows -->
+            <div class="member-list">
+              <!-- Row 1 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-1.png" alt="">
+                    </div>
+                    <span class="member-row__name">르브론인직(kenzieKim90)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 2 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-2.png" alt="">
+                    </div>
+                    <span class="member-row__name">니니보는인직이(dlswlr05)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 3 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-3.png" alt="">
+                    </div>
+                    <span class="member-row__name">감스트중대장(wndeowkd11)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">기타</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 4 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-4.png" alt="">
+                    </div>
+                    <span class="member-row__name">느낌(ekwjddl1029)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 5 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-5.png" alt="">
+                    </div>
+                    <span class="member-row__name">정형돈(dkunderbar85)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">2,915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 6 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-6.png" alt="">
+                    </div>
+                    <span class="member-row__name">욱하는용형(nv_cafecf30)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 7 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-7.png" alt="">
+                    </div>
+                    <span class="member-row__name">역비유(luckylucky82)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 8 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-8.png" alt="">
+                    </div>
+                    <span class="member-row__name">정쌍수(hiphopshowme1990)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 9 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-9.png" alt="">
+                    </div>
+                    <span class="member-row__name">쁘히히라릿(hiseulgi95)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+              <div class="row-divider"></div>
+
+              <!-- Row 10 -->
+              <div class="member-row">
+                <div class="member-row__info">
+                  <label class="radio">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="9" cy="9" r="9" fill="#EAEAEA" />
+                      <path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    </svg>
+                  </label>
+                  <div class="member-row__info-inner">
+                    <div class="member-row__avatar">
+                      <img src="assets/avatar-10.png" alt="">
+                    </div>
+                    <span class="member-row__name">인직부인유정(wlsdkwlsk142)</span>
+                  </div>
+                </div>
+                <div class="member-row__cols">
+                  <span class="col-grade">새싹멤버</span>
+                  <span class="col-join-date">2021.10.20.</span>
+                  <span class="col-last-visit">2021.10.20.</span>
+                  <span class="col-visit-count">4,322</span>
+                  <span class="col-posts">2,013</span>
+                  <span class="col-comments">915</span>
+                  <span class="col-gender">남</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <nav class="pagination">
+            <button class="pagination__btn" aria-label="이전 페이지">
+              <img src="assets/pagination-prev.svg" alt="Prev">
+            </button>
+            <div class="pagination__numbers">
+              <button class="pagination__number pagination__number--active">1</button>
+              <button class="pagination__number">2</button>
+              <button class="pagination__number">3</button>
+              <button class="pagination__number">4</button>
+              <button class="pagination__number">5</button>
+              <button class="pagination__number">6</button>
+              <button class="pagination__number">7</button>
+              <button class="pagination__number">8</button>
+              <button class="pagination__number">9</button>
+              <button class="pagination__number">10</button>
+            </div>
+            <button class="pagination__btn" aria-label="다음 페이지">
+              <img src="assets/pagination-next.svg" alt="Next">
+            </button>
+          </nav>
+
+          <!-- Footer -->
+          <footer class="footer">
+            <span class="footer__copyright">Since 2023.10.10. &copy;&nbsp;감스트</span>
+            <div class="footer__links">
+              <a href="#" class="footer__link">네이버 이용약관</a>
+              <span class="footer__link-divider"></span>
+              <a href="#" class="footer__link">카페 비즈센터 이용약관</a>
+              <span class="footer__link-divider"></span>
+              <a href="#" class="footer__link">카페 비즈센터 운영정책</a>
+              <span class="footer__link-divider"></span>
+              <a href="#" class="footer__link">개인정보 처리 방침</a>
+              <span class="footer__link-divider"></span>
+              <a href="#" class="footer__link">고객센터</a>
+            </div>
+          </footer>
+        </main>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    // Tab indicator sliding logic
+    const tabBar = document.querySelector('.tab-bar');
+    const tabs = document.querySelectorAll('.tab-item');
+    const tabIndicator = document.getElementById('tabIndicator');
+
+    function updateTabIndicator(activeTab) {
+      if (!activeTab || !tabIndicator) return;
+
+      // Calculate width and position relative to the tab-bar container
+      requestAnimationFrame(() => {
+        const tabBarRect = tabBar.getBoundingClientRect();
+        const tabText = activeTab.querySelector('.tab-item__text');
+        const textRect = tabText.getBoundingClientRect();
+
+        const offsetLeft = textRect.left - tabBarRect.left;
+        const width = textRect.width;
+
+        tabIndicator.style.width = `${width}px`;
+        tabIndicator.style.transform = `translateX(${offsetLeft}px)`;
+      });
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('tab-item--active'));
+        tab.classList.add('tab-item--active');
+        updateTabIndicator(tab);
+      });
+    });
+
+    // Initialize the indicator on load and window resize
+    window.addEventListener('load', () => {
+      // Small timeout to ensure fonts are loaded and layout is stable
+      setTimeout(() => {
+        const initialActiveTab = document.querySelector('.tab-item--active');
+        updateTabIndicator(initialActiveTab);
+      }, 50);
+    });
+
+    window.addEventListener('resize', () => {
+      const currentActiveTab = document.querySelector('.tab-item--active');
+      updateTabIndicator(currentActiveTab);
+    });
+
+    document.querySelectorAll('.pagination__number').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.pagination__number').forEach(b => b.classList.remove('pagination__number--active'));
+        btn.classList.add('pagination__number--active');
+      });
+    });
+
+    document.querySelectorAll('.radio').forEach(radio => {
+      radio.addEventListener('click', () => {
+        const svg = radio.querySelector('svg');
+        const isChecked = svg.innerHTML.includes('#3283FD');
+        if (isChecked) {
+          svg.innerHTML = '<circle cx="9" cy="9" r="9" fill="#EAEAEA" /><path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+        } else {
+          svg.innerHTML = '<circle cx="9" cy="9" r="9" fill="#3283FD" /><path d="M5 9.5L8 12.5L13 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+        }
+      });
+    });
+
+    const hamburger = document.querySelector('.mobile-header__hamburger');
+    const nav = document.getElementById('mobileNav');
+    const overlay = document.getElementById('mobileNavOverlay');
+    const closeBtn = document.getElementById('mobileNavClose');
+
+    function openNav() {
+      overlay.style.display = 'block';
+      requestAnimationFrame(() => {
+        overlay.classList.add('mobile-nav-overlay--visible');
+        nav.classList.add('mobile-nav--open');
+      });
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNav() {
+      overlay.classList.remove('mobile-nav-overlay--visible');
+      nav.classList.remove('mobile-nav--open');
+      document.body.style.overflow = '';
+      setTimeout(() => { overlay.style.display = 'none'; }, 300);
+    }
+
+    if (hamburger) hamburger.addEventListener('click', openNav);
+    if (closeBtn) closeBtn.addEventListener('click', closeNav);
+    if (overlay) overlay.addEventListener('click', closeNav);
+
+    // Toggle Agent Chat Window
+    function toggleAgentChat() {
+      const chatWin = document.getElementById('agentChatWindow');
+      if (chatWin) {
+        chatWin.classList.toggle('agent-chat-window--visible');
+      }
+    }
+
+    // Close chat window when clicking outside
+    document.addEventListener('click', (e) => {
+      const chatWin = document.getElementById('agentChatWindow');
+      const trigger = document.querySelector('.btn-ai-wrap');
+      if (chatWin && chatWin.classList.contains('agent-chat-window--visible')) {
+        if (!chatWin.contains(e.target) && !trigger.contains(e.target)) {
+          chatWin.classList.remove('agent-chat-window--visible');
+        }
+      }
+    });
+  </script>
+
+  <!-- Agent Chat UI Overlay -->
+  <div class="agent-chat-window" id="agentChatWindow">
+    <div class="chat-header">
+      <img class="chat-header__avatar" src="assets/profile-agent.png" alt="Agent">
+      <div class="chat-header__text">
+        <strong>안녕하세요</strong><br>
+        카페 관리하기 따~악 좋은 날씨네요!<br>
+        감스트님을 위해서 오늘의 추천 먼저 해보아요.
+      </div>
+    </div>
+
+    <div class="chat-card">
+      <div class="chat-card__title">오늘의 관리</div>
+      <div class="chat-card__row">
+        <div class="chat-card__label">
+          <div class="chat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.6">
+              <circle cx="10" cy="10" r="10" fill="#EAE5F9" />
+              <circle cx="10" cy="8" r="3" stroke="#8953F4" stroke-width="1.5" />
+              <path d="M5 16C5 13.5 7 12 10 12C13 12 15 13.5 15 16" stroke="#8953F4" stroke-width="1.5"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+          <span>가입자수</span>
+        </div>
+        <div class="chat-card__value">243</div>
+      </div>
+      <div class="chat-card__row">
+        <div class="chat-card__label">
+          <div class="chat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.6">
+              <circle cx="10" cy="10" r="10" fill="#F4F6FB" />
+              <path
+                d="M10 5C10 5 7 8.58172 7 11C7 12.6569 8.34315 14 10 14C11.6569 14 13 12.6569 13 11C13 8.58172 10 5 10 5Z"
+                stroke="#3283FD" stroke-width="1.5" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span>방문수</span>
+        </div>
+        <div class="chat-card__value">23,409</div>
+      </div>
+      <div class="chat-card__row">
+        <div class="chat-card__label">
+          <div class="chat-card__icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" opacity="0.6">
+              <circle cx="10" cy="10" r="10" fill="#FFF0F0" />
+              <path d="M10 6V10M10 14V13.5" stroke="#F15151" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
+          </div>
+          <span>미처리 신고건</span>
+        </div>
+        <div class="chat-card__value">3</div>
+      </div>
+      <button class="chat-btn-secondary">지난 이벤트 참여자 몇명인지 확인 좀</button>
+    </div>
+
+    <div style="flex: 1;"></div>
+
+    <div class="chat-input-area">
+      <input type="text" placeholder="매니저 Agent에게 궁금한 것" />
+      <button>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13" stroke="#D1D1D1" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>
